@@ -41,6 +41,12 @@
 
 ;; Major mode definitions -------------------------
 (define-derived-mode mediawiki-mode text-mode "Mediawiki"
-  "Major mode for mediawiki articles. \\{mediawiki-mode-map}"
-  'abbrev-table "mediawiki-mode-abbrev-table")
+  "Major mode for mediawiki articles.
+  \\{mediawiki-mode-map}"
+  'abbrev-table nil)
+
+(server-start) ;; Start the server in this instance, so emacs doesn't have to open again
+
+
+
 
