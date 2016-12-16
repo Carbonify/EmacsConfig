@@ -1,4 +1,6 @@
-;;Initial setup that was created via GUI.
+;; Emacs init file
+
+;; General settings ------------------
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -6,11 +8,7 @@
  '(show-paren-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
- '(default ((t (:family "Terminus (TTF)" :foundry "unknown" :slant normal :weight normal :height 113 :width normal)))))
-
-;; Begin normal setup
-
-;; General settings ------------------
+'(default ((t (:family "Terminus (TTF)" :foundry "unknown" :slant normal :weight normal :height 113 :width normal)))))
 
 ;; Change backup directory to system temp directory
  (setq backup-directory-alist
@@ -26,6 +24,7 @@
 (prefer-coding-system 'utf-8) ;; Prefer UTF-8 encoding
 
 
+
 ;; Hooks ------------------------
 ;; Text mode hooks
 (add-hook 'text-mode-hook 'flyspell-mode) ;; Turn on incorrect spell highlight
@@ -39,14 +38,11 @@
 ;; Use Ctrl-C e to open the init file for changing config.
 (global-set-key (kbd "C-c e") (lambda () (interactive) (find-file "~/.emacs.d/init.el")))
 
-;; Major mode definitions -------------------------
-(define-derived-mode mediawiki-mode text-mode "Mediawiki"
-  "Major mode for mediawiki articles.
-  \\{mediawiki-mode-map}"
-  'abbrev-table nil)
+;; Filetype detection --------------------
+(add-to-list 'auto-mode-alist '("\\.\\(mw\\|wiki\\|mediawiki\\)\\'" . text-mode))
+
+
+;; Finalization ----------------------
 
 (server-start) ;; Start the server in this instance, so emacs doesn't have to open again
-
-
-
 
