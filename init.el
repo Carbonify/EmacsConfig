@@ -4,11 +4,18 @@
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(confirm-kill-emacs (quote yes-or-no-p))
+ '(hippie-expand-try-functions-list (quote (try-complete-file-name-partially try-complete-file-name try-expand-dabbrev try-expand-dabbrev-all-buffers try-expand-dabbrev-from-kill try-expand-all-abbrevs try-complete-lisp-symbol-partially try-complete-lisp-symbol)))
  '(save-place t nil (saveplace))
  '(show-paren-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(default ((t (:family "Terminus (TTF)" :foundry "unknown" :slant normal :weight normal :height 113 :width normal)))))
 
 ;; Change backup directory to system temp directory
@@ -24,37 +31,12 @@
 (scroll-bar-mode -1) ;; Disable the scroll bar
 (prefer-coding-system 'utf-8) ;; Prefer UTF-8 encoding
 (add-to-list 'load-path "~/.emacs.d/manual-install/") ;; Add dir for manually installed plugins
+(add-to-list 'load-path "~/.emacs.d/config-lisp/") ;; Contains more config by me.
 (electric-indent-mode 1) ;; Always make newline keep indent
 (electric-pair-mode 1) ;; Pair parens and other brackets
 
 
 ;; Mode creation ------------------------------
-
-(define-derived-mode mediawiki-mode text-mode "Mediawiki"
-  "Major mode for Mediawiki articles. 
-   \\{mediawiki-mode-map}"
-  :abbrev-table nil
-  (defun create-mediawiki-table () "Creates a mediawiki table."
-    (interactive)
-    (insert "{| class=\"wikitable\"") (newline)
-    (insert "|-") (newline)
-    (insert "!Option1!!Option2!!Option3") (newline)
-    (insert "|-") (newline)
-    (insert "|Value1 || Value2 || Value3") (newline)
-    (insert "|-") (newline) 
-    (insert "|}"))
-
-  (defun create-mediawiki-collapse () "Creates the HTML source code for a collapsible text field."
-    (interactive)
-    (insert "<div class=\"toccolours mw-collapsible mw-collapsed\" style=\"width:800px\">") (newline)
-    (insert "Shown content") (newline)
-    (insert "<div class=\"mw-collapsible-content\">") (newline)
-    (insert "Hidden Content") (newline)
-    (insert "</div></div>") (newline))
-
-  (define-key mediawiki-mode-map (kbd "C-c C-w t") 'create-mediawiki-table)
-  (define-key mediawiki-mode-map (kbd "C-c C-w c") 'create-mediawiki-collapse))
-
 
 (define-derived-mode markdown-mode text-mode "Markdown"
   "Major mode for markdown documents.
@@ -62,6 +44,9 @@
   :abbrev-table nil)
 
 ;; Plugin config -----------------
+
+;; Mediawiki-mode (manual-install)
+(require 'mediawiki-mode)
 
 
 ;; Hooks ------------------------
@@ -77,30 +62,14 @@
 ;; Use Ctrl-C e to open the init file for changing config.
 (global-set-key (kbd "C-c e") (lambda () (interactive) (find-file "~/.emacs.d/init.el")))
 
-;; Tab complete
-(global-set-key [(tab)] 'smart-tab)
-(defun smart-tab ()
-  "This smart tab is minibuffer compliant: it acts as usual in
-    the minibuffer. Else, if mark is active, indents region. Else if
-    point is at the end of a symbol, expands it. Else indents the
-    current line."
-  (interactive)
-  (if (minibufferp)
-      (unless (minibuffer-complete)
-        (dabbrev-expand nil))
-    (if mark-active
-        (indent-region (region-beginning)
-                       (region-end))
-      (if (looking-at "\\_>")
-          (dabbrev-expand nil)
-        (indent-for-tab-command)))))
-
+;; Tab completion
+(global-set-key (kbd "<tab>") 'hippie-expand)
+(global-set-key (kbd "C-<tab>") 'indent-for-tab-command) ;; Old function of tab
 
 ;; Filetype detection --------------------
 
 ;; Text-type modes
-(add-to-list 'auto-mode-alist '("\\.mw\\'" . mediawiki-mode))
-(add-to-list 'auto-mode-alist '("\\.wiki\\'" . mediawiki-mode))
+
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
 
