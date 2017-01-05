@@ -3,4 +3,7 @@
 
 # Packaging
 .cask
+
+# Folders
 elpa/*
+auto-save-list/*
