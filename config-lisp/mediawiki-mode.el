@@ -241,8 +241,9 @@
 	 '(1 font-lock-keyword-face t t))))
 
 
-;; Mode definition
+;; Mode definition ------------------------
 
+;;;###autoload
 (define-derived-mode mediawiki-mode text-mode "Mediawiki"
   "Major mode for Mediawiki articles. This mode adds several keybinds to make editing mediawiki articles much easier.
    \\{mediawiki-mode-map}"
@@ -250,6 +251,12 @@
   
   (set (make-local-variable 'font-lock-multiline) t)
   (set (make-local-variable 'font-lock-defaults) '(mediawiki-font-lock-keywords t nil nil nil))
+  (set (make-local-variable 'comment-start-skip) "\\(?:<!\\)?-- *")
+  (set (make-local-variable 'comment-end-skip) " *--\\([ \n]*>\\)?")
+  (set (make-local-variable 'comment-start) "<!-- ")
+  (set (make-local-variable 'comment-end) " -->")
+  (set (make-local-variable 'paragraph-start) "\\*\\| \\|#\\|;\\|:\\||\\|!\\|$")
+  
     
   (defun create-mediawiki-table () "Creates a mediawiki table."
     (interactive)
@@ -291,8 +298,5 @@
   (define-key mediawiki-mode-map (kbd "C-c C-w t") 'create-mediawiki-table)
   (define-key mediawiki-mode-map (kbd "C-c C-w c") 'create-mediawiki-collapse)) ;;define-derived-mode ends here
 
-(add-to-list 'auto-mode-alist '("\\.mw\\'" . mediawiki-mode))
-(add-to-list 'auto-mode-alist '("\\.mediawiki\\'" . mediawiki-mode))
-(add-to-list 'auto-mode-alist '("\\.wiki\\'" . mediawiki-mode))
 
 (provide 'mediawiki-mode)

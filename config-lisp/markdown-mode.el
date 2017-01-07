@@ -1,5 +1,6 @@
 ;; Plugin to add markdown support to Emacs.
 
+;;;###autoload
 (define-derived-mode markdown-mode text-mode "Markdown"
   "Major mode for markdown documents.
   \\{markdown-mode-map}"
@@ -26,8 +27,5 @@
   (define-key markdown-mode-map (kbd "C-c s t") 'surround-region-in-text)
   (define-key markdown-mode-map (kbd "C-c b") 'embolden-region-text)
   (define-key markdown-mode-map (kbd "C-c i") 'italisize-region-text))
-
-(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
-(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
 
 (provide 'markdown-mode)

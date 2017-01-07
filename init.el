@@ -1,5 +1,11 @@
 ;; Emacs init file
 
+(add-to-list 'load-path "~/.emacs.d/manual-install/") ;; Add dir for manually installed plugins
+(add-to-list 'load-path "~/.emacs.d/config-lisp/") ;; Add more config by me.
+(load-file "~/.emacs.d/config-lisp/ftdetect.el") ;; Load the file that detects filetypes
+(require 'autoloads) ;; Then, load all autoloads
+
+
 ;; General settings ------------------
 
 (custom-set-variables
@@ -29,11 +35,16 @@
 (global-hl-line-mode) ;; Highlight current cursor line
 (scroll-bar-mode -1) ;; Disable the scroll bar
 (prefer-coding-system 'utf-8) ;; Prefer UTF-8 encoding
-(add-to-list 'load-path "~/.emacs.d/manual-install/") ;; Add dir for manually installed plugins
-(add-to-list 'load-path "~/.emacs.d/config-lisp/") ;; Contains more config by me.
 (electric-indent-mode 1) ;; Always make newline keep indent
 (electric-pair-mode 1) ;; Pair parens and other brackets
 (setq-default word-wrap t) ;; Wrap at word ends instead of in the middle of a word.
+(setq save-interprogram-paste-before-kill t) ;; Save the clipboard to kill ring
+;; IDO mode
+(ido-mode t)
+(setq ido-enable-flex-matching t)
+(setq ido-everywhere t)
+(setq ido-file-extensions-order '(".txt" ".cfg" ".el" ".sh" ".json" ".md")) ;; Emphasis
+(setq ido-ignore-extensions t)
 
 
 ;; Mode creation ------------------------------
@@ -41,20 +52,21 @@
 
 ;; Plugin config -----------------
 
-;; Mediawiki-mode (manual-install)
-(require 'mediawiki-mode)
-
-;; Markdown-mode (manual-install)
-(require 'markdown-mode)
-
 
 ;; Hooks ------------------------
+
 ;; Text mode hooks
 (add-hook 'text-mode-hook 'flyspell-mode) ;; Turn on incorrect spell highlight
+(add-hook 'text-mode-hook '(lambda () (interactive) (setq sentence-end-double-space nil)))
 
-;;Elisp mode hooks
+;; Elisp mode hooks
 (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
 
+;; Org mode hooks
+
+(add-hook 'org-mode-hook '(lambda ()
+(define-key org-mode-map [tab] 'hippie-expand) ;; Set these two, because I use tab complete much more than cycle
+(define-key org-mode-map [home] 'org-cycle)))
 
 ;; Keybindings ---------------------------------
 
@@ -65,9 +77,18 @@
 (global-set-key (kbd "<tab>") 'hippie-expand)
 (global-set-key (kbd "C-<tab>") 'indent-for-tab-command) ;; Old function of tab
 
-;; Make continuing ISearch much easier
+;; Make using ISearch much easier
 (define-key isearch-mode-map [next] 'isearch-repeat-forward)
 (define-key isearch-mode-map [prior] 'isearch-repeat-backward)
+(global-set-key (kbd "C-s") 'isearch-forward-regexp)
+(global-set-key (kbd "C-r") 'isearch-backward-regexp)
+(global-set-key (kbd "C-M-s") 'isearch-forward)
+(global-set-key (kbd "C-M-r") 'isearch-backward)
+
+
+;; Misc binds
+(global-set-key (kbd "C-x C-b") 'ibuffer) ;; Interactive buffer switch
+
 
 
 ;; Finalization ----------------------
