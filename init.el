@@ -6,6 +6,11 @@
 (require 'autoloads) ;; Then, load all autoloads
 
 
+;; Packages -------------------------
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+(package-initialize)
+
 ;; General settings ------------------
 
 ;; Change backup directory to system temp directory
