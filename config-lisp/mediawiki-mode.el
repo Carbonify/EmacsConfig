@@ -14,6 +14,10 @@
   "Face to use for strings.")
 (defvar font-mediawiki-verbatim-face 'font-mediawiki-verbatim-face
   "Face to use for text in verbatim macros or environments.")
+(defvar mediawiki-imenu-generic-expression
+  (list '(nil "^==+ *\\(.*[^\n=]\\)==+" 1))
+  "Imenu expression for `mediawiki-mode'.  See `imenu-generic-expression'.")
+
 
 (defface font-mediawiki-bold-face
   (let ((font (cond ((assq :inherit custom-face-attributes) '(:inherit bold))
@@ -248,7 +252,9 @@
   "Major mode for Mediawiki articles. This mode adds several keybinds to make editing mediawiki articles much easier.
    \\{mediawiki-mode-map}"
   :abbrev-table nil
+
   
+  ;; Option configs
   (set (make-local-variable 'font-lock-multiline) t)
   (set (make-local-variable 'font-lock-defaults) '(mediawiki-font-lock-keywords t nil nil nil))
   (set (make-local-variable 'comment-start-skip) "\\(?:<!\\)?-- *")
@@ -256,8 +262,12 @@
   (set (make-local-variable 'comment-start) "<!-- ")
   (set (make-local-variable 'comment-end) " -->")
   (set (make-local-variable 'paragraph-start) "\\*\\| \\|#\\|;\\|:\\||\\|!\\|$")
+  (when menu-bar-mode
+    (set (make-local-variable 'imenu-generic-expression)
+         mediawiki-imenu-generic-expression)
+    (imenu-add-to-menubar "Contents"))
   
-    
+  ;; Functions
   (defun create-mediawiki-table () "Creates a mediawiki table."
     (interactive)
     (insert "{| class=\"wikitable\"") (newline)
@@ -292,6 +302,7 @@
     (goto-char begin)
     (insert "<" tagname ">"))
 
+
   (define-key mediawiki-mode-map (kbd "C-c C-w T") 'create-html-tags)
   (define-key mediawiki-mode-map (kbd "C-c C-w s t") 'surround-region-in-text)
   (define-key mediawiki-mode-map (kbd "C-c C-w s T") 'surround-region-in-tags)
@@ -299,4 +310,5 @@
   (define-key mediawiki-mode-map (kbd "C-c C-w c") 'create-mediawiki-collapse)) ;;define-derived-mode ends here
 
 
+(message "Mediawiki mode was loaded." nil)
 (provide 'mediawiki-mode)

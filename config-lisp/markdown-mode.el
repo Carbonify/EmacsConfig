@@ -26,6 +26,7 @@
   
   (define-key markdown-mode-map (kbd "C-c s t") 'surround-region-in-text)
   (define-key markdown-mode-map (kbd "C-c b") 'embolden-region-text)
-  (define-key markdown-mode-map (kbd "C-c i") 'italisize-region-text))
+  (define-key markdown-mode-map (kbd "C-c i") 'italisize-region-text)) ;; Define-derived-mode ends here.
 
+(message "Markdown mode was loaded." nil)
 (provide 'markdown-mode)

@@ -8,23 +8,6 @@
 
 ;; General settings ------------------
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(confirm-kill-emacs (quote yes-or-no-p))
- '(hippie-expand-try-functions-list (quote (try-complete-file-name-partially try-complete-file-name try-expand-dabbrev try-expand-dabbrev-all-buffers try-expand-dabbrev-from-kill try-expand-all-abbrevs try-complete-lisp-symbol-partially try-complete-lisp-symbol)))
- '(ispell-personal-dictionary "~/.emacs.d/dictionary")
- '(save-place t nil (saveplace))
- '(show-paren-mode t))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((t (:family "Terminus (TTF)" :foundry "unknown" :slant normal :weight normal :height 113 :width normal)))))
-
 ;; Change backup directory to system temp directory
 (setq backup-directory-alist `((".*" . ,temporary-file-directory)))
 (setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
@@ -39,6 +22,12 @@
 (electric-pair-mode 1) ;; Pair parens and other brackets
 (setq-default word-wrap t) ;; Wrap at word ends instead of in the middle of a word.
 (setq save-interprogram-paste-before-kill t) ;; Save the clipboard to kill ring
+(setq lazy-highlight-initial-delay 1.5)
+(setq lazy-highlight-max-at-a-time 35)
+(setq custom-file "~/.emacs.d/custom.el") ;; Change customization save file.
+(load custom-file)
+
+
 ;; IDO mode
 (ido-mode t)
 (setq ido-enable-flex-matching t)
@@ -63,10 +52,10 @@
 (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
 
 ;; Org mode hooks
-
 (add-hook 'org-mode-hook '(lambda ()
 (define-key org-mode-map [tab] 'hippie-expand) ;; Set these two, because I use tab complete much more than cycle
 (define-key org-mode-map [home] 'org-cycle)))
+
 
 ;; Keybindings ---------------------------------
 
@@ -84,7 +73,6 @@
 (global-set-key (kbd "C-r") 'isearch-backward-regexp)
 (global-set-key (kbd "C-M-s") 'isearch-forward)
 (global-set-key (kbd "C-M-r") 'isearch-backward)
-
 
 ;; Misc binds
 (global-set-key (kbd "C-x C-b") 'ibuffer) ;; Interactive buffer switch
