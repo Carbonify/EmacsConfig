@@ -23,8 +23,16 @@
     (exchange-point-and-mark)
     (insert "*")
     (exchange-point-and-mark))
+  (defun create-markdown-link-from-region (start end) "Creates a link off of the selected text."
+    (interactive "r")
+    (goto-char end)
+    (insert "]()")
+    (goto-char start)
+    (insert "[")
+    (search-forward "("))
   
   (define-key markdown-mode-map (kbd "C-c s t") 'surround-region-in-text)
+  (define-key markdown-mode-map (kbd "C-c s l") 'create-markdown-link-from-region)
   (define-key markdown-mode-map (kbd "C-c b") 'embolden-region-text)
   (define-key markdown-mode-map (kbd "C-c i") 'italisize-region-text)) ;; Define-derived-mode ends here.
 

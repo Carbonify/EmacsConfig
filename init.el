@@ -31,6 +31,9 @@
 (setq lazy-highlight-max-at-a-time 35)
 (setq custom-file "~/.emacs.d/custom.el") ;; Change customization save file.
 (load custom-file)
+(put 'narrow-to-region 'disabled nil) ;; Enable narrow commands.
+(put 'narrow-to-defun  'disabled nil)
+(put 'narrow-to-page   'disabled nil)
 
 
 ;; IDO mode
@@ -79,12 +82,15 @@
 (global-set-key (kbd "C-M-s") 'isearch-forward)
 (global-set-key (kbd "C-M-r") 'isearch-backward)
 
+;; Search all loaded buffers for a regex
+(defun user--search-all-buffers (regexp) "Search all open buffers for a regex. Open an occur-like window."
+  (interactive "sRegexp: ")
+  (multi-occur-in-matching-buffers "." regexp t))
+(global-set-key [f7] 'user--search-all-buffers)
+
 ;; Misc binds
 (global-set-key (kbd "C-x C-b") 'ibuffer) ;; Interactive buffer switch
-
-
 
 ;; Finalization ----------------------
 
 (server-start) ;; Start the server in this instance, so emacs doesn't have to open again
-
