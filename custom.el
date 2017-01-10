@@ -4,7 +4,6 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(confirm-kill-emacs (quote yes-or-no-p))
- '(hippie-expand-try-functions-list (quote (try-complete-file-name-partially try-complete-file-name try-expand-dabbrev try-expand-dabbrev-all-buffers try-expand-dabbrev-from-kill try-expand-all-abbrevs try-complete-lisp-symbol-partially try-complete-lisp-symbol)))
  '(ispell-personal-dictionary "~/.emacs.d/dictionary")
  '(minimap-hide-fringes t)
  '(minimap-highlight-line nil)

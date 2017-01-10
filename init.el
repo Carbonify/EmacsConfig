@@ -3,8 +3,9 @@
 (add-to-list 'load-path "~/.emacs.d/manual-install/") ;; Add dir for manually installed plugins
 (add-to-list 'load-path "~/.emacs.d/config-lisp/") ;; Add more config by me.
 (load-file "~/.emacs.d/config-lisp/ftdetect.el") ;; Load the file that detects filetypes
-(require 'autoloads) ;; Then, load all autoloads
-
+;; Then, load all autoloads
+(load-file "~/.emacs.d/config-lisp/autoloads.el")
+;;(load-file "~/.emacs.d/manual-install/autoloads.el")
 
 ;; Packages -------------------------
 (require 'package)
@@ -34,6 +35,7 @@
 (put 'narrow-to-region 'disabled nil) ;; Enable narrow commands.
 (put 'narrow-to-defun  'disabled nil)
 (put 'narrow-to-page   'disabled nil)
+(make-variable-buffer-local 'hippie-expand-try-functions-list)
 
 
 ;; IDO mode
@@ -53,8 +55,12 @@
 ;; Hooks ------------------------
 
 ;; Text mode hooks
+
 (add-hook 'text-mode-hook 'flyspell-mode) ;; Turn on incorrect spell highlight
 (add-hook 'text-mode-hook '(lambda () (interactive) (setq sentence-end-double-space nil)))
+(defun user--text-hippie-expand-setting () (interactive)
+  (setq hippie-expand-try-functions-list '(try-expand-dabbrev try-expand-dabbrev-all-buffers try-expand-dabbrev-from-kill try-expand-all-abbrevs)))
+(add-hook 'text-mode-hook 'user--text-hippie-expand-setting)
 
 ;; Elisp mode hooks
 (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
@@ -63,6 +69,12 @@
 (add-hook 'org-mode-hook '(lambda ()
 (define-key org-mode-map [tab] 'hippie-expand) ;; Set these two, because I use tab complete much more than cycle
 (define-key org-mode-map [home] 'org-cycle)))
+(add-hook 'org-mode-hook 'visual-line-mode) ;; Make org just wrap long lines
+
+;; Programming mode hooks
+(defun user--prog-hippie-expand-setting () (interactive)
+  (setq hippie-expand-try-functions-list '(try-complete-file-name-partially try-complete-file-name try-complete-lisp-symbol-partially try-complete-lisp-symbol)))
+(add-hook 'prog-mode-hook 'user--prog-hippie-expand-setting)
 
 
 ;; Keybindings ---------------------------------
