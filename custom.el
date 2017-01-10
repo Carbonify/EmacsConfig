@@ -3,6 +3,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(avy-timeout-seconds 1.0)
  '(confirm-kill-emacs (quote yes-or-no-p))
  '(ispell-personal-dictionary "~/.emacs.d/dictionary")
  '(minimap-hide-fringes t)

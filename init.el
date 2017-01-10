@@ -9,7 +9,7 @@
 
 ;; Packages -------------------------
 (require 'package)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/"))
 (package-initialize)
 
 ;; General settings ------------------
@@ -50,6 +50,13 @@
 
 
 ;; Plugin config -----------------
+
+;;Avy
+(require 'avy) ;; Always load avy
+(global-set-key (kbd "C-;") 'avy-goto-char-timer)
+
+;; Flyspell
+(eval-after-load 'flyspell '(define-key flyspell-mode-map (kbd "C-;") nil))
 
 
 ;; Hooks ------------------------
