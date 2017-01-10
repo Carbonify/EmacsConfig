@@ -245,6 +245,49 @@
 	 '(1 font-lock-keyword-face t t))))
 
 
+;; Functions
+(defun mediawiki-create-table () "Creates a mediawiki table."
+  (interactive)
+  (insert "{| class=\"wikitable\"") (newline)
+  (insert "|-") (newline)
+  (insert "!Option1!!Option2!!Option3") (newline)
+  (insert "|-") (newline)
+  (insert "|Value1 || Value2 || Value3") (newline)
+  (insert "|-") (newline) 
+  (insert "|}"))
+
+(defun mediawiki-create-collapse () "Creates the HTML source code for a collapsible text field."
+  (interactive)
+  (insert "<div class=\"toccolours mw-collapsible mw-collapsed\" style=\"width:800px\">") (newline)
+  (insert "Shown content") (newline)
+  (insert "<div class=\"mw-collapsible-content\">") (newline)
+  (insert "Hidden Content") (newline)
+  (insert "</div></div>") (newline))
+(defun mediawiki-create-html-tags (string) "Creates HTML tags, given the tag text."
+  (interactive "sCreate what tag: ")
+  (insert "<" string "></" string ">")
+  (search-backward "</"))
+(defun mediawiki-surround-region-in-text (textbegin textend begin end) "Surrounds the active region in user-provided text, provide both ends"
+  (interactive "sText in front: \nsText on end: \nr")
+  (goto-char end)
+  (insert textend)
+  (goto-char begin)
+  (insert textbegin))
+(defun mediawiki-surround-region-in-tags (tagname begin end) "Surrounds the active region in user-provided tags"
+  (interactive "sWhat tag: \nr")
+  (goto-char end)
+  (insert "</" tagname ">")
+  (goto-char begin)
+  (insert "<" tagname ">"))
+(defun mediawiki-move-up-heading () "Moves up to the nearest heading."
+  (interactive)
+  (search-backward-regexp "^==+ *\\(.*[^\n=]\\)==+"))
+(defun mediawiki-move-down-heading () "Moves down to the nearest heading."
+  (interactive)
+  (search-forward-regexp "^==+ *\\(.*[^\n=]\\)==+"))
+
+
+
 ;; Mode definition ------------------------
 
 ;;;###autoload
@@ -266,48 +309,15 @@
     (set (make-local-variable 'imenu-generic-expression)
          mediawiki-imenu-generic-expression)
     (imenu-add-to-menubar "Contents"))
-  
-  ;; Functions
-  (defun create-mediawiki-table () "Creates a mediawiki table."
-    (interactive)
-    (insert "{| class=\"wikitable\"") (newline)
-    (insert "|-") (newline)
-    (insert "!Option1!!Option2!!Option3") (newline)
-    (insert "|-") (newline)
-    (insert "|Value1 || Value2 || Value3") (newline)
-    (insert "|-") (newline) 
-    (insert "|}"))
 
-  (defun create-mediawiki-collapse () "Creates the HTML source code for a collapsible text field."
-    (interactive)
-    (insert "<div class=\"toccolours mw-collapsible mw-collapsed\" style=\"width:800px\">") (newline)
-    (insert "Shown content") (newline)
-    (insert "<div class=\"mw-collapsible-content\">") (newline)
-    (insert "Hidden Content") (newline)
-    (insert "</div></div>") (newline))
-  (defun create-html-tags (string) "Creates HTML tags, given the tag text."
-    (interactive "sCreate what tag: ")
-    (insert "<" string "></" string ">")
-    (search-backward "</"))
-  (defun surround-region-in-text (textbegin textend begin end) "Surrounds the active region in user-provided text, provide both ends"
-    (interactive "sText in front: \nsText on end: \nr")
-    (goto-char end)
-    (insert textend)
-    (goto-char begin)
-    (insert textbegin))
-  (defun surround-region-in-tags (tagname begin end) "Surrounds the active region in user-provided tags"
-    (interactive "sWhat tag: \nr")
-    (goto-char end)
-    (insert "</" tagname ">")
-    (goto-char begin)
-    (insert "<" tagname ">"))
-
-
-  (define-key mediawiki-mode-map (kbd "C-c C-w T") 'create-html-tags)
-  (define-key mediawiki-mode-map (kbd "C-c C-w s t") 'surround-region-in-text)
-  (define-key mediawiki-mode-map (kbd "C-c C-w s T") 'surround-region-in-tags)
-  (define-key mediawiki-mode-map (kbd "C-c C-w t") 'create-mediawiki-table)
-  (define-key mediawiki-mode-map (kbd "C-c C-w c") 'create-mediawiki-collapse)) ;;define-derived-mode ends here
+  ;; Key map
+  (define-key mediawiki-mode-map (kbd "M-n") 'mediawiki-move-down-heading)
+  (define-key mediawiki-mode-map (kbd "M-p") 'mediawiki-move-up-heading)
+  (define-key mediawiki-mode-map (kbd "C-c C-w T") 'mediawiki-create-html-tags)
+  (define-key mediawiki-mode-map (kbd "C-c C-w s t") 'mediawiki-surround-region-in-text)
+  (define-key mediawiki-mode-map (kbd "C-c C-w s T") 'mediawiki-surround-region-in-tags)
+  (define-key mediawiki-mode-map (kbd "C-c C-w t") 'mediawiki-create-table)
+  (define-key mediawiki-mode-map (kbd "C-c C-w c") 'mediawiki-create-collapse)) ;;define-derived-mode ends here
 
 
 (message "Mediawiki mode was loaded." nil)
