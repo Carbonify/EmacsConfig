@@ -15,9 +15,18 @@
 
 (define-abbrev-table 'emacs-lisp-byte-code-mode-abbrev-table '())
 
-(define-abbrev-table 'emacs-lisp-mode-abbrev-table '())
+(define-abbrev-table 'emacs-lisp-mode-abbrev-table
+  '(
+    ("addh" "add-hook" nil 0)
+    ("atl" "add-to-list" nil 0)
+    ("ddm" "define-derived-mode" nil 0)
+    ("df" "define-key" nil 0)
+    ("gsk" "global-set-key" nil 0)
+   ))
 
 (define-abbrev-table 'fundamental-mode-abbrev-table '())
+
+(define-abbrev-table 'gfm-mode-abbrev-table '())
 
 (define-abbrev-table 'global-abbrev-table '())
 
@@ -27,6 +36,8 @@
 
 (define-abbrev-table 'log-edit-mode-abbrev-table '())
 
+(define-abbrev-table 'markdown-mode-abbrev-table '())
+
 (define-abbrev-table 'mediawiki-mode-abbrev-table '())
 
 (define-abbrev-table 'message-mode-abbrev-table '())
@@ -34,6 +45,10 @@
 (define-abbrev-table 'occur-edit-mode-abbrev-table '())
 
 (define-abbrev-table 'occur-mode-abbrev-table '())
+
+(define-abbrev-table 'outline-mode-abbrev-table '())
+
+(define-abbrev-table 'package-menu-mode-abbrev-table '())
 
 (define-abbrev-table 'process-menu-mode-abbrev-table '())
 
@@ -45,6 +60,8 @@
 
 (define-abbrev-table 'special-mode-abbrev-table '())
 
+(define-abbrev-table 'speedbar-mode-abbrev-table '())
+
 (define-abbrev-table 'tabulated-list-mode-abbrev-table '())
 
 (define-abbrev-table 'text-mode-abbrev-table
@@ -55,11 +72,11 @@
     ("didnt" "didn't" nil 0)
     ("dont" "don't" nil 0)
     ("english" "english" nil 0)
-    ("factorio" "Factorio" nil 1)
+    ("factorio" "Factorio" nil 4)
     ("friday" "Friday" nil 0)
     ("goverment" "government" nil 0)
     ("havent" "haven't" nil 0)
-    ("hes" "he's" nil 1)
+    ("hes" "he's" nil 2)
     ("i" "I" nil 0)
     ("im" "I'm" nil 1)
     ("isnt" "isn't" nil 0)
@@ -83,7 +100,7 @@
     ("thier" "their" nil 0)
     ("thursday" "Thursday" nil 0)
     ("tm" "&trade;" nil 0)
-    ("tset" "test" nil 0)
+    ("tset" "test" nil 1)
     ("tuesday" "Tuesday" nil 0)
     ("wednesday" "Wednesday" nil 0)
     ("wiki" "Wiki" nil 0)

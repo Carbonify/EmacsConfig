@@ -83,6 +83,14 @@
   (setq hippie-expand-try-functions-list '(try-complete-file-name-partially try-complete-file-name try-complete-lisp-symbol-partially try-complete-lisp-symbol)))
 (add-hook 'prog-mode-hook 'user--prog-hippie-expand-setting)
 
+;; On buffer save hooks
+(defun user--clean-buffer () "Cleans the buffer by re-indenting, changing tabs to spaces, and removing trailing whitespace."
+  (interactive)
+  (delete-trailing-whitespace)
+  (indent-region (point-min) (point-max) nil)
+  (untabify (point-min) (point-max)))
+(add-hook 'before-save-hook 'user--clean-buffer)
+
 
 ;; Keybindings ---------------------------------
 
