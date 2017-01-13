@@ -58,6 +58,8 @@
 ;; Flyspell
 (eval-after-load 'flyspell '(define-key flyspell-mode-map (kbd "C-;") nil))
 
+;; Rainbow delimiters
+(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
 ;; Hooks ------------------------
 
@@ -74,8 +76,8 @@
 
 ;; Org mode hooks
 (add-hook 'org-mode-hook '(lambda ()
-(define-key org-mode-map [tab] 'hippie-expand) ;; Set these two, because I use tab complete much more than cycle
-(define-key org-mode-map [home] 'org-cycle)))
+                            (define-key org-mode-map [tab] 'hippie-expand) ;; Set these two, because I use tab complete much more than cycle
+                            (define-key org-mode-map [home] 'org-cycle)))
 (add-hook 'org-mode-hook 'visual-line-mode) ;; Make org just wrap long lines
 
 ;; Programming mode hooks
