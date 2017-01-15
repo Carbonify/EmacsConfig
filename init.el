@@ -18,7 +18,6 @@
 (setq backup-directory-alist `((".*" . ,temporary-file-directory)))
 (setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
 
-
 (setq abbrev-file-name "~/.emacs.d/abbrev_defs") ;; Change default abbreviations file
 (setq-default abbrev-mode t) ;; Enable abbrev-mode by default
 (global-hl-line-mode) ;; Highlight current cursor line
@@ -37,7 +36,6 @@
 (put 'narrow-to-page   'disabled nil)
 (make-variable-buffer-local 'hippie-expand-try-functions-list)
 
-
 ;; IDO mode
 (ido-mode t)
 (setq ido-enable-flex-matching t)
@@ -45,9 +43,7 @@
 (setq ido-file-extensions-order '(".txt" ".cfg" ".el" ".sh" ".json" ".md")) ;; Emphasis
 (setq ido-ignore-extensions t)
 
-
 ;; Mode creation ------------------------------
-
 
 ;; Plugin config -----------------
 
@@ -88,11 +84,11 @@
 ;; On buffer save hooks
 (defun user--clean-buffer () "Cleans the buffer by re-indenting, changing tabs to spaces, and removing trailing whitespace."
   (interactive)
-  (delete-trailing-whitespace)
-  (indent-region (point-min) (point-max) nil)
-  (untabify (point-min) (point-max)))
+  (delete-trailing-whitespace) ;; Remove whitespace from the ends of lines
+  (indent-region (point-min) (point-max) nil) ;; Reindent
+  (save-excursion (replace-regexp "^\n\\{2,\\}" "\n" nil (point-min) (point-max))) ;; Replace more than or 2 newlines with 1 newline
+  (untabify (point-min) (point-max))) ;; Turn tabs into spaces
 (add-hook 'before-save-hook 'user--clean-buffer)
-
 
 ;; Keybindings ---------------------------------
 
