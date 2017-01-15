@@ -85,7 +85,8 @@
 (defun user--clean-buffer () "Cleans the buffer by re-indenting, changing tabs to spaces, and removing trailing whitespace."
   (interactive)
   (delete-trailing-whitespace) ;; Remove whitespace from the ends of lines
-  (indent-region (point-min) (point-max) nil) ;; Reindent
+  (when (derived-mode-p 'prog-mode)
+    (indent-region (point-min) (point-max) nil)) ;; Reindent if editing code, not if text
   (save-excursion (replace-regexp "^\n\\{2,\\}" "\n" nil (point-min) (point-max))) ;; Replace more than or 2 newlines with 1 newline
   (untabify (point-min) (point-max))) ;; Turn tabs into spaces
 (add-hook 'before-save-hook 'user--clean-buffer)
