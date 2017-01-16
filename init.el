@@ -35,6 +35,7 @@
 (put 'narrow-to-defun  'disabled nil)
 (put 'narrow-to-page   'disabled nil)
 (make-variable-buffer-local 'hippie-expand-try-functions-list)
+(set-face-attribute 'mode-line nil :font "DejaVu Sans Mono-8") ;; Change font and size of mode line
 
 ;; IDO mode
 (ido-mode t)
@@ -43,19 +44,23 @@
 (setq ido-file-extensions-order '(".txt" ".cfg" ".el" ".sh" ".json" ".md")) ;; Emphasis
 (setq ido-ignore-extensions t)
 
-;; Mode creation ------------------------------
-
 ;; Plugin config -----------------
 
 ;;Avy
 (require 'avy) ;; Always load avy
 (global-set-key (kbd "C-;") 'avy-goto-char-timer)
 
+;; Avy zap up to char
+(global-set-key (kbd "M-z") #'avy-zap-up-to-char)
+
 ;; Flyspell
 (eval-after-load 'flyspell '(define-key flyspell-mode-map (kbd "C-;") nil))
 
 ;; Rainbow delimiters
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
+
+;; Solarized theme
+
 
 ;; Hooks ------------------------
 
@@ -87,7 +92,7 @@
   (delete-trailing-whitespace) ;; Remove whitespace from the ends of lines
   (when (derived-mode-p 'prog-mode)
     (indent-region (point-min) (point-max) nil)) ;; Reindent if editing code, not if text
-  (save-excursion (replace-regexp "^\n\\{2,\\}" "\n" nil (point-min) (point-max))) ;; Replace more than or 2 newlines with 1 newline
+  (save-excursion (replace-regexp "^\n\\{2,\\}" "\n\n" nil (point-min) (point-max))) ;; Replace more than 2 newlines with 2 newlines
   (untabify (point-min) (point-max))) ;; Turn tabs into spaces
 (add-hook 'before-save-hook 'user--clean-buffer)
 
@@ -97,7 +102,7 @@
 (global-set-key (kbd "C-c e") (lambda () (interactive) (find-file "~/.emacs.d/init.el")))
 
 ;; Tab completion
-(global-set-key (kbd "<tab>") 'hippie-expand)
+;;(global-set-key (kbd "<tab>") 'hippie-expand)
 (global-set-key (kbd "C-<tab>") 'indent-for-tab-command) ;; Old function of tab
 
 ;; Make using ISearch much easier

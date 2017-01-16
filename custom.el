@@ -5,6 +5,9 @@
  ;; If there is more than one, they won't work right.
  '(avy-timeout-seconds 1.0)
  '(confirm-kill-emacs (quote yes-or-no-p))
+ '(custom-enabled-themes (quote (solarized-light)))
+ '(custom-safe-themes (quote ("d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" default)))
+ '(frame-background-mode (quote light))
  '(ispell-personal-dictionary "~/.emacs.d/dictionary")
  '(save-place t nil (saveplace))
  '(show-paren-mode t))
