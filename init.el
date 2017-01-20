@@ -3,7 +3,8 @@
 (add-to-list 'load-path "~/.emacs.d/manual-install/") ;; Add dir for manually installed plugins
 (add-to-list 'load-path "~/.emacs.d/config-lisp/") ;; Add more config by me.
 (load-file "~/.emacs.d/config-lisp/ftdetect.el") ;; Load the file that detects filetypes
-;; Then, load all autoloads
+(load-file "~/.emacs.d/macros.el") ;; Load keyboard macros
+;; Then, load all autoloads for my config
 (load-file "~/.emacs.d/config-lisp/autoloads.el")
 ;;(load-file "~/.emacs.d/manual-install/autoloads.el")
 
@@ -25,6 +26,7 @@
 (prefer-coding-system 'utf-8) ;; Prefer UTF-8 encoding
 (electric-indent-mode 1) ;; Always make newline keep indent
 (electric-pair-mode 1) ;; Pair parens and other brackets
+(icomplete-mode 1) ;; Incremental completion in minibuffers
 (setq-default word-wrap t) ;; Wrap at word ends instead of in the middle of a word.
 (setq save-interprogram-paste-before-kill t) ;; Save the clipboard to kill ring
 (setq lazy-highlight-initial-delay 1.5)
@@ -36,6 +38,8 @@
 (put 'narrow-to-page   'disabled nil)
 (make-variable-buffer-local 'hippie-expand-try-functions-list)
 (set-face-attribute 'mode-line nil :font "DejaVu Sans Mono-8") ;; Change font and size of mode line
+(setq mark-even-if-inactive nil) ;; Don't use region commands unless actually highlighting
+(setq kmacro-execute-before-append nil) ;; Make macros not execute before appending with C-u F3
 
 ;; IDO mode
 (ido-mode t)
@@ -59,8 +63,6 @@
 ;; Rainbow delimiters
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
-;; Solarized theme
-
 
 ;; Hooks ------------------------
 
@@ -78,7 +80,7 @@
 ;; Org mode hooks
 (add-hook 'org-mode-hook '(lambda ()
                             (define-key org-mode-map [tab] 'hippie-expand) ;; Set these two, because I use tab complete much more than cycle
-                            (define-key org-mode-map [home] 'org-cycle)))
+                            (define-key org-mode-map [home] 'org-global-cycle)))
 (add-hook 'org-mode-hook 'visual-line-mode) ;; Make org just wrap long lines
 
 ;; Programming mode hooks
@@ -92,7 +94,7 @@
   (delete-trailing-whitespace) ;; Remove whitespace from the ends of lines
   (when (derived-mode-p 'prog-mode)
     (indent-region (point-min) (point-max) nil)) ;; Reindent if editing code, not if text
-  (save-excursion (replace-regexp "^\n\\{2,\\}" "\n\n" nil (point-min) (point-max))) ;; Replace more than 2 newlines with 2 newlines
+  (save-excursion (replace-regexp "^\n\\{3,\\}" "\n\n" nil (point-min) (point-max))) ;; Replace more than 2 newlines with 2 newlines
   (untabify (point-min) (point-max))) ;; Turn tabs into spaces
 (add-hook 'before-save-hook 'user--clean-buffer)
 
@@ -102,7 +104,7 @@
 (global-set-key (kbd "C-c e") (lambda () (interactive) (find-file "~/.emacs.d/init.el")))
 
 ;; Tab completion
-;;(global-set-key (kbd "<tab>") 'hippie-expand)
+(global-set-key (kbd "<tab>") 'hippie-expand)
 (global-set-key (kbd "C-<tab>") 'indent-for-tab-command) ;; Old function of tab
 
 ;; Make using ISearch much easier
@@ -121,6 +123,21 @@
 
 ;; Misc binds
 (global-set-key (kbd "C-x C-b") 'ibuffer) ;; Interactive buffer switch
+
+;; Misc Functions ------------------------
+
+(defun user--save-macro (name)
+  "Save a macro. Take a name as an argument and save the last defined macro under this name."
+  (interactive "SName of the macro :")
+  (kmacro-name-last-macro name)
+  (find-file "~/.emacs.d/macros.el")
+  (goto-char (point-max))
+  (newline)
+  (insert-kbd-macro name)
+  (newline)
+  (save-buffer)
+  (switch-to-buffer nil))
+
 
 ;; Finalization ----------------------
 

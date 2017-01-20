@@ -5,6 +5,10 @@
 
 (define-abbrev-table 'apropos-mode-abbrev-table '())
 
+(define-abbrev-table 'bibtex-mode-abbrev-table '())
+
+(define-abbrev-table 'calendar-mode-abbrev-table '())
+
 (define-abbrev-table 'change-log-mode-abbrev-table '())
 
 (define-abbrev-table 'comint-mode-abbrev-table '())
@@ -32,6 +36,8 @@
 
 (define-abbrev-table 'help-mode-abbrev-table '())
 
+(define-abbrev-table 'html-mode-abbrev-table '())
+
 (define-abbrev-table 'lisp-mode-abbrev-table '())
 
 (define-abbrev-table 'log-edit-mode-abbrev-table '())
@@ -46,6 +52,8 @@
 
 (define-abbrev-table 'occur-mode-abbrev-table '())
 
+(define-abbrev-table 'org-mode-abbrev-table '())
+
 (define-abbrev-table 'outline-mode-abbrev-table '())
 
 (define-abbrev-table 'package-menu-mode-abbrev-table '())
@@ -57,6 +65,10 @@
 (define-abbrev-table 'reb-lisp-mode-abbrev-table '())
 
 (define-abbrev-table 'reb-mode-abbrev-table '())
+
+(define-abbrev-table 'sgml-mode-abbrev-table '())
+
+(define-abbrev-table 'shell-mode-abbrev-table '())
 
 (define-abbrev-table 'special-mode-abbrev-table '())
 
@@ -71,7 +83,7 @@
     ("connectable" "connectible" nil 0)
     ("didnt" "didn't" nil 0)
     ("dont" "don't" nil 0)
-    ("english" "english" nil 0)
+    ("english" "English" nil 1)
     ("factorio" "Factorio" nil 4)
     ("friday" "Friday" nil 0)
     ("goverment" "government" nil 0)
@@ -85,10 +97,12 @@
     ("neccesary" "necessary" nil 0)
     ("neccessary" "necessary" nil 0)
     ("noah" "Noah" nil 0)
+    ("noticeible" "noticeable" nil 0)
     ("occor" "occur" nil 0)
     ("occorring" "occurring" nil 0)
     ("paralell" "parallel" nil 0)
     ("recieve" "receive" nil 0)
+    ("recieved" "received" nil 0)
     ("rememver" "remember" nil 0)
     ("saturday" "Saturday" nil 0)
     ("seperate" "separate" nil 2)
@@ -97,7 +111,7 @@
     ("tge" "the" nil 0)
     ("thats" "that's" nil 0)
     ("theyre" "they're" nil 0)
-    ("thier" "their" nil 0)
+    ("thier" "their" nil 2)
     ("thursday" "Thursday" nil 0)
     ("tm" "&trade;" nil 0)
     ("tset" "test" nil 1)

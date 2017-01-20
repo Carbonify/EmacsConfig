@@ -21,8 +21,8 @@
 
 (defface font-mediawiki-bold-face
   (let ((font (cond ((assq :inherit custom-face-attributes) '(:inherit bold))
-		    ((assq :weight custom-face-attributes) '(:weight bold))
-		    (t '(:bold t)))))
+                    ((assq :weight custom-face-attributes) '(:weight bold))
+                    (t '(:bold t)))))
     `((((class grayscale) (background light))
        (:foreground "DimGray" ,@font))
       (((class grayscale) (background dark))
@@ -37,8 +37,8 @@
 
 (defface font-mediawiki-italic-face
   (let ((font (cond ((assq :inherit custom-face-attributes) '(:inherit italic))
-		    ((assq :slant custom-face-attributes) '(:slant italic))
-		    (t '(:italic t)))))
+                    ((assq :slant custom-face-attributes) '(:slant italic))
+                    (t '(:italic t)))))
     `((((class grayscale) (background light))
        (:foreground "DimGray" ,@font))
       (((class grayscale) (background dark))
@@ -53,8 +53,8 @@
 
 (defface font-mediawiki-math-face
   (let ((font (cond ((assq :inherit custom-face-attributes)
-		     '(:inherit underline))
-		    (t '(:underline t)))))
+                     '(:inherit underline))
+                    (t '(:underline t)))))
     `((((class grayscale) (background light))
        (:foreground "DimGray" ,@font))
       (((class grayscale) (background dark))
@@ -79,8 +79,8 @@
 
 (defface font-mediawiki-string-face
   (let ((font (cond ((assq :inherit custom-face-attributes) '(:inherit italic))
-		    ((assq :slant custom-face-attributes) '(:slant italic))
-		    (t '(:italic t)))))
+                    ((assq :slant custom-face-attributes) '(:slant italic))
+                    (t '(:italic t)))))
     `((((type tty) (class color))
        (:foreground "green"))
       (((class grayscale) (background light))
@@ -97,8 +97,8 @@
 
 (defface font-mediawiki-warning-face
   (let ((font (cond ((assq :inherit custom-face-attributes) '(:inherit bold))
-		    ((assq :weight custom-face-attributes) '(:weight bold))
-		    (t '(:bold t)))))
+                    ((assq :weight custom-face-attributes) '(:weight bold))
+                    (t '(:bold t)))))
     `((((class grayscale)(background light))
        (:foreground "DimGray" ,@font))
       (((class grayscale)(background dark))
@@ -113,11 +113,11 @@
 
 (defface font-mediawiki-verbatim-face
   (let ((font (if (and (assq :inherit custom-face-attributes)
-		       (if (fboundp 'find-face)
-			   (find-face 'fixed-pitch)
-			 (facep 'fixed-pitch)))
-		  '(:inherit fixed-pitch)
-		'(:family "courier"))))
+                       (if (fboundp 'find-face)
+                           (find-face 'fixed-pitch)
+                         (facep 'fixed-pitch)))
+                  '(:inherit fixed-pitch)
+                '(:family "courier"))))
     `((((class grayscale) (background light))
        (:foreground "DimGray" ,@font))
       (((class grayscale) (background dark))
@@ -242,7 +242,7 @@
 
    ;; Math environment (uniform highlight only, no TeX markup)
    (list "<math>\\(\\(\n?.\\)*\\)</math>"
-	 '(1 font-lock-keyword-face t t))))
+         '(1 font-lock-keyword-face t t))))
 
 
 ;; Functions
@@ -253,7 +253,7 @@
   (insert "!Option1!!Option2!!Option3") (newline)
   (insert "|-") (newline)
   (insert "|Value1 || Value2 || Value3") (newline)
-  (insert "|-") (newline) 
+  (insert "|-") (newline)
   (insert "|}"))
 
 (defun mediawiki-create-collapse () "Creates the HTML source code for a collapsible text field."
@@ -279,13 +279,6 @@
   (insert "</" tagname ">")
   (goto-char begin)
   (insert "<" tagname ">"))
-(defun mediawiki-move-up-heading () "Moves up to the nearest heading."
-  (interactive)
-  (search-backward-regexp "^==+ *\\(.*[^\n=]\\)==+"))
-(defun mediawiki-move-down-heading () "Moves down to the nearest heading."
-  (interactive)
-  (search-forward-regexp "^==+ *\\(.*[^\n=]\\)==+"))
-
 
 
 ;; Mode definition ------------------------
@@ -293,10 +286,10 @@
 ;;;###autoload
 (define-derived-mode mediawiki-mode text-mode "Mediawiki"
   "Major mode for Mediawiki articles. This mode adds several keybinds to make editing mediawiki articles much easier.
+  The standard page commands will work instead on each == header == delimiting pages.
    \\{mediawiki-mode-map}"
   :abbrev-table nil
 
-  
   ;; Option configs
   (set (make-local-variable 'font-lock-multiline) t)
   (set (make-local-variable 'font-lock-defaults) '(mediawiki-font-lock-keywords t nil nil nil))
@@ -310,9 +303,10 @@
          mediawiki-imenu-generic-expression)
     (imenu-add-to-menubar "Contents"))
 
+  (make-variable-buffer-local 'page-delimiter) ;; Change definition of a page.to be only level 1 headings.
+  (setq page-delimiter "^== .* ?==$")
+
   ;; Key map
-  (define-key mediawiki-mode-map (kbd "M-n") 'mediawiki-move-down-heading)
-  (define-key mediawiki-mode-map (kbd "M-p") 'mediawiki-move-up-heading)
   (define-key mediawiki-mode-map (kbd "C-c C-w T") 'mediawiki-create-html-tags)
   (define-key mediawiki-mode-map (kbd "C-c C-w s t") 'mediawiki-surround-region-in-text)
   (define-key mediawiki-mode-map (kbd "C-c C-w s T") 'mediawiki-surround-region-in-tags)
