@@ -279,7 +279,18 @@
   (insert "</" tagname ">")
   (goto-char begin)
   (insert "<" tagname ">"))
-
+(defun mediawiki-comment-text (begin end) "Surrounds the active region in html comment tags, eg <!-- -->"
+  (interactive "r")
+  (goto-char end)
+  (insert " -->")
+  (goto-char begin)
+  (insert "<!-- "))
+(defun mediawiki-surround-region-in-text-color (color begin end) "Surrounds the active region in html spans to color text. Asks for the color."
+  (interactive "sWhat color: \nr")
+  (goto-char end)
+  (insert "</span>")
+  (goto-char begin)
+  (insert "<span style=\"color:" color "\">"))
 
 ;; Mode definition ------------------------
 
@@ -310,9 +321,11 @@
   (define-key mediawiki-mode-map (kbd "C-c C-w T") 'mediawiki-create-html-tags)
   (define-key mediawiki-mode-map (kbd "C-c C-w s t") 'mediawiki-surround-region-in-text)
   (define-key mediawiki-mode-map (kbd "C-c C-w s T") 'mediawiki-surround-region-in-tags)
+  (define-key mediawiki-mode-map (kbd "C-c C-w s c") 'mediawiki-surround-region-in-text-color)
+  (define-key mediawiki-mode-map (kbd "C-c C-w s C") 'mediawiki-comment-text)
   (define-key mediawiki-mode-map (kbd "C-c C-w t") 'mediawiki-create-table)
   (define-key mediawiki-mode-map (kbd "C-c C-w c") 'mediawiki-create-collapse)) ;;define-derived-mode ends here
 
 
-(message "Mediawiki mode was loaded." nil)
+(print "Mediawiki mode was loaded.")
 (provide 'mediawiki-mode)
