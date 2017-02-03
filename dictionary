@@ -1,4 +1,4 @@
-personal_ws-1.1 en 55 
+personal_ws-1.1 en 59 
 gif
 Wiki
 DMCA
@@ -13,10 +13,11 @@ benchmarking
 Wube's
 bugfixes
 Gangsir
-inserter
 axe
+inserter
 symlinks
 Wiki's
+gifs
 changelog
 spawners
 txt
@@ -35,6 +36,7 @@ melee
 train's
 IP
 screenshot
+transcluded
 Wube
 OpenGL
 vimrc
@@ -52,5 +54,7 @@ Lua
 waypoint
 factorio
 URLs
+transclusions
 MacOSX
+transclusion
 configs

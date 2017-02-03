@@ -5,7 +5,19 @@
 
 (define-abbrev-table 'apropos-mode-abbrev-table '())
 
+(define-abbrev-table 'awk-mode-abbrev-table
+  '(
+   ))
+
 (define-abbrev-table 'bibtex-mode-abbrev-table '())
+
+(define-abbrev-table 'c++-mode-abbrev-table
+  '(
+   ))
+
+(define-abbrev-table 'c-mode-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'calendar-mode-abbrev-table '())
 
@@ -38,6 +50,12 @@
 
 (define-abbrev-table 'html-mode-abbrev-table '())
 
+(define-abbrev-table 'idl-mode-abbrev-table '())
+
+(define-abbrev-table 'java-mode-abbrev-table
+  '(
+   ))
+
 (define-abbrev-table 'lisp-mode-abbrev-table '())
 
 (define-abbrev-table 'log-edit-mode-abbrev-table '())
@@ -48,6 +66,10 @@
 
 (define-abbrev-table 'message-mode-abbrev-table '())
 
+(define-abbrev-table 'objc-mode-abbrev-table
+  '(
+   ))
+
 (define-abbrev-table 'occur-edit-mode-abbrev-table '())
 
 (define-abbrev-table 'occur-mode-abbrev-table '())
@@ -57,6 +79,10 @@
 (define-abbrev-table 'outline-mode-abbrev-table '())
 
 (define-abbrev-table 'package-menu-mode-abbrev-table '())
+
+(define-abbrev-table 'pike-mode-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'process-menu-mode-abbrev-table '())
 
@@ -80,9 +106,8 @@
   '(
     ("america" "America" nil 1)
     ("cant" "can't" nil 1)
-    ("connectable" "connectible" nil 0)
     ("didnt" "didn't" nil 0)
-    ("dont" "don't" nil 0)
+    ("dont" "don't" nil 1)
     ("english" "English" nil 1)
     ("factorio" "Factorio" nil 4)
     ("friday" "Friday" nil 0)

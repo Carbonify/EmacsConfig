@@ -40,6 +40,7 @@
 (set-face-attribute 'mode-line nil :font "DejaVu Sans Mono-8") ;; Change font and size of mode line
 (setq mark-even-if-inactive nil) ;; Don't use region commands unless actually highlighting
 (setq kmacro-execute-before-append nil) ;; Make macros not execute before appending with C-u F3
+(setq delete-by-moving-to-trash t) ;; Make dired not delete files permenently
 
 ;; IDO mode
 (ido-mode t)
@@ -47,6 +48,15 @@
 (setq ido-everywhere t)
 (setq ido-file-extensions-order '(".txt" ".cfg" ".el" ".sh" ".json" ".md")) ;; Emphasis
 (setq ido-ignore-extensions t)
+
+;; Recent files mode
+(require 'recentf)
+(recentf-mode 1)
+(setq recentf-max-menu-items 15)
+(run-at-time nil (* 10 60) 'recentf-save-list) ;;Save recent files every 10 mins
+(add-to-list 'recentf-exclude "COMMIT_EDITMSG\\'")
+(add-to-list 'recentf-exclude "\\.tmp\\'")
+(global-set-key (kbd "C-c r") 'recentf-open-files)
 
 ;; Plugin config -----------------
 
@@ -62,6 +72,10 @@
 
 ;; Rainbow delimiters
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
+
+;; Guru mode
+(require 'guru-mode) ;; Disables easy bindings, force emacs binds
+(guru-global-mode 1)
 
 
 ;; Hooks ------------------------
@@ -121,8 +135,19 @@
   (multi-occur-in-matching-buffers "." regexp t))
 (global-set-key [f7] 'user--search-all-buffers)
 
+;; Generate a new empty buffer with a provided name
+(defun user--make-new-buffer (name) "Creates a new empty non-file buffer with the provided name."
+  (interactive "sName: ")
+  (generate-new-buffer name)
+  (switch-to-buffer name))
+(global-set-key (kbd "C-x M-b") 'user--make-new-buffer)
+
+
 ;; Misc binds
 (global-set-key (kbd "C-x C-b") 'ibuffer) ;; Interactive buffer switch
+(global-set-key (kbd "C-c s") 'shell) ;; Open a shell easily in emacs
+(global-set-key (kbd "<mouse-9>") 'beginning-of-buffer) ;;Move to the beginning and end of buffer with mouse buttons.
+(global-set-key (kbd "<mouse-8>") 'end-of-buffer)
 
 ;; Misc Functions ------------------------
 
