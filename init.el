@@ -77,6 +77,9 @@
 (require 'guru-mode) ;; Disables easy bindings, force emacs binds
 (guru-global-mode 1)
 
+;; Smart mode line
+(setq sml/theme 'light)
+(sml/setup)
 
 ;; Hooks ------------------------
 
@@ -145,7 +148,7 @@
 
 ;; Misc binds
 (global-set-key (kbd "C-x C-b") 'ibuffer) ;; Interactive buffer switch
-(global-set-key (kbd "C-c s") 'shell) ;; Open a shell easily in emacs
+(global-set-key (kbd "C-c s") 'eshell) ;; Open a shell easily in emacs
 (global-set-key (kbd "<mouse-9>") 'beginning-of-buffer) ;;Move to the beginning and end of buffer with mouse buttons.
 (global-set-key (kbd "<mouse-8>") 'end-of-buffer)
 
