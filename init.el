@@ -10,7 +10,7 @@
 
 ;; Packages -------------------------
 (require 'package)
-(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/"))
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 (package-initialize)
 
 ;; General settings ------------------
@@ -33,6 +33,7 @@
 (setq lazy-highlight-max-at-a-time 35)
 (setq custom-file "~/.emacs.d/custom.el") ;; Change customization save file.
 (load custom-file)
+(require 'misc-functions)
 (put 'narrow-to-region 'disabled nil) ;; Enable narrow commands.
 (put 'narrow-to-defun  'disabled nil)
 (put 'narrow-to-page   'disabled nil)
@@ -106,13 +107,6 @@
 (add-hook 'prog-mode-hook 'user--prog-hippie-expand-setting)
 
 ;; On buffer save hooks
-(defun user--clean-buffer () "Cleans the buffer by re-indenting, changing tabs to spaces, and removing trailing whitespace."
-  (interactive)
-  (delete-trailing-whitespace) ;; Remove whitespace from the ends of lines
-  (when (derived-mode-p 'prog-mode)
-    (indent-region (point-min) (point-max) nil)) ;; Reindent if editing code, not if text
-  (save-excursion (replace-regexp "^\n\\{3,\\}" "\n\n" nil (point-min) (point-max))) ;; Replace more than 2 newlines with 2 newlines
-  (untabify (point-min) (point-max))) ;; Turn tabs into spaces
 (add-hook 'before-save-hook 'user--clean-buffer)
 
 ;; Keybindings ---------------------------------
@@ -146,25 +140,13 @@
 (global-set-key (kbd "C-x M-b") 'user--make-new-buffer)
 
 
-;; Misc binds
+;; External function binds
 (global-set-key (kbd "C-x C-b") 'ibuffer) ;; Interactive buffer switch
 (global-set-key (kbd "C-c s") 'eshell) ;; Open a shell easily in emacs
 (global-set-key (kbd "<mouse-9>") 'beginning-of-buffer) ;;Move to the beginning and end of buffer with mouse buttons.
 (global-set-key (kbd "<mouse-8>") 'end-of-buffer)
-
-;; Misc Functions ------------------------
-
-(defun user--save-macro (name)
-  "Save a macro. Take a name as an argument and save the last defined macro under this name."
-  (interactive "SName of the macro :")
-  (kmacro-name-last-macro name)
-  (find-file "~/.emacs.d/macros.el")
-  (goto-char (point-max))
-  (newline)
-  (insert-kbd-macro name)
-  (newline)
-  (save-buffer)
-  (switch-to-buffer nil))
+(global-set-key (kbd "C-c d (") 'user--delete-in-parentheses) ;; Delete text within parentheses.
+(global-set-key (kbd "C-c d \"") 'user--delete-in-quotes) ;; Delete text within quotes.
 
 
 ;; Finalization ----------------------
