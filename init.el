@@ -39,7 +39,6 @@
 (put 'narrow-to-page   'disabled nil)
 (make-variable-buffer-local 'hippie-expand-try-functions-list)
 (set-face-attribute 'mode-line nil :font "DejaVu Sans Mono-8") ;; Change font and size of mode line
-(setq mark-even-if-inactive nil) ;; Don't use region commands unless actually highlighting
 (setq kmacro-execute-before-append nil) ;; Make macros not execute before appending with C-u F3
 (setq delete-by-moving-to-trash t) ;; Make dired not delete files permenently
 
@@ -63,7 +62,7 @@
 
 ;;Avy
 (require 'avy) ;; Always load avy
-(global-set-key (kbd "C-;") 'avy-goto-char-timer)
+(global-set-key (kbd "C-;") 'avy-goto-char-2)
 
 ;; Avy zap up to char
 (global-set-key (kbd "M-z") #'avy-zap-up-to-char)
@@ -145,8 +144,10 @@
 (global-set-key (kbd "C-c s") 'eshell) ;; Open a shell easily in emacs
 (global-set-key (kbd "<mouse-9>") 'beginning-of-buffer) ;;Move to the beginning and end of buffer with mouse buttons.
 (global-set-key (kbd "<mouse-8>") 'end-of-buffer)
-(global-set-key (kbd "C-c d (") 'user--delete-in-parentheses) ;; Delete text within parentheses.
-(global-set-key (kbd "C-c d \"") 'user--delete-in-quotes) ;; Delete text within quotes.
+(global-set-key (kbd "C-c d p") 'user--delete-in-parentheses) ;; Delete text within parentheses.
+(global-set-key (kbd "C-c d q") 'user--delete-in-quotes) ;; Delete text within quotes.
+(global-set-key (kbd "C-c d b") 'user--delete-in-brackets) ;; Delete text within brackets, eg [],{}, <>
+(global-set-key (kbd "M-<down>") 'user--duplicate-start-of-line-or-region) ;; Duplicate the start of line or region if active
 
 
 ;; Finalization ----------------------

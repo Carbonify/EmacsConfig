@@ -15,32 +15,57 @@
 (defun user--clean-buffer () "Cleans the buffer by re-indenting, changing tabs to spaces, and removing trailing whitespace."
   (interactive)
   (delete-trailing-whitespace) ;; Remove whitespace from the ends of lines
-  (when (derived-mode-p 'prog-mode)
+  (when (derived-mode-p 'prog-mode) ;; If the buffer is a programming one
     (indent-region (point-min) (point-max) nil)) ;; Reindent if editing code, not if text
   (save-excursion (replace-regexp "^\n\\{3,\\}" "\n\n" nil (point-min) (point-max))) ;; Replace more than 2 newlines with 2 newlines
   (untabify (point-min) (point-max))) ;; Turn tabs into spaces
 
-(defun user--delete-in-quotes () "Deletes the text inside of parentheses."
+(defun user--delete-in-quotes () "Deletes the text inside of quotes."
   (interactive)
-  (setq start-loc (point)) ;;Save the location the command started from.
-  (setq lstart-line (line-number-at-pos (point)))
-  (search-backward "\"" (line-beginning-position))
+  (search-backward-regexp "[\"\']" (line-beginning-position)) ;; Search for a match on the same line, don't delete across lines
   (forward-char)
-  (setq lstart (point))
-  (search-forward "\"" (line-end-position))
-  (backward-char)
-  (kill-region lstart (point)))
+  (let  ((lstart (point)))
+    (search-forward-regexp "[\"\']" (line-end-position))
+    (backward-char)
+    (kill-region lstart (point))))
 
-(defun user--delete-in-parentheses () "Deletes the text within quotes."
+(defun user--delete-in-parentheses () "Deletes the text within parentheses."
   (interactive)
-  (setq start-loc (point)) ;;Save the location the command started from.
-  (setq lstart-line (line-number-at-pos (point)))
-  (search-backward "(" (line-beginning-position))
+  (search-backward "(" (line-beginning-position)) ;; Search for a match on the same line, don't delete across lines
   (forward-char)
-  (setq lstart (point))
-  (search-forward ")" (line-end-position))
-  (backward-char)
-  (kill-region lstart (point)))
+  (let  ((lstart (point)))
+    (search-forward ")" (line-end-position))
+    (backward-char)
+    (kill-region lstart (point))))
 
+(defun user--delete-in-brackets () "Deletes the text within square brackets, angle brackets, and curly brackets."
+  (interactive)
+  (search-backward-regexp "[[{<]" (line-beginning-position)) ;; Search for a match on the same line, don't delete across lines
+  (forward-char)
+  (let ((lstart (point)))
+    (search-forward-regexp "[]}>]" (line-end-position))
+    (backward-char)
+    (kill-region lstart (point))))
+
+(defun user--duplicate-start-of-line-or-region () "Duplicates the start of the line if the region is inactive, else duplicates the region."
+  (interactive)
+  (if mark-active
+
+      (let* ((end (region-end))
+             (text (buffer-substring (region-beginning) end)))
+        (goto-char end)
+        (insert text)
+        (push-mark end)
+        (setq deactivate-mark nil)
+        (exchange-point-and-mark))
+
+    (let ((text (buffer-substring (point) (line-beginning-position))))
+
+      (forward-line 1)
+      (if (eobp) ;; If at the end of the buffer
+          (newline))
+      (push-mark)
+      (insert text)
+      (open-line 1))))
 
 (provide 'misc-functions)
