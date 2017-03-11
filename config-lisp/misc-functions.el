@@ -15,7 +15,7 @@
 (defun user--clean-buffer () "Cleans the buffer by re-indenting, changing tabs to spaces, and removing trailing whitespace."
   (interactive)
   (delete-trailing-whitespace) ;; Remove whitespace from the ends of lines
-  (when (derived-mode-p 'prog-mode) ;; If the buffer is a programming one
+  (when (not (or (derived-mode-p 'text-mode) (derived-mode-p 'special-mode))) ;; If the buffer is a programming one
     (indent-region (point-min) (point-max) nil)) ;; Reindent if editing code, not if text
   (save-excursion (replace-regexp "^\n\\{3,\\}" "\n\n" nil (point-min) (point-max))) ;; Replace more than 2 newlines with 2 newlines
   (untabify (point-min) (point-max))) ;; Turn tabs into spaces

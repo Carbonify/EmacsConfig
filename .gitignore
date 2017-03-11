@@ -9,3 +9,6 @@ elpa/*readme.txt
 elpa/archives/*
 auto-save-list/*
 eshell/*
+
+# Misc
+.smex*

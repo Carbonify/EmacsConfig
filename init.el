@@ -41,6 +41,8 @@
 (set-face-attribute 'mode-line nil :font "DejaVu Sans Mono-8") ;; Change font and size of mode line
 (setq kmacro-execute-before-append nil) ;; Make macros not execute before appending with C-u F3
 (setq delete-by-moving-to-trash t) ;; Make dired not delete files permenently
+(defalias 'yes-or-no-p 'y-or-n-p) ;; Make prompt dialogue shorter.
+
 
 ;; IDO mode
 (ido-mode t)
@@ -73,13 +75,15 @@
 ;; Rainbow delimiters
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
-;; Guru mode
-(require 'guru-mode) ;; Disables easy bindings, force emacs binds
-(guru-global-mode 1)
-
 ;; Smart mode line
 (setq sml/theme 'light)
 (sml/setup)
+
+;; Smex
+(setq smex-save-file (expand-file-name ".smex-items" user-emacs-directory))
+(smex-initialize)
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
 
 ;; Hooks ------------------------
 
@@ -93,6 +97,10 @@
 
 ;; Elisp mode hooks
 (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
+(defun user--prog-lisp-hippie-expand-setting () (interactive)
+  (setq hippie-expand-try-functions-list '(try-complete-file-name-partially try-complete-file-name try-complete-lisp-symbol-partially try-complete-lisp-symbol try-expand-dabbrev try-expand-dabbrev-all-buffers)))
+(add-hook 'emacs-lisp-mode-hook 'user--prog-lisp-hippie-expand-setting)
+
 
 ;; Org mode hooks
 (add-hook 'org-mode-hook '(lambda ()
@@ -102,13 +110,17 @@
 
 ;; Programming mode hooks
 (defun user--prog-hippie-expand-setting () (interactive)
-  (setq hippie-expand-try-functions-list '(try-complete-file-name-partially try-complete-file-name try-complete-lisp-symbol-partially try-complete-lisp-symbol)))
+  (setq hippie-expand-try-functions-list '(try-complete-file-name-partially try-complete-file-name try-expand-dabbrev try-expand-dabbrev-all-buffers)))
 (add-hook 'prog-mode-hook 'user--prog-hippie-expand-setting)
 
 ;; On buffer save hooks
 (add-hook 'before-save-hook 'user--clean-buffer)
 
 ;; Keybindings ---------------------------------
+
+;;Unbind movement with mouse click
+(global-set-key [mouse-1] 'nil)
+(global-set-key [down-mouse-1] 'nil)
 
 ;; Use Ctrl-C e to open the init file for changing config.
 (global-set-key (kbd "C-c e") (lambda () (interactive) (find-file "~/.emacs.d/init.el")))
@@ -122,8 +134,8 @@
 (define-key isearch-mode-map [prior] 'isearch-repeat-backward)
 (global-set-key (kbd "C-s") 'isearch-forward-regexp)
 (global-set-key (kbd "C-r") 'isearch-backward-regexp)
-(global-set-key (kbd "C-M-s") 'isearch-forward)
-(global-set-key (kbd "C-M-r") 'isearch-backward)
+(global-set-key (kbd "C-M-s") 'multi-isearch-buffers-regexp)
+(global-set-key (kbd "C-M-r") nil)
 
 ;; Search all loaded buffers for a regex
 (defun user--search-all-buffers (regexp) "Search all open buffers for a regex. Open an occur-like window."
