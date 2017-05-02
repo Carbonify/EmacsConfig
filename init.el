@@ -118,9 +118,6 @@
 
 ;; Keybindings ---------------------------------
 
-;;Unbind movement with mouse click
-(global-set-key [mouse-1] 'nil)
-(global-set-key [down-mouse-1] 'nil)
 
 ;; Use Ctrl-C e to open the init file for changing config.
 (global-set-key (kbd "C-c e") (lambda () (interactive) (find-file "~/.emacs.d/init.el")))
