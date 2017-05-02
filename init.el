@@ -79,6 +79,10 @@
 (setq sml/theme 'light)
 (sml/setup)
 
+;; Guru mode
+(require 'guru-mode)
+(guru-global-mode 1)
+
 ;; Smex
 (setq smex-save-file (expand-file-name ".smex-items" user-emacs-directory))
 (smex-initialize)
@@ -139,14 +143,6 @@
   (interactive "sRegexp: ")
   (multi-occur-in-matching-buffers "." regexp t))
 (global-set-key [f7] 'user--search-all-buffers)
-
-;; Generate a new empty buffer with a provided name
-(defun user--make-new-buffer (name) "Creates a new empty non-file buffer with the provided name."
-  (interactive "sName: ")
-  (generate-new-buffer name)
-  (switch-to-buffer name))
-(global-set-key (kbd "C-x M-b") 'user--make-new-buffer)
-
 
 ;; External function binds
 (global-set-key (kbd "C-x C-b") 'ibuffer) ;; Interactive buffer switch
