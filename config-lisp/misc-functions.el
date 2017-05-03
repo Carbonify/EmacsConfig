@@ -47,25 +47,25 @@
     (backward-char)
     (kill-region lstart (point))))
 
-(defun user--duplicate-start-of-line-or-region () "Duplicates the start of the line if the region is inactive, else duplicates the region."
+(defun user--rename-this-file-and-buffer (new-name)
+  "Renames both current buffer and file it's visiting to NEW-NAME."
+  (interactive "sNew name: ")
+  (let ((name (buffer-name))
+        (filename (buffer-file-name)))
+    (unless filename
+      (error "Buffer '%s' is not visiting a file!" name))
+    (if (get-buffer new-name)
+        (message "A buffer named '%s' already exists!" new-name)
+      (progn
+        (rename-file name new-name 1)
+        (rename-buffer new-name)
+        (set-visited-file-name new-name)
+        (set-buffer-modified-p nil)))))
+
+(defun user--insert-date ()
+  "Insert a time-stamp according to locale's date and time format."
   (interactive)
-  (if mark-active
+  (insert (format-time-string "%c" (current-time))))
 
-      (let* ((end (region-end))
-             (text (buffer-substring (region-beginning) end)))
-        (goto-char end)
-        (insert text)
-        (push-mark end)
-        (setq deactivate-mark nil)
-        (exchange-point-and-mark))
-
-    (let ((text (buffer-substring (point) (line-beginning-position))))
-
-      (forward-line 1)
-      (if (eobp) ;; If at the end of the buffer
-          (newline))
-      (push-mark)
-      (insert text)
-      (open-line 1))))
 
 (provide 'misc-functions)

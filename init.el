@@ -1,4 +1,6 @@
 ;; Emacs init file
+(setq gc-cons-threshold (* 20 1024 1024))
+
 
 (add-to-list 'load-path "~/.emacs.d/manual-install/") ;; Add dir for manually installed plugins
 (add-to-list 'load-path "~/.emacs.d/config-lisp/") ;; Add more config by me.
@@ -42,6 +44,8 @@
 (setq kmacro-execute-before-append nil) ;; Make macros not execute before appending with C-u F3
 (setq delete-by-moving-to-trash t) ;; Make dired not delete files permenently
 (defalias 'yes-or-no-p 'y-or-n-p) ;; Make prompt dialogue shorter.
+(setq inhibit-startup-message t)  ;; Disable the startup screen
+(setq frame-title-format '(buffer-file-name "Emacs: %b (%f)" "Emacs: %b"))
 
 
 ;; IDO mode
@@ -152,8 +156,8 @@
 (global-set-key (kbd "C-c d p") 'user--delete-in-parentheses) ;; Delete text within parentheses.
 (global-set-key (kbd "C-c d q") 'user--delete-in-quotes) ;; Delete text within quotes.
 (global-set-key (kbd "C-c d b") 'user--delete-in-brackets) ;; Delete text within brackets, eg [],{}, <>
-(global-set-key (kbd "M-<down>") 'user--duplicate-start-of-line-or-region) ;; Duplicate the start of line or region if active
-
+(global-set-key (kbd "C-x C-d") 'user--insert-date) ;; Insert the date
+(global-set-key (kbd "<f8>") 'neotree-toggle)
 
 ;; Finalization ----------------------
 

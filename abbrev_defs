@@ -5,19 +5,13 @@
 
 (define-abbrev-table 'apropos-mode-abbrev-table '())
 
-(define-abbrev-table 'awk-mode-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'awk-mode-abbrev-table '())
 
 (define-abbrev-table 'bibtex-mode-abbrev-table '())
 
-(define-abbrev-table 'c++-mode-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'c++-mode-abbrev-table '())
 
-(define-abbrev-table 'c-mode-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'c-mode-abbrev-table '())
 
 (define-abbrev-table 'calendar-mode-abbrev-table '())
 
@@ -52,9 +46,7 @@
 
 (define-abbrev-table 'idl-mode-abbrev-table '())
 
-(define-abbrev-table 'java-mode-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'java-mode-abbrev-table '())
 
 (define-abbrev-table 'lisp-mode-abbrev-table '())
 
@@ -66,9 +58,7 @@
 
 (define-abbrev-table 'message-mode-abbrev-table '())
 
-(define-abbrev-table 'objc-mode-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'objc-mode-abbrev-table '())
 
 (define-abbrev-table 'occur-edit-mode-abbrev-table '())
 
@@ -80,9 +70,7 @@
 
 (define-abbrev-table 'package-menu-mode-abbrev-table '())
 
-(define-abbrev-table 'pike-mode-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'pike-mode-abbrev-table '())
 
 (define-abbrev-table 'process-menu-mode-abbrev-table '())
 
@@ -114,7 +102,7 @@
     ("goverment" "government" nil 0)
     ("havent" "haven't" nil 0)
     ("hes" "he's" nil 2)
-    ("i" "I" nil 0)
+    ("i" "I" nil 1)
     ("im" "I'm" nil 1)
     ("isnt" "isn't" nil 0)
     ("ive" "I've" nil 0)
@@ -126,6 +114,7 @@
     ("occor" "occur" nil 0)
     ("occorring" "occurring" nil 0)
     ("paralell" "parallel" nil 0)
+    ("reccomended" "recommended" nil 0)
     ("recieve" "receive" nil 0)
     ("recieved" "received" nil 0)
     ("rememver" "remember" nil 0)
@@ -135,14 +124,18 @@
     ("tf2" "Team Fortress 2" nil 0)
     ("tge" "the" nil 0)
     ("thats" "that's" nil 0)
+    ("theyd" "they'd" nil 0)
     ("theyre" "they're" nil 0)
     ("thier" "their" nil 2)
     ("thursday" "Thursday" nil 0)
     ("tm" "&trade;" nil 0)
     ("tset" "test" nil 1)
     ("tuesday" "Tuesday" nil 0)
+    ("w/" "with" nil 0)
+    ("w/o" "without" nil 0)
     ("wednesday" "Wednesday" nil 0)
-    ("wiki" "Wiki" nil 0)
+    ("weve" "we've" nil 1)
+    ("wiki" "Wiki" nil 1)
     ("wont" "won't" nil 0)
     ("youre" "you're" nil 0)
    ))
