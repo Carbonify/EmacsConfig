@@ -83,10 +83,6 @@
 (setq sml/theme 'light)
 (sml/setup)
 
-;; Guru mode
-(require 'guru-mode)
-(guru-global-mode 1)
-
 ;; Smex
 (setq smex-save-file (expand-file-name ".smex-items" user-emacs-directory))
 (smex-initialize)
@@ -147,6 +143,13 @@
   (interactive "sRegexp: ")
   (multi-occur-in-matching-buffers "." regexp t))
 (global-set-key [f7] 'user--search-all-buffers)
+
+;; Unbind arrow keys, use them for specialized movement instead
+(global-set-key (kbd "<right>") 'next-buffer)
+(global-set-key (kbd "<up>") 'scroll-down-command)
+(global-set-key (kbd "<left>") 'previous-buffer)
+(global-set-key (kbd "<down>") 'scroll-up-command)
+
 
 ;; External function binds
 (global-set-key (kbd "C-x C-b") 'ibuffer) ;; Interactive buffer switch
