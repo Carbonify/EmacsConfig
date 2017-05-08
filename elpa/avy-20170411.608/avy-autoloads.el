@@ -11,8 +11,8 @@
 ;;;;;;  avy-goto-symbol-1-above avy-goto-symbol-1 avy-goto-word-1-below
 ;;;;;;  avy-goto-word-1-above avy-goto-word-1 avy-goto-word-0 avy-isearch
 ;;;;;;  avy-goto-char-2-below avy-goto-char-2-above avy-goto-char-2
-;;;;;;  avy-goto-char-in-line avy-goto-char) "avy" "avy.el" (22645
-;;;;;;  22859 909646 35000))
+;;;;;;  avy-goto-char-in-line avy-goto-char) "avy" "avy.el" (22799
+;;;;;;  49958 800944 535000))
 ;;; Generated autoloads from avy.el
 
 (autoload 'avy-goto-char "avy" "\
@@ -55,7 +55,7 @@ Jump to one of the current isearch candidates.
 Jump to a word start.
 The window scope is determined by `avy-all-windows' (ARG negates it).
 
-\(fn ARG)" t nil)
+\(fn ARG &optional BEG END)" t nil)
 
 (autoload 'avy-goto-word-1 "avy" "\
 Jump to the currently visible CHAR at a word start.
@@ -66,14 +66,14 @@ The window scope is determined by `avy-all-windows' (ARG negates it).
 (autoload 'avy-goto-word-1-above "avy" "\
 Jump to the currently visible CHAR at a word start.
 This is a scoped version of `avy-goto-word-1', where the scope is
-the visible part of the current buffer up to point. 
+the visible part of the current buffer up to point.
 
 \(fn CHAR &optional ARG)" t nil)
 
 (autoload 'avy-goto-word-1-below "avy" "\
 Jump to the currently visible CHAR at a word start.
 This is a scoped version of `avy-goto-word-1', where the scope is
-the visible part of the current buffer following point. 
+the visible part of the current buffer following point.
 
 \(fn CHAR &optional ARG)" t nil)
 
@@ -86,14 +86,14 @@ The window scope is determined by `avy-all-windows' (ARG negates it).
 (autoload 'avy-goto-symbol-1-above "avy" "\
 Jump to the currently visible CHAR at a symbol start.
 This is a scoped version of `avy-goto-symbol-1', where the scope is
-the visible part of the current buffer up to point. 
+the visible part of the current buffer up to point.
 
 \(fn CHAR &optional ARG)" t nil)
 
 (autoload 'avy-goto-symbol-1-below "avy" "\
 Jump to the currently visible CHAR at a symbol start.
 This is a scoped version of `avy-goto-symbol-1', where the scope is
-the visible part of the current buffer following point. 
+the visible part of the current buffer following point.
 
 \(fn CHAR &optional ARG)" t nil)
 
@@ -164,7 +164,7 @@ The window scope is determined by `avy-all-windows' or
 \(fn ARG)" t nil)
 
 (autoload 'avy-move-region "avy" "\
-Select two lines and move the text between them here.
+Select two lines and move the text between them above the current line.
 
 \(fn)" t nil)
 
@@ -219,7 +219,7 @@ The window scope is determined by `avy-all-windows' (ARG negates it).
 
 ;;;***
 
-;;;### (autoloads nil nil ("avy-pkg.el") (22645 22860 94044 275000))
+;;;### (autoloads nil nil ("avy-pkg.el") (22799 49958 874797 362000))
 
 ;;;***
 

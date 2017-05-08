@@ -4,7 +4,7 @@
 
 
 ;;;### (autoloads (lua-start-process lua-mode) "lua-mode" "lua-mode.el"
-;;;;;;  (22677 21362 413619 355000))
+;;;;;;  (22799 49956 508933 169000))
 ;;; Generated autoloads from lua-mode.el
 
 (autoload 'lua-mode "lua-mode" "\
@@ -12,7 +12,7 @@ Major mode for editing Lua code.
 
 \(fn)" t nil)
 
-(add-to-list 'auto-mode-alist '("\\.lua$" . lua-mode))
+(add-to-list 'auto-mode-alist '("\\.lua\\'" . lua-mode))
 
 (add-to-list 'interpreter-mode-alist '("lua" . lua-mode))
 
@@ -27,8 +27,8 @@ When called interactively, switch to the process buffer.
 
 ;;;***
 
-;;;### (autoloads nil nil ("init-tryout.el" "lua-mode-pkg.el") (22677
-;;;;;;  21362 476987 679000))
+;;;### (autoloads nil nil ("init-tryout.el" "lua-mode-pkg.el") (22799
+;;;;;;  49956 560609 573000))
 
 ;;;***
 

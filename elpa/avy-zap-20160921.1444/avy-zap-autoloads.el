@@ -4,8 +4,8 @@
 
 
 ;;;### (autoloads (avy-zap-up-to-char-dwim avy-zap-up-to-char avy-zap-to-char-dwim
-;;;;;;  avy-zap-to-char) "avy-zap" "avy-zap.el" (22651 42859 616533
-;;;;;;  12000))
+;;;;;;  avy-zap-to-char) "avy-zap" "avy-zap.el" (22799 49958 208941
+;;;;;;  599000))
 ;;; Generated autoloads from avy-zap.el
 
 (autoload 'avy-zap-to-char "avy-zap" "\
@@ -32,8 +32,8 @@ With PREFIX, call `zap-up-to-char'.
 
 ;;;***
 
-;;;### (autoloads nil nil ("avy-zap-pkg.el") (22651 42859 752189
-;;;;;;  229000))
+;;;### (autoloads nil nil ("avy-zap-pkg.el") (22799 49958 291402
+;;;;;;  295000))
 
 ;;;***
 
