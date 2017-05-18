@@ -31,7 +31,7 @@
 (icomplete-mode 1) ;; Incremental completion in minibuffers
 (setq-default word-wrap t) ;; Wrap at word ends instead of in the middle of a word.
 (setq save-interprogram-paste-before-kill t) ;; Save the clipboard to kill ring
-(setq lazy-highlight-initial-delay 1.5)
+(setq lazy-highlight-initial-delay 3)
 (setq lazy-highlight-max-at-a-time 35)
 (setq custom-file "~/.emacs.d/custom.el") ;; Change customization save file.
 (load custom-file)
@@ -69,12 +69,15 @@
 ;;Avy
 (require 'avy) ;; Always load avy
 (global-set-key (kbd "C-;") 'avy-goto-char-2)
+(global-set-key (kbd "C-'") 'avy-kill-region)
+(global-set-key (kbd "C-:") 'avy-kill-whole-line)
+
 
 ;; Avy zap up to char
 (global-set-key (kbd "M-z") #'avy-zap-up-to-char)
 
 ;; Flyspell
-(eval-after-load 'flyspell '(define-key flyspell-mode-map (kbd "C-;") nil))
+(eval-after-load 'flyspell '(define-key flyspell-mode-map (kbd "C-;") nil)) ;;disables the binding so avy can use it
 
 ;; Rainbow delimiters
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
@@ -94,6 +97,10 @@
 (global-undo-tree-mode)
 (setq undo-tree-visualizer-timestamps t)
 (setq undo-tree-visualizer-diff t)
+
+;; Windmove
+(require 'windmove)
+(windmove-default-keybindings)
 
 
 ;; Hooks ------------------------
@@ -172,3 +179,5 @@
 ;; Finalization ----------------------
 
 (server-start) ;; Start the server in this instance, so emacs doesn't have to open again
+
+(setq gc-cons-threshold 800000) ;;Fix value back to it's default.
