@@ -68,4 +68,24 @@
   (insert (format-time-string "%c" (current-time))))
 
 
+(defun user--generate-numbered-list (start end)
+  "Creates a numbered list from provided start to provided end."
+  (interactive "nStart num:\nnEnd num:")
+  (let ((x  start))
+    (while (<= x end)
+      (insert (number-to-string x) ".")
+      (newline)
+      (setq x (+ x 1)))))
+
+(defun user--mark-ring-forward ()
+  "Moves forward through the mark ring. Does nothing if mark ring is empty."
+  (interactive)
+  (when mark-ring
+    (setq mark-ring (cons (copy-marker (mark-marker)) mark-ring))
+    (set-marker (mark-marker) (car (last mark-ring)) (current-buffer))
+    (when (null (mark t)) (message "No marks set." nil))
+    (setq mark-ring (nbutlast mark-ring))
+    (goto-char (marker-position (car (last mark-ring))))))
+
+
 (provide 'misc-functions)
