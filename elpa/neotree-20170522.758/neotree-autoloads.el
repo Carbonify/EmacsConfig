@@ -5,7 +5,7 @@
 
 ;;;### (autoloads (neotree-dir neotree-hide neotree-show neotree-toggle
 ;;;;;;  neotree-projectile-action neotree-find) "neotree" "neotree.el"
-;;;;;;  (22799 49864 692477 876000))
+;;;;;;  (22820 64900 293383 420000))
 ;;; Generated autoloads from neotree.el
 
 (autoload 'neotree-find "neotree" "\
@@ -50,8 +50,8 @@ Show the NeoTree window.")
 
 ;;;***
 
-;;;### (autoloads nil nil ("neotree-pkg.el") (22799 49864 944696
-;;;;;;  332000))
+;;;### (autoloads nil nil ("neotree-pkg.el") (22820 64900 575767
+;;;;;;  234000))
 
 ;;;***
 

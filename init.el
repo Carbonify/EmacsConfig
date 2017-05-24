@@ -102,7 +102,6 @@
 (require 'windmove)
 (windmove-default-keybindings)
 
-
 ;; Hooks ------------------------
 
 ;; Text mode hooks
@@ -204,3 +203,4 @@
 (server-start) ;; Start the server in this instance, so emacs doesn't have to open again
 
 (setq gc-cons-threshold 800000) ;;Fix value back to it's default.
+(put 'downcase-region 'disabled nil)

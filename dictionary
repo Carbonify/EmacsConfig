@@ -1,4 +1,4 @@
-personal_ws-1.1 en 83 
+personal_ws-1.1 en 89 
 pixelated
 login
 gif
@@ -24,6 +24,7 @@ Wiki's
 gifs
 changelog
 spawners
+init
 txt
 Biomes
 modders
@@ -33,21 +34,24 @@ teleportation
 splitter
 checksums
 filetype
+AFK
 Mediawiki
 HD
 desynchronisation
+onwards
 APIs
 changelogs
 pathing
 teleported
+booleans
 GUIs
 guis
-booleans
 desync
 singleplayer
 Admin
 emacs
 gpu
+username
 melee
 train's
 IP
@@ -60,6 +64,7 @@ vimrc
 multiplayer
 waypoints
 executables
+sudo
 desyncs
 Factorio's
 Trinary
@@ -71,6 +76,7 @@ MacOS
 desynchronizations
 spawner
 nevermind
+respawn
 API
 Lua
 prepending
