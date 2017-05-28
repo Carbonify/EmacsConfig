@@ -16,7 +16,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Terminus (TTF)" :foundry "unknown" :slant normal :weight normal :height 113 :width normal))))
+ '(default ((t (:family "Terminus (TTF)" :foundry "unknown" :slant normal :weight normal :height 90 :width normal))))
  '(rainbow-delimiters-depth-1-face ((t (:foreground "#000000"))))
  '(rainbow-delimiters-depth-2-face ((t (:foreground "#0000FF"))))
  '(rainbow-delimiters-depth-3-face ((t (:foreground "#00AA00"))))
