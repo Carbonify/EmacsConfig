@@ -46,6 +46,14 @@
 (defalias 'yes-or-no-p 'y-or-n-p) ;; Make prompt dialogue shorter.
 (setq inhibit-startup-message t)  ;; Disable the startup screen
 (setq frame-title-format '(buffer-file-name "Emacs: %b (%f)" "Emacs: %b"))
+(load-theme 'tango)
+
+;; Bookmarking
+(require 'bookmark)
+(setq bookmark-default-file "~/.emacs.d/bookmarks.txt")
+(setq bookmark-save-flag t) ; save bookmark when emacs quits
+(bookmark-bmenu-list)
+(switch-to-buffer "*Bookmark List*")
 
 
 ;; IDO mode
@@ -59,7 +67,7 @@
 (require 'recentf)
 (recentf-mode 1)
 (setq recentf-max-menu-items 15)
-(run-at-time nil (* 10 60) 'recentf-save-list) ;;Save recent files every 10 mins
+(run-at-time nil (* 20 60) 'recentf-save-list) ;;Save recent files every 20 mins
 (add-to-list 'recentf-exclude "COMMIT_EDITMSG\\'")
 (add-to-list 'recentf-exclude "\\.tmp\\'")
 (global-set-key (kbd "C-c r") 'recentf-open-files)
@@ -83,8 +91,9 @@
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
 ;; Smart mode line
-(setq sml/theme 'light)
+(setq sml/theme 'dark)
 (sml/setup)
+
 
 ;; Smex
 (setq smex-save-file (expand-file-name ".smex-items" user-emacs-directory))
@@ -134,10 +143,6 @@
 (add-hook 'before-save-hook 'user--clean-buffer)
 
 ;; Keybindings ---------------------------------
-
-
-;; Use Ctrl-C e to open the init file for changing config.
-(global-set-key (kbd "C-c e") (lambda () (interactive) (find-file "~/.emacs.d/init.el")))
 
 ;; Tab completion
 (global-set-key (kbd "<tab>") 'hippie-expand)
@@ -194,7 +199,6 @@
   (end-of-line)
   (newline))
 (global-set-key (kbd "C-<return>") 'user--end-of-line-newline)
-
 
 ;; External function binds, emacs binds
 (global-set-key (kbd "C-x C-b")    'ibuffer) ;; Interactive buffer switch

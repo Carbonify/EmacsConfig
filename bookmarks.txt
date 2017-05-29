@@ -1,0 +1,30 @@
+;;;; Emacs Bookmark Format Version 1 ;;;;
+;;; This format is meant to be slightly human-readable;
+;;; nevertheless, you probably don't want to edit it.
+;;; -*- End Of Bookmark File Format Version Stamp -*-
+((".factorio"
+ (filename . "~/.factorio/")
+ (front-context-string . "..\n  -rw-rw-r-- ")
+ (rear-context-string . "96 May 28 22:35 ")
+ (position . 169))
+("Factorio install"
+ (filename . "~/.steam/steam/steamapps/common/Factorio/")
+ (front-context-string . "bin\n  -rwxrwxr-x")
+ (rear-context-string . "96 Sep  3  2016 ")
+ (position . 240))
+("factorio changelog"
+ (filename . "~/.steam/steam/steamapps/common/Factorio/data/changelog.txt")
+ (front-context-string . "construction fro")
+ (rear-context-string . " order/cancel de")
+ (position . 436613))
+("custom"
+ (filename . "~/.emacs.d/custom.el")
+ (front-context-string)
+ (rear-context-string . "dth normal)))))\n")
+ (position . 989))
+("init"
+ (filename . "~/.emacs.d/init.el")
+ (front-context-string . "\n\n;; IDO mode\n(i")
+ (rear-context-string . "bookmarks.txt\")\n")
+ (position . 2586))
+)
