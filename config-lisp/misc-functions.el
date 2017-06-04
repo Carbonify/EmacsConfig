@@ -87,5 +87,12 @@
     (setq mark-ring (nbutlast mark-ring))
     (goto-char (marker-position (car (last mark-ring))))))
 
+(defun user--make-temp-file (name)
+  "Creates a temporary file in the system temp directory, for various purposes."
+  (interactive "sFile name:")
+  (generate-new-buffer name)
+  (switch-to-buffer name)
+  (write-file (concat temporary-file-directory name)))
+
 
 (provide 'misc-functions)

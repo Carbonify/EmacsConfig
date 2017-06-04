@@ -90,6 +90,7 @@
 ;; Rainbow delimiters
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
+
 ;; Smart mode line
 (setq sml/theme 'dark)
 (sml/setup)
@@ -111,6 +112,23 @@
 (require 'windmove)
 (windmove-default-keybindings)
 
+;; Eshell
+(setq eshell-prompt-function
+      (lambda ()
+        (concat
+         (propertize "┌─[" 'face `(:foreground "green"))
+         (propertize (user-login-name) 'face `(:foreground "red"))
+         (propertize "@" 'face `(:foreground "green"))
+         (propertize (system-name) 'face `(:foreground "blue"))
+         (propertize "]──[" 'face `(:foreground "green"))
+         (propertize (format-time-string "%H:%M" (current-time)) 'face `(:foreground "yellow"))
+         (propertize "]──[" 'face `(:foreground "green"))
+         (propertize (concat (eshell/pwd)) 'face `(:foreground "white"))
+         (propertize "]\n" 'face `(:foreground "green"))
+         (propertize "└─>" 'face `(:foreground "green"))
+         (propertize (if (= (user-uid) 0) " # " " $ ") 'face `(:foreground "green"))
+         )))
+
 ;; Hooks ------------------------
 
 ;; Text mode hooks
@@ -129,10 +147,17 @@
 
 
 ;; Org mode hooks
-(add-hook 'org-mode-hook '(lambda ()
-                            (define-key org-mode-map [tab] 'hippie-expand) ;; Set these two, because I use tab complete much more than cycle
-                            (define-key org-mode-map [home] 'org-global-cycle)))
-(add-hook 'org-mode-hook 'visual-line-mode) ;; Make org just wrap long lines
+(eval-after-load 'org
+  (progn
+    (defun user--org-mode-config () "Configuration for org mode."
+      (interactive)
+      (define-key org-mode-map [tab] 'hippie-expand) ;; Set these two, because I use tab complete much more than cycle
+      (define-key org-mode-map (kbd "C-<home>") 'org-global-cycle)
+      (setq org-log-done t)
+      (setq fill-column 100))
+    (add-hook 'org-mode-hook 'user--org-mode-config)
+    (add-hook 'org-mode-hook 'visual-line-mode) ;; Make org just wrap long lines
+    (add-hook 'org-mode-hook 'auto-fill-mode)))
 
 ;; Programming mode hooks
 (defun user--prog-hippie-expand-setting () (interactive)
@@ -174,6 +199,7 @@
 (global-set-key (kbd "<home>") 'jump-to-register)
 (global-set-key (kbd "<end>") 'point-to-register)
 
+
 ;; Disable moving point with clicks
 (dolist (k '([mouse-1] [down-mouse-1] [drag-mouse-1] [double-mouse-1] [triple-mouse-1]
              [mouse-2] [down-mouse-2] [drag-mouse-2] [double-mouse-2] [triple-mouse-2]
@@ -213,6 +239,7 @@
 (global-set-key (kbd "C-c a")      'align-regexp)
 (global-set-key (kbd "C-z")        'repeat) ;;stop accidentally hitting this and minimizing
 (global-set-key (kbd "C-c f")      'follow-delete-other-windows-and-split) ;; Enter follow mode quickly
+(global-set-key (kbd "C-c n")      'user--make-temp-file) ;;Create a temporary file that's a bit more persistant than scratch
 
 
 ;; Finalization ----------------------
