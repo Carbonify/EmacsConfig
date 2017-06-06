@@ -167,6 +167,9 @@
 ;; On buffer save hooks
 (add-hook 'before-save-hook 'user--clean-buffer)
 
+;; Manual pages
+(add-hook 'man-mode-hook 'visual-line-mode)
+
 ;; Keybindings ---------------------------------
 
 ;; Tab completion
