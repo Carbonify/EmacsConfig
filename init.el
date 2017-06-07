@@ -63,15 +63,6 @@
 (setq ido-file-extensions-order '(".txt" ".cfg" ".el" ".sh" ".json" ".md")) ;; Emphasis
 (setq ido-ignore-extensions t)
 
-;; Recent files mode
-(require 'recentf)
-(recentf-mode 1)
-(setq recentf-max-menu-items 15)
-(run-at-time nil (* 20 60) 'recentf-save-list) ;;Save recent files every 20 mins
-(add-to-list 'recentf-exclude "COMMIT_EDITMSG\\'")
-(add-to-list 'recentf-exclude "\\.tmp\\'")
-(global-set-key (kbd "C-c r") 'recentf-open-files)
-
 ;; Plugin config -----------------
 
 ;;Avy
