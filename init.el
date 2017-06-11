@@ -46,6 +46,7 @@
 (defalias 'yes-or-no-p 'y-or-n-p) ;; Make prompt dialogue shorter.
 (setq inhibit-startup-message t)  ;; Disable the startup screen
 (setq frame-title-format '(buffer-file-name "Emacs: %b (%f)" "Emacs: %b"))
+(setq-default tab-width 4) ;; Smaller default tab width
 (load-theme 'tango)
 
 ;; Bookmarking
@@ -190,8 +191,16 @@
 (global-set-key (kbd "<down>")     'scroll-up-command)
 
 ;; Bind home and end to use point register commands
+(defun user--safe-point-to-register (register)
+  "Asks for confirmation before overwriting an existing register with a point-to-register."
+  (interactive "cRegister:")
+  (if (not (get-register register))
+      (point-to-register register)
+    (if (y-or-n-p "Replace existing register?")
+        (point-to-register register))))
+
 (global-set-key (kbd "<home>") 'jump-to-register)
-(global-set-key (kbd "<end>") 'point-to-register)
+(global-set-key (kbd "<end>") 'user--safe-point-to-register)
 
 
 ;; Disable moving point with clicks
