@@ -26,15 +26,15 @@
 ;; REGISTERS ----------------------
 ;; Bind home and end to use point register commands
 (global-set-key (kbd "<home>") 'jump-to-register)
-(global-set-key (kbd "<end>") 'user--safe-point-to-register)
+(global-set-key (kbd "<end>")  'user--safe-point-to-register)
 
 ;; Bind C-home and C-end to use text register commands
 (global-set-key (kbd "C-<home>") 'insert-register)
-(global-set-key (kbd "C-<end>") 'user--safe-copy-to-register)
+(global-set-key (kbd "C-<end>")  'user--safe-copy-to-register)
 
 ;; Bind meta home and meta end to do macro to register commands
-(global-set-key (kbd "M-<home>") 'jump-to-register) ;; Restores the window config at register
-(global-set-key (kbd "M-<end>") 'user--safe-window-config-to-register) ;; Saves the window config to a register
+(global-set-key (kbd "M-<home>")   'jump-to-register) ;; Restores the window config at register
+(global-set-key (kbd "M-<end>")    'user--safe-window-config-to-register) ;; Saves the window config to a register
 
 
 ;; Disable moving point with clicks
@@ -70,3 +70,4 @@
 (global-set-key (kbd "C-z")        'repeat) ;;stop accidentally hitting this and minimizing
 (global-set-key (kbd "C-c f")      'follow-delete-other-windows-and-split) ;; Enter follow mode quickly
 (global-set-key (kbd "C-c n")      'user--make-temp-file) ;;Create a temporary file that's a bit more persistant than scratch
+(global-set-key (kbd "C-c s")      'user--skim-buffer) ;; Skims a buffer with x lines per x seconds.
