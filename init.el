@@ -35,11 +35,10 @@
 (setq lazy-highlight-max-at-a-time 35)
 (setq custom-file "~/.emacs.d/custom.el") ;; Change customization save file.
 (load custom-file)
-(require 'misc-functions)
 (put 'narrow-to-region 'disabled nil) ;; Enable narrow commands.
 (put 'narrow-to-defun  'disabled nil)
 (put 'narrow-to-page   'disabled nil)
-(put 'downcase-region 'disabled nil)
+(put 'downcase-region  'disabled nil)
 (make-variable-buffer-local 'hippie-expand-try-functions-list)
 (setq kmacro-execute-before-append nil) ;; Make macros not execute before appending with C-u F3
 (setq delete-by-moving-to-trash t) ;; Make dired not delete files permenently
@@ -47,6 +46,10 @@
 (setq inhibit-startup-message t)  ;; Disable the startup screen
 (setq frame-title-format '(buffer-file-name "Emacs: %b (%f)" "Emacs: %b"))
 (setq-default tab-width 4) ;; Smaller default tab width
+(setq search-whitespace-regexp "[-_ \n]")
+
+
+;;Color theme
 (load-theme 'tango)
 
 ;; Bookmarking
@@ -66,65 +69,7 @@
 
 ;; Plugin config -----------------
 
-;;Avy
-(require 'avy) ;; Always load avy
-(global-set-key (kbd "C-;") 'avy-goto-char-2)
-(global-set-key (kbd "C-'") 'avy-kill-region)
-(global-set-key (kbd "C-:") 'avy-kill-whole-line)
-
-
-;; Avy zap up to char
-(global-set-key (kbd "M-z") #'avy-zap-up-to-char)
-
-;; Flyspell
-(eval-after-load 'flyspell '(define-key flyspell-mode-map (kbd "C-;") nil)) ;;disables the binding so avy can use it
-
-;; Rainbow delimiters
-(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
-
-
-;; Smart mode line
-(setq sml/theme 'dark)
-(sml/setup)
-
-
-;; Smex
-(setq smex-save-file (expand-file-name ".smex-items" user-emacs-directory))
-(smex-initialize)
-(global-set-key (kbd "M-x") 'smex)
-(global-set-key (kbd "M-X") 'smex-major-mode-commands)
-
-;; Undo tree
-(require 'undo-tree)
-(global-undo-tree-mode)
-(setq undo-tree-visualizer-timestamps t)
-(setq undo-tree-visualizer-diff t)
-
-;; Windmove
-(require 'windmove)
-(windmove-default-keybindings)
-
-(eval-after-load 'lua-mode
-  (progn
-	(setq lua-indent-level 4)
-	))
-
-;; Eshell
-(setq eshell-prompt-function
-	  (lambda ()
-		(concat
-		 (propertize "┌─[" 'face `(:foreground "green"))
-		 (propertize (user-login-name) 'face `(:foreground "red"))
-		 (propertize "@" 'face `(:foreground "green"))
-		 (propertize (system-name) 'face `(:foreground "blue"))
-		 (propertize "]──[" 'face `(:foreground "green"))
-		 (propertize (format-time-string "%H:%M" (current-time)) 'face `(:foreground "yellow"))
-		 (propertize "]──[" 'face `(:foreground "green"))
-		 (propertize (concat (eshell/pwd)) 'face `(:foreground "white"))
-		 (propertize "]\n" 'face `(:foreground "green"))
-		 (propertize "└─>" 'face `(:foreground "green"))
-		 (propertize (if (= (user-uid) 0) " # " " $ ") 'face `(:foreground "green"))
-		 )))
+(load "plugin-config")
 
 ;; Hooks ------------------------
 
@@ -146,15 +91,14 @@
 ;; Org mode hooks
 (eval-after-load 'org
   (progn
-	(defun user--org-mode-config () "Configuration for org mode."
-	  (interactive)
-	  (define-key org-mode-map [tab] 'hippie-expand) ;; Set these two, because I use tab complete much more than cycle
-	  (define-key org-mode-map (kbd "C-<home>") 'org-global-cycle)
-	  (setq org-log-done t)
-	  (setq fill-column 100))
-	(add-hook 'org-mode-hook 'user--org-mode-config)
-	(add-hook 'org-mode-hook 'visual-line-mode) ;; Make org just wrap long lines
-	(add-hook 'org-mode-hook 'auto-fill-mode)))
+    (defun user--org-mode-config () "Configuration for org mode."
+      (interactive)
+      (define-key org-mode-map [tab] 'hippie-expand) ;; Set these two, because I use tab complete much more than cycle
+      (setq org-log-done t)
+      (setq fill-column 100))
+    (add-hook 'org-mode-hook 'user--org-mode-config)
+    (add-hook 'org-mode-hook 'visual-line-mode) ;; Make org just wrap long lines
+    (add-hook 'org-mode-hook 'auto-fill-mode)))
 
 ;; Programming mode hooks
 (defun user--prog-hippie-expand-setting () (interactive)
@@ -168,87 +112,8 @@
 (add-hook 'man-mode-hook 'visual-line-mode)
 
 ;; Keybindings ---------------------------------
-
-;; Tab completion
-(global-set-key (kbd "<tab>") 'hippie-expand)
-(global-set-key (kbd "C-<tab>") 'indent-for-tab-command) ;; Old function of tab
-
-;; Make using ISearch much easier
-(define-key isearch-mode-map [next]		'isearch-repeat-forward)
-(define-key isearch-mode-map [prior]	'isearch-repeat-backward)
-(global-set-key (kbd "C-s")				'isearch-forward-regexp)
-(global-set-key (kbd "C-r")				'isearch-backward-regexp)
-(global-set-key (kbd "C-M-s")			'multi-isearch-buffers-regexp)
-(global-unset-key (kbd "C-M-r"))
-
-;; Search all loaded buffers for a regex
-(defun user--search-all-buffers (regexp) "Search all open buffers for a regex. Open an occur-like window."
-  (interactive "sRegexp: ")
-  (multi-occur-in-matching-buffers "." regexp t))
-(global-set-key [f7] 'user--search-all-buffers)
-
-;; Unbind arrow keys, use them for specialized movement instead
-(global-set-key (kbd "<right>")	   'user--mark-ring-forward)
-(global-set-key (kbd "C-<right>")  'next-buffer)
-(global-set-key (kbd "<up>")	   'scroll-down-command)
-(global-set-key (kbd "C-<left>")   'previous-buffer)
-(global-set-key (kbd "<left>")	   'pop-to-mark-command)
-(global-set-key (kbd "<down>")	   'scroll-up-command)
-
-;; Bind home and end to use point register commands
-(defun user--safe-point-to-register (register)
-  "Asks for confirmation before overwriting an existing register with a point-to-register."
-  (interactive "cRegister:")
-  (if (not (get-register register))
-	  (point-to-register register)
-	(if (y-or-n-p "Replace existing register?")
-		(point-to-register register))))
-
-(global-set-key (kbd "<home>") 'jump-to-register)
-(global-set-key (kbd "<end>") 'user--safe-point-to-register)
-
-
-;; Disable moving point with clicks
-(dolist (k '([mouse-1] [down-mouse-1] [drag-mouse-1] [double-mouse-1] [triple-mouse-1]
-			 [mouse-2] [down-mouse-2] [drag-mouse-2] [double-mouse-2] [triple-mouse-2]
-			 [mouse-3] [down-mouse-3] [drag-mouse-3] [double-mouse-3] [triple-mouse-3]
-			 [mouse-4] [down-mouse-4] [drag-mouse-4] [double-mouse-4] [triple-mouse-4]
-			 [mouse-5] [down-mouse-5] [drag-mouse-5] [double-mouse-5] [triple-mouse-5]))
-  (global-unset-key k))
-
-
-;; Transposing
-(global-set-key (kbd "C-t") nil) ;; Remove the old keybinding
-(global-set-key (kbd "C-t c") 'transpose-chars)
-(global-set-key (kbd "C-t w") 'transpose-words)
-(global-set-key (kbd "C-t l") 'transpose-lines)
-(global-set-key (kbd "C-t e") 'transpose-sexps)
-(global-set-key (kbd "C-t s") 'transpose-sentences)
-(global-set-key (kbd "C-t p") 'transpose-paragraphs)
-
-;; End of line and newline
-(defun user--end-of-line-newline ()
-  "Moves to the end of the line and newlines."
-  (interactive)
-  (end-of-line)
-  (newline))
-(global-set-key (kbd "C-<return>") 'user--end-of-line-newline)
-
-;; External function binds, emacs binds
-(global-set-key (kbd "C-x C-b")	   'ibuffer) ;; Interactive buffer switch
-(global-set-key (kbd "C-c s")	   'eshell) ;; Open a shell easily in emacs
-(global-set-key (kbd "<mouse-9>")  'beginning-of-buffer) ;;Move to the beginning and end of buffer with mouse buttons.
-(global-set-key (kbd "<mouse-8>")  'end-of-buffer)
-(global-set-key (kbd "C-c d p")	   'user--delete-in-parentheses) ;; Delete text within parentheses.
-(global-set-key (kbd "C-c d q")	   'user--delete-in-quotes) ;; Delete text within quotes.
-(global-set-key (kbd "C-c d b")	   'user--delete-in-brackets) ;; Delete text within brackets, eg [],{}, <>
-(global-set-key (kbd "C-x C-d")	   'user--insert-date) ;; Insert the date
-(global-set-key (kbd "<f8>")	   'neotree-toggle)
-(global-set-key (kbd "C-c a")	   'align-regexp)
-(global-set-key (kbd "C-z")		   'repeat) ;;stop accidentally hitting this and minimizing
-(global-set-key (kbd "C-c f")	   'follow-delete-other-windows-and-split) ;; Enter follow mode quickly
-(global-set-key (kbd "C-c n")	   'user--make-temp-file) ;;Create a temporary file that's a bit more persistant than scratch
-
+(load "misc-functions")
+(load "keybindings")
 
 ;; Finalization ----------------------
 

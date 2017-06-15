@@ -1,4 +1,4 @@
-personal_ws-1.1 en 92 
+personal_ws-1.1 en 93 
 pixelated
 login
 gif
@@ -8,8 +8,8 @@ Screenshots
 json
 Obama
 UI
-plugins
 procedurally
+plugins
 subreddit
 config
 benchmarking
@@ -23,9 +23,9 @@ symlinks
 desynchronised
 Wiki's
 gifs
+gameplay
 changelog
 spawners
-gameplay
 init
 txt
 Biomes
@@ -66,6 +66,7 @@ vimrc
 multiplayer
 waypoints
 cooldown
+CSS
 executables
 sudo
 desyncs

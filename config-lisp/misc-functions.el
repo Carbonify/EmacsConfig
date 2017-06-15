@@ -12,15 +12,12 @@
   (save-buffer)
   (switch-to-buffer nil))
 
+
 (defun user--clean-buffer () "Cleans the buffer by re-indenting, changing tabs to spaces, and removing trailing whitespace."
   (interactive)
   (delete-trailing-whitespace) ;; Remove whitespace from the ends of lines
-  (if (not (or (derived-mode-p 'text-mode) (derived-mode-p 'special-mode))) ;; If the buffer is a programming one
-      (progn
-        (indent-region (point-min) (point-max) nil)
-        (tabify (point-min) (point-max)))
-    (untabify (point-min) (point-max)))
-  (save-excursion (replace-regexp "^\n\\{3,\\}" "\n\n" nil (point-min) (point-max)))) ;; Replace more than 2 newlines with 2 newlines
+  (save-excursion (replace-regexp "^\n\\{3,\\}" "\n\n" nil (point-min) (point-max))) ;; Replace more than 2 newlines with 2 newlines
+  (untabify (point-min) (point-max))) ;; Turn tabs into spaces
 
 (defun user--delete-in-quotes () "Deletes the text inside of quotes."
   (interactive)
@@ -96,5 +93,36 @@
   (switch-to-buffer name)
   (write-file (concat temporary-file-directory name)))
 
+(defun user--search-all-buffers (regexp) "Search all open buffers for a regex. Open an occur-like window."
+  (interactive "sRegexp: ")
+  (multi-occur-in-matching-buffers "." regexp t))
 
-(provide 'misc-functions)
+(defun user--safe-point-to-register (register)
+  "Asks for confirmation before overwriting an existing register with a point-to-register."
+  (interactive "cRegister:")
+  (if (not (get-register register))
+      (point-to-register register)
+    (if (y-or-n-p "Replace existing register?")
+        (point-to-register register))))
+
+(defun user--safe-copy-to-register (register)
+  "Asks for confirmation before overwriting an existing register with a copy-to-register."
+  (interactive "cRegister:")
+    (if (not (get-register register))
+      (copy-to-register register (region-beginning) (region-end))
+    (if (y-or-n-p "Replace existing register?")
+        (copy-to-register register (region-beginning) (region-end)))))
+
+(defun user--safe-window-config-to-register (register)
+  "Asks for confirmation before overwriting an existing register with a window-configuration-to-register."
+  (interactive "cRegister:")
+    (if (not (get-register register))
+      (window-configuration-to-register register)
+    (if (y-or-n-p "Replace existing register?")
+        (window-configuration-to-register register))))
+
+(defun user--end-of-line-newline ()
+  "Moves to the end of the line and newlines."
+  (interactive)
+  (end-of-line)
+  (newline))
