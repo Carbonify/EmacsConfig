@@ -4,6 +4,13 @@
 (global-set-key (kbd "<tab>") 'hippie-expand)
 (global-set-key (kbd "C-<tab>") 'indent-for-tab-command) ;; Old function of tab
 
+;; Reindent buffer
+(defun user--reindent-buffer ()
+  "Reindents the entire buffer."
+  (interactive)
+  (indent-region (point-min) (point-max)))
+(global-set-key (kbd "C-c i") 'user--reindent-buffer)
+
 ;; Make using ISearch much easier
 (define-key isearch-mode-map [next]     'isearch-repeat-forward)
 (define-key isearch-mode-map [prior]    'isearch-repeat-backward)

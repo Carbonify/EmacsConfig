@@ -127,10 +127,13 @@
   (end-of-line)
   (newline))
 
-(defun user--skim-buffer (lines seconds)
-  "Scrolls the buffer `lines` every `seconds`, which allows for roughly skimming over a buffer."
-  (interactive "nScroll lines: \nnEvery seconds: ")
-  (while (not (= (point) (point-max)))
-    (scroll-up-line lines)
-    (end-of-line)
-    (sit-for seconds)))
+(defun user--skim-buffer (lines)
+  "Scrolls the buffer `lines` per second, which allows for roughly skimming over a buffer."
+  (interactive "nLines per sec: ")
+  (let ((rate (/ 3 (float lines)))
+        (movement (floor (sqrt lines))))
+    (while (not (= (point) (point-max)))
+      (scroll-up movement)
+      (forward-line movement)
+      (end-of-line)
+      (sit-for rate))))

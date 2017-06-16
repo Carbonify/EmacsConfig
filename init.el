@@ -89,16 +89,10 @@
 
 
 ;; Org mode hooks
-(eval-after-load 'org
-  (progn
-    (defun user--org-mode-config () "Configuration for org mode."
-      (interactive)
-      (define-key org-mode-map [tab] 'hippie-expand) ;; Set these two, because I use tab complete much more than cycle
-      (setq org-log-done t)
-      (setq fill-column 100))
-    (add-hook 'org-mode-hook 'user--org-mode-config)
-    (add-hook 'org-mode-hook 'visual-line-mode) ;; Make org just wrap long lines
-    (add-hook 'org-mode-hook 'auto-fill-mode)))
+(add-hook 'org-mode-hook 'visual-line-mode) ;; Make org just wrap long lines
+(add-hook 'org-mode-hook 'auto-fill-mode)
+(add-hook 'org-mode-hook '(lambda ()
+                            (setq fill-column 100)))
 
 ;; Programming mode hooks
 (defun user--prog-hippie-expand-setting () (interactive)
@@ -110,6 +104,12 @@
 
 ;; Manual pages
 (add-hook 'man-mode-hook 'visual-line-mode)
+
+;; Ibuffer mode
+(add-hook 'ibuffer-mode-hook
+          '(lambda ()
+             (ibuffer-auto-mode t)
+             (ibuffer-switch-to-saved-filter-groups "Standard"))) ;; See plugin config for definition
 
 ;; Keybindings ---------------------------------
 (load "misc-functions")
