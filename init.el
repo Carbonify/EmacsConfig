@@ -46,7 +46,7 @@
 (setq inhibit-startup-message t)  ;; Disable the startup screen
 (setq frame-title-format '(buffer-file-name "Emacs: %b (%f)" "Emacs: %b"))
 (setq-default tab-width 4) ;; Smaller default tab width
-(setq search-whitespace-regexp "[-_ \n]")
+(setq search-whitespace-regexp "[_- \\n]")
 
 
 ;;Color theme

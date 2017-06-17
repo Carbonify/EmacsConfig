@@ -67,7 +67,7 @@
 
 ;; External function binds, emacs binds
 (global-set-key (kbd "C-x C-b")    'ibuffer) ;; Interactive buffer switch
-(global-set-key (kbd "C-c s")      'eshell) ;; Open a shell easily in emacs
+(global-set-key (kbd "C-x s")      'eshell) ;; Open a shell easily in emacs
 (global-set-key (kbd "C-c d p")    'user--delete-in-parentheses) ;; Delete text within parentheses.
 (global-set-key (kbd "C-c d q")    'user--delete-in-quotes) ;; Delete text within quotes.
 (global-set-key (kbd "C-c d b")    'user--delete-in-brackets) ;; Delete text within brackets, eg [],{}, <>

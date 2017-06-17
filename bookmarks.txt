@@ -2,7 +2,12 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-((".factorio"
+(("Keyboard Macros"
+ (filename . "~/.emacs.d/macros.el")
+ (front-context-string . ";; This file hol")
+ (rear-context-string)
+ (position . 1))
+(".factorio"
  (filename . "~/.factorio/")
  (front-context-string . "..\n  -rw-rw-r-- ")
  (rear-context-string . "96 May 28 22:35 ")

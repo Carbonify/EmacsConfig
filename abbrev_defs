@@ -9,6 +9,8 @@
 
 (define-abbrev-table 'bibtex-mode-abbrev-table '())
 
+(define-abbrev-table 'bookmark-bmenu-mode-abbrev-table '())
+
 (define-abbrev-table 'c++-mode-abbrev-table '())
 
 (define-abbrev-table 'c-mode-abbrev-table '())
@@ -54,7 +56,12 @@
 
 (define-abbrev-table 'markdown-mode-abbrev-table '())
 
-(define-abbrev-table 'mediawiki-mode-abbrev-table '())
+(define-abbrev-table 'mediawiki-mode-abbrev-table
+  '(
+    ("factorio" "Factorio" nil 15)
+    ("ingame" "in-game" nil 0)
+    ("lua" "Lua" nil 0)
+   ))
 
 (define-abbrev-table 'message-mode-abbrev-table '())
 
@@ -93,13 +100,13 @@
 (define-abbrev-table 'text-mode-abbrev-table
   '(
     ("america" "America" nil 1)
+    ("api" "API" nil 0)
     ("cant" "can't" nil 1)
     ("carreer" "career" nil 0)
     ("didnt" "didn't" nil 0)
     ("dont" "don't" nil 2)
     ("eachother" "each other" nil 1)
     ("english" "English" nil 1)
-    ("factorio" "Factorio" nil 10)
     ("friday" "Friday" nil 0)
     ("german" "German" nil 1)
     ("goverment" "government" nil 0)
@@ -111,6 +118,7 @@
     ("isnt" "isn't" nil 0)
     ("ive" "I've" nil 3)
     ("iwth" "with" nil 0)
+    ("licence" "license" nil 0)
     ("maintenence" "maintenance" nil 0)
     ("monday" "Monday" nil 0)
     ("neccesary" "necessary" nil 0)
@@ -139,11 +147,12 @@
     ("tm" "&trade;" nil 0)
     ("tset" "test" nil 1)
     ("tuesday" "Tuesday" nil 0)
+    ("unlicence" "unlicense" nil 0)
     ("w/" "with" nil 0)
     ("w/o" "without" nil 0)
     ("wednesday" "Wednesday" nil 0)
     ("weve" "we've" nil 1)
-    ("wiki" "Wiki" nil 1)
+    ("wiki" "Wiki" nil 3)
     ("wont" "won't" nil 0)
     ("wouldve" "would've" nil 0)
     ("ymmv" "your mileage may vary" nil 0)
