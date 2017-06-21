@@ -18,6 +18,7 @@
   (list '(nil "^==+ *\\(.*[^\n=]\\)==+" 1))
   "Imenu expression for `mediawiki-mode'.  See `imenu-generic-expression'.")
 
+(make-variable-buffer-local 'page-delimiter) ;; Change definition of a page.to be only level 1 headings.
 
 (defface font-mediawiki-bold-face
   (let ((font (cond ((assq :inherit custom-face-attributes) '(:inherit bold))
@@ -299,9 +300,9 @@
   "Major mode for Mediawiki articles. This mode adds several keybinds to make editing mediawiki articles much easier.
   The standard page commands will work instead on each == header == delimiting pages.
    \\{mediawiki-mode-map}"
-  :abbrev-table nil
 
   ;; Option configs
+  (abbrev-table-put mediawiki-mode-abbrev-table :parents (list text-mode-abbrev-table))
   (set (make-local-variable 'font-lock-multiline) t)
   (set (make-local-variable 'font-lock-defaults) '(mediawiki-font-lock-keywords t nil nil nil))
   (set (make-local-variable 'comment-start-skip) "\\(?:<!\\)?-- *")
@@ -314,7 +315,7 @@
          mediawiki-imenu-generic-expression)
     (imenu-add-to-menubar "Contents"))
 
-  (make-variable-buffer-local 'page-delimiter) ;; Change definition of a page.to be only level 1 headings.
+
   (setq page-delimiter "^== .* ?==$")
 
   ;; Key map

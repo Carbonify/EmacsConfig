@@ -54,11 +54,20 @@
 
 (define-abbrev-table 'log-edit-mode-abbrev-table '())
 
+(define-abbrev-table 'lua-mode-abbrev-table
+  '(
+    ("def" "defines." nil 0)
+    ("func" "function" nil 0)
+    ("g" "global" nil 0)
+    ("l" "local" nil 0)
+    ("sonev" "script.on_event(" nil 0)
+   ))
+
 (define-abbrev-table 'markdown-mode-abbrev-table '())
 
 (define-abbrev-table 'mediawiki-mode-abbrev-table
   '(
-    ("factorio" "Factorio" nil 15)
+    ("factorio" "Factorio" nil 26)
     ("ingame" "in-game" nil 0)
     ("lua" "Lua" nil 0)
    ))
@@ -100,7 +109,7 @@
 (define-abbrev-table 'text-mode-abbrev-table
   '(
     ("america" "America" nil 1)
-    ("api" "API" nil 0)
+    ("api" "API" nil 3)
     ("cant" "can't" nil 1)
     ("carreer" "career" nil 0)
     ("didnt" "didn't" nil 0)

@@ -1,4 +1,4 @@
-personal_ws-1.1 en 98 
+personal_ws-1.1 en 99 
 runtime
 API
 desynchronizations
@@ -14,8 +14,8 @@ config
 waypoint
 regex
 desynced
-guis
 GUIs
+guis
 dev
 axe
 Mediawiki
@@ -47,6 +47,7 @@ symlinks
 factorio
 Trinary
 Gangsir
+DRM
 subreddit
 devs
 filetype

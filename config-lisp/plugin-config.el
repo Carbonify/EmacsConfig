@@ -74,5 +74,5 @@
 ;; Org
 (eval-after-load 'org
   '(progn
-      (define-key org-mode-map [tab] 'hippie-expand) ;; Set these two, because I use tab complete much more than cycle
+      (define-key org-mode-map [tab] 'hippie-expand) ;; Set this, because I use tab complete much more than cycle
       (setq org-log-done t)))

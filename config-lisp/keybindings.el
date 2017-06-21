@@ -19,9 +19,6 @@
 (global-set-key (kbd "C-M-s")           'multi-isearch-buffers-regexp)
 (global-unset-key (kbd "C-M-r"))
 
-;; Search all loaded buffers for a regex
-(global-set-key [f7] 'user--search-all-buffers)
-
 ;; Unbind arrow keys, use them for specialized movement instead
 (global-set-key (kbd "<right>")    'user--mark-ring-forward)
 (global-set-key (kbd "C-<right>")  'next-buffer)
@@ -29,6 +26,12 @@
 (global-set-key (kbd "C-<left>")   'previous-buffer)
 (global-set-key (kbd "<left>")     'pop-to-mark-command)
 (global-set-key (kbd "<down>")     'scroll-up-command)
+
+;; Window manipulation
+(global-set-key (kbd "S-C-<right>")      'shrink-window-horizontally)
+(global-set-key (kbd "S-C-<left>")     'enlarge-window-horizontally)
+(global-set-key (kbd "S-C-<down>")      'shrink-window)
+(global-set-key (kbd "S-C-<up>")        'enlarge-window)
 
 ;; REGISTERS ----------------------
 ;; Bind home and end to use point register commands
@@ -78,3 +81,4 @@
 (global-set-key (kbd "C-c f")      'follow-delete-other-windows-and-split) ;; Enter follow mode quickly
 (global-set-key (kbd "C-c n")      'user--make-temp-file) ;;Create a temporary file that's a bit more persistant than scratch
 (global-set-key (kbd "C-c s")      'user--skim-buffer) ;; Skims a buffer with x lines per x seconds.
+(global-set-key (kbd "M-.")        'user--search-all-buffers)

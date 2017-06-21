@@ -43,10 +43,21 @@
 (setq kmacro-execute-before-append nil) ;; Make macros not execute before appending with C-u F3
 (setq delete-by-moving-to-trash t) ;; Make dired not delete files permenently
 (defalias 'yes-or-no-p 'y-or-n-p) ;; Make prompt dialogue shorter.
-(setq inhibit-startup-message t)  ;; Disable the startup screen
+(setq inhibit-startup-message t)  ;; Disable the standard startup screen, replacing it with something better.
+(setq initial-major-mode 'fundamental-mode)
+(setq initial-scratch-message "Blank scratch buffer for experiments or short volatile notes.")
 (setq frame-title-format '(buffer-file-name "Emacs: %b (%f)" "Emacs: %b"))
 (setq-default tab-width 4) ;; Smaller default tab width
 (setq search-whitespace-regexp "[_- \\n]")
+(setq-default indent-tabs-mode nil)
+
+
+;; Scrolling
+(setq redisplay-dont-pause t
+      scroll-margin 1
+      scroll-step 1
+      scroll-conservatively 10000
+      scroll-preserve-screen-position 1)
 
 
 ;;Color theme
