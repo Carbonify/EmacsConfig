@@ -1,0 +1,14 @@
+;;; -*- coding: utf-8 -*-
+(("/home/noah/.emacs.d/init.el" . 3059)
+ ("/home/noah/.emacs.d/custom.el" . 989)
+ ("/home/noah/.emacs.d/abbrev_defs" . 1039)
+ ("/home/noah/.emacs.d/ido.last" . 1493)
+ ("/home/noah/.factorio/"
+  (dired-filename . "/home/noah/.factorio/.."))
+ ("/home/noah/.emacs.d/elpa/avy-20171230.220/avy-autoloads.el" . 7504)
+ ("/home/noah/.emacs.d/elpa/dash-20180206.2124/dash-autoloads.el" . 220)
+ ("/home/noah/.emacs.d/elpa/lua-mode-20180207.1216/lua-mode-autoloads.el" . 915)
+ ("/home/noah/.emacs.d/elpa/markdown-mode-20180124.138/markdown-mode-autoloads.el" . 1018)
+ ("/home/noah/.emacs.d/elpa/rainbow-delimiters-20170929.432/rainbow-delimiters-autoloads.el" . 726)
+ ("/home/noah/.emacs.d/elpa/rich-minority-20170813.622/rich-minority-autoloads.el" . 1144)
+ ("/home/noah/.emacs.d/elpa/smart-mode-line-20180129.130/smart-mode-line-autoloads.el" . 1912))

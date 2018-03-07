@@ -60,9 +60,6 @@
       scroll-preserve-screen-position 1)
 
 
-;;Color theme
-(load-theme 'tango)
-
 ;; Bookmarking
 (require 'bookmark)
 (setq bookmark-default-file "~/.emacs.d/bookmarks.txt")
@@ -70,6 +67,8 @@
 (bookmark-bmenu-list)
 (switch-to-buffer "*Bookmark List*")
 
+;; Theme
+(load-theme 'misterioso)
 
 ;; IDO mode
 (ido-mode t)

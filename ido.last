@@ -1,0 +1,26 @@
+;;; -*- coding: utf-8 -*-
+
+;; ----- ido-last-directory-list -----
+(
+ ("/home/noah/" . ".emacs.d/")
+)
+
+;; ----- ido-work-directory-list -----
+(
+ "/home/noah/.emacs.d/"
+)
+
+;; ----- ido-work-file-list -----
+(
+ "abbrev_defs"
+)
+
+;; ----- ido-dir-file-cache -----
+(
+ ("/home/noah/.emacs.d/" (23200 1354 908759 269000) "auto-save-list/" "custom.el" "init.el" ".git/" "places" ".smex-items" "config-lisp/" "abbrev_defs" "./" ".gitignore" "manual-install/" "../" "elpa/" "bookmarks.txt" "dictionary" "macros.el")
+
+ ("/home/noah/" (23199 65157 498171 638000) ".rustup/" ".nano/" ".steam/" ".audacity-data/" ".Xauthority" ".thunderbird/" ".nvidia-settings-rc" ".cache/" "Desktop/" ".java/" ".factorio/" ".gconf/" "Podcasts/" ".multirust/" ".pki/" ".cargo/" "Documents/" ".purple/" ".ssh/" ".pulse-cookie" ".gnubg/" ".gitconfig" ".xinputrc" ".dmrc" ".gtkrc-2.0" "Universe Sandbox ²/" ".thumbnails/" ".netbeans/" ".mozilla/" ".nv/" ".macromedia/" ".gnome2/" ".steampid" "Templates/" ".Xdefaults" ".ICEauthority" "NetBeansProjects/" "Videos/" ".hardinfo/" ".bash_logout" ".gtkrc.bak" "./" ".gnome2_private/" ".icons/" "netbeans-8.2/" ".gnupg/" ".synaptic/" ".sudo_as_admin_successful" ".xsession-errors.old" "Music/" ".steampath" "Downloads/" ".profile" "Pictures/" ".dbus/" ".xsession-errors" "bin/" ".bash_history" ".local/" ".adobe/" ".nbi/" "../" ".emacs.d/" ".vim/" ".xscreensaver" "Public/" ".config/" ".adom.steam/" ".oracle_jre_usage/" ".bashrc" ".viminfo")
+)
+
+;; ----- ido-unc-hosts-cache -----
+t

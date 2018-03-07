@@ -11,6 +11,8 @@
 
 (define-abbrev-table 'bookmark-bmenu-mode-abbrev-table '())
 
+(define-abbrev-table 'bookmark-edit-annotation-mode-abbrev-table '())
+
 (define-abbrev-table 'c++-mode-abbrev-table '())
 
 (define-abbrev-table 'c-mode-abbrev-table '())
@@ -24,6 +26,8 @@
 (define-abbrev-table 'completion-list-mode-abbrev-table '())
 
 (define-abbrev-table 'display-time-world-mode-abbrev-table '())
+
+(define-abbrev-table 'edit-abbrevs-mode-abbrev-table '())
 
 (define-abbrev-table 'emacs-lisp-byte-code-mode-abbrev-table '())
 
@@ -74,6 +78,8 @@
 
 (define-abbrev-table 'message-mode-abbrev-table '())
 
+(define-abbrev-table 'messages-buffer-mode-abbrev-table '())
+
 (define-abbrev-table 'objc-mode-abbrev-table '())
 
 (define-abbrev-table 'occur-edit-mode-abbrev-table '())
@@ -108,24 +114,25 @@
 
 (define-abbrev-table 'text-mode-abbrev-table
   '(
-    ("america" "America" nil 1)
-    ("api" "API" nil 3)
-    ("cant" "can't" nil 1)
+    ("america" "America" nil 0)
+    ("api" "API" nil 0)
+    ("cant" "can't" nil 0)
     ("carreer" "career" nil 0)
+    ("consistant" "consistent" nil 0)
     ("didnt" "didn't" nil 0)
-    ("dont" "don't" nil 2)
-    ("eachother" "each other" nil 1)
-    ("english" "English" nil 1)
+    ("dont" "don't" nil 0)
+    ("eachother" "each other" nil 0)
+    ("english" "English" nil 0)
     ("friday" "Friday" nil 0)
-    ("german" "German" nil 1)
+    ("german" "German" nil 0)
     ("goverment" "government" nil 0)
-    ("havent" "haven't" nil 0)
-    ("hes" "he's" nil 2)
-    ("i" "I" nil 44)
+    ("havent" "havent" nil 0)
+    ("hes" "he's" nil 0)
+    ("i" "I" nil 0)
     ("idk" "I don't know" nil 0)
-    ("im" "I'm" nil 3)
+    ("im" "I'm" nil 0)
     ("isnt" "isn't" nil 0)
-    ("ive" "I've" nil 3)
+    ("ive" "I've" nil 0)
     ("iwth" "with" nil 0)
     ("licence" "license" nil 0)
     ("maintenence" "maintenance" nil 0)
@@ -137,36 +144,40 @@
     ("occor" "occur" nil 0)
     ("occorring" "occurring" nil 0)
     ("paralell" "parallel" nil 0)
-    ("reccomended" "recommended" nil 1)
+    ("reccomended" "recommended" nil 0)
     ("recieve" "receive" nil 0)
-    ("recieved" "received" nil 1)
+    ("recieved" "received" nil 0)
+    ("recieving" "receiving" nil 0)
     ("rememver" "remember" nil 0)
     ("saturday" "Saturday" nil 0)
-    ("seperate" "separate" nil 2)
+    ("seperate" "separate" nil 0)
+    ("seperated" "separated" nil 0)
     ("sophmore" "sophomore" nil 0)
     ("sunday" "Sunday" nil 0)
+    ("suprised" "surprised" nil 0)
+    ("suprized" "surprised" nil 0)
     ("teh" "the" nil 0)
     ("tf2" "Team Fortress 2" nil 0)
     ("tge" "the" nil 0)
     ("thats" "that's" nil 0)
     ("theyd" "they'd" nil 0)
-    ("theyre" "they're" nil 0)
-    ("thier" "their" nil 2)
+    ("theyre" "theyre" nil 0)
+    ("thier" "their" nil 0)
     ("thursday" "Thursday" nil 0)
     ("tm" "&trade;" nil 0)
-    ("tset" "test" nil 1)
+    ("tset" "test" nil 0)
     ("tuesday" "Tuesday" nil 0)
     ("unlicence" "unlicense" nil 0)
-    ("w/" "with" nil 0)
-    ("w/o" "without" nil 0)
     ("wednesday" "Wednesday" nil 0)
-    ("weve" "we've" nil 1)
-    ("wiki" "Wiki" nil 3)
+    ("weve" "we've" nil 0)
+    ("wiki" "Wiki" nil 0)
     ("wont" "won't" nil 0)
     ("wouldve" "would've" nil 0)
     ("ymmv" "your mileage may vary" nil 0)
     ("youre" "you're" nil 0)
    ))
+
+(define-abbrev-table 'url-cookie-mode-abbrev-table '())
 
 (define-abbrev-table 'vc-git-log-edit-mode-abbrev-table '())
 
