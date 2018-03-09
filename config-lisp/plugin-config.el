@@ -58,21 +58,26 @@
 ;; Ibuffer
 (eval-after-load 'ibuffer
   '(progn
-    (setq ibuffer-show-empty-filter-groups nil)
-    (setq ibuffer-saved-filter-groups
-      (quote (("Standard"
-               ("ELisp" (mode . emacs-lisp-mode))
-               ("Text" (or (mode . text-mode)
-                           (mode . markdown-mode)
-                           (mode . mediawiki-mode)))
-               ("Dired" (mode . dired-mode))
-               ("Org" (mode . org-mode))
-               ("Programming" (or (mode . javascript-mode)
-                                  (mode . lua-mode)))
-               ("Special Buffer" (name . "^\\*.*\\*$"))))))))
+     (setq ibuffer-show-empty-filter-groups nil)
+     (setq ibuffer-saved-filter-groups
+           (quote (("Standard"
+                    ("ELisp" (mode . emacs-lisp-mode))
+                    ("Text" (or (mode . text-mode)
+                                (mode . markdown-mode)
+                                (mode . mediawiki-mode)))
+                    ("Dired" (mode . dired-mode))
+                    ("Org" (mode . org-mode))
+                    ("Programming" (or (mode . javascript-mode)
+                                       (mode . lua-mode)))
+                    ("Special Buffer" (name . "^\\*.*\\*$"))))))))
 
 ;; Org
 (eval-after-load 'org
   '(progn
-      (define-key org-mode-map [tab] 'hippie-expand) ;; Set this, because I use tab complete much more than cycle
-      (setq org-log-done t)))
+     (define-key org-mode-map [tab] 'hippie-expand) ;; Set this, because I use tab complete much more than cycle
+     (setq org-log-done t)))
+
+;; Racer (Rust prg)
+(eval-after-load 'rust-mode
+  '(progn
+     (setq racer-cmd "~/.cargo/bin/racer")))

@@ -33,6 +33,7 @@
 (setq save-interprogram-paste-before-kill t) ;; Save the clipboard to kill ring
 (setq lazy-highlight-initial-delay 3)
 (setq lazy-highlight-max-at-a-time 35)
+(setq auto-window-vscroll nil) ;; Fix scrolling performance issues
 (setq custom-file "~/.emacs.d/custom.el") ;; Change customization save file.
 (load custom-file)
 (put 'narrow-to-region 'disabled nil) ;; Enable narrow commands.
@@ -108,6 +109,8 @@
 (defun user--prog-hippie-expand-setting () (interactive)
   (setq hippie-expand-try-functions-list '(try-complete-file-name-partially try-complete-file-name try-expand-dabbrev try-expand-dabbrev-all-buffers)))
 (add-hook 'prog-mode-hook 'user--prog-hippie-expand-setting)
+(add-hook 'prog-mode-hook 'company-mode) ;; Enable company mode for programming
+(add-hook 'prog-mode-hook 'flycheck-mode) ;; Enable flycheck for programming
 
 ;; On buffer save hooks
 (add-hook 'before-save-hook 'user--clean-buffer)
@@ -120,6 +123,15 @@
           '(lambda ()
              (ibuffer-auto-mode t)
              (ibuffer-switch-to-saved-filter-groups "Standard"))) ;; See plugin config for definition
+
+;; Rust mode
+(add-hook 'rust-mode-hook #'cargo-minor-mode)
+(add-hook 'rust-mode-hook #'racer-mode)
+(add-hook 'rust-mode-hook #'eldoc-mode)
+;; Bind reindent to instead run rustfmt, as it can do it better
+(add-hook 'rust-mode-hook (lambda () (local-set-key (kbd "C-c i") #'rust-format-buffer)))
+(add-hook 'rust-mode-hook #'flycheck-rust-setup)
+
 
 ;; Keybindings ---------------------------------
 (load "misc-functions")

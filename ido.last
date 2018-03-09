@@ -2,24 +2,47 @@
 
 ;; ----- ido-last-directory-list -----
 (
+ ("/home/" . "noah/")
+ ("/" . "tmp/")
+ ("/tmp/example/" . "src/")
+ ("/tmp/" . "example/")
+ ("/home/noah/.emacs.d/" . "config-lisp/")
  ("/home/noah/" . ".emacs.d/")
 )
 
 ;; ----- ido-work-directory-list -----
 (
+ "/tmp/"
+ "/tmp/example/src/"
+ "/home/noah/"
+ "/home/noah/.emacs.d/config-lisp/"
  "/home/noah/.emacs.d/"
 )
 
 ;; ----- ido-work-file-list -----
 (
+ "test.txt"
+ "main.rs"
+ ".profile"
+ "plugin-config.el"
  "abbrev_defs"
 )
 
 ;; ----- ido-dir-file-cache -----
 (
- ("/home/noah/.emacs.d/" (23200 1354 908759 269000) "auto-save-list/" "custom.el" "init.el" ".git/" "places" ".smex-items" "config-lisp/" "abbrev_defs" "./" ".gitignore" "manual-install/" "../" "elpa/" "bookmarks.txt" "dictionary" "macros.el")
+ ("/tmp/" (23202 619 855776 836000) "#!tmp!example!src!main.rs#" "!home!noah!.emacs.d!elpa!flycheck-rust-20171021.151!flycheck-rust-autoloads.el~" "systemd-private-158daa5fb9174e779a20645ee4f48d20-systemd-timesyncd.service-PpcmqZ/" "!home!noah!.emacs.d!ido.last~" "systemd-private-158daa5fb9174e779a20645ee4f48d20-rtkit-daemon.service-VkKA6y/" ".Test-unix/" "config-err-xHNeuu" "Discord Crashes/" "!home!noah!.emacs.d!elpa!company-lua-20171108.1506!company-lua-autoloads.el~" "!home!noah!.profile~" "!home!noah!.emacs.d!elpa!seq-2.20!seq-autoloads.el~" ".X0-lock" "!home!noah!.emacs.d!elpa!company-0.9.6!company-autoloads.el~" "discord.sock" ".ICE-unix/" ".X11-unix/" "!home!noah!.emacs.d!elpa!epl-20180205.1249!epl-autoloads.el~" "!home!noah!.emacs.d!elpa!pkg-info-20150517.443!pkg-info-autoloads.el~" ".font-unix/" "!home!noah!.emacs.d!elpa!f-20180106.122!f-autoloads.el~" ".XIM-unix/" "dumps/" "test.txt" "!home!noah!.emacs.d!elpa!rust-mode-20180303.854!rust-mode-autoloads.el~" "!home!noah!.emacs.d!elpa!racer-20171211.1548!racer-autoloads.el~" "!home!noah!.emacs.d!elpa!flycheck-20180308.535!flycheck-autoloads.el~" "./" "!home!noah!.emacs.d!elpa!s-20180227.51!s-autoloads.el~" "!home!noah!.emacs.d!elpa!let-alist-1.0.5!let-alist-autoloads.el~" "../" "ssh-XLV2vMwCe9MQ/" "steam_chrome_shmem_uid1000_spid4105" "!home!noah!.emacs.d!elpa!cargo-20171218.855!cargo-autoloads.el~" "example/" "emacs1000/" "!home!noah!.emacs.d!elpa!pos-tip-20150318.813!pos-tip-autoloads.el~")
 
- ("/home/noah/" (23199 65157 498171 638000) ".rustup/" ".nano/" ".steam/" ".audacity-data/" ".Xauthority" ".thunderbird/" ".nvidia-settings-rc" ".cache/" "Desktop/" ".java/" ".factorio/" ".gconf/" "Podcasts/" ".multirust/" ".pki/" ".cargo/" "Documents/" ".purple/" ".ssh/" ".pulse-cookie" ".gnubg/" ".gitconfig" ".xinputrc" ".dmrc" ".gtkrc-2.0" "Universe Sandbox ²/" ".thumbnails/" ".netbeans/" ".mozilla/" ".nv/" ".macromedia/" ".gnome2/" ".steampid" "Templates/" ".Xdefaults" ".ICEauthority" "NetBeansProjects/" "Videos/" ".hardinfo/" ".bash_logout" ".gtkrc.bak" "./" ".gnome2_private/" ".icons/" "netbeans-8.2/" ".gnupg/" ".synaptic/" ".sudo_as_admin_successful" ".xsession-errors.old" "Music/" ".steampath" "Downloads/" ".profile" "Pictures/" ".dbus/" ".xsession-errors" "bin/" ".bash_history" ".local/" ".adobe/" ".nbi/" "../" ".emacs.d/" ".vim/" ".xscreensaver" "Public/" ".config/" ".adom.steam/" ".oracle_jre_usage/" ".bashrc" ".viminfo")
+ ("/tmp/example/" (23202 553 123855 141000) ".git/" "src/" "target/" "Cargo.lock" "./" "Cargo.toml" ".gitignore" "../")
+
+ ("/tmp/example/src/" (23202 613 799783 969000) "main.rs" "./" "../")
+
+ ("/home/noah/" (23201 65383 444614 848000) ".rustup/" ".nano/" ".steam/" ".audacity-data/" ".Xauthority" ".thunderbird/" ".nvidia-settings-rc" ".cache/" "Desktop/" ".java/" ".factorio/" ".gconf/" "Podcasts/" ".multirust/" ".pki/" ".cargo/" "Documents/" ".purple/" ".ssh/" ".pulse-cookie" ".gnubg/" ".gitconfig" ".xinputrc" ".dmrc" ".gtkrc-2.0" "Universe Sandbox ²/" ".thumbnails/" ".netbeans/" ".mozilla/" ".nv/" ".macromedia/" ".gnome2/" ".steampid" "Templates/" ".Xdefaults" ".ICEauthority" "NetBeansProjects/" "Videos/" ".hardinfo/" ".bash_logout" ".gtkrc.bak" "./" ".gnome2_private/" ".icons/" "netbeans-8.2/" ".gnupg/" ".synaptic/" ".sudo_as_admin_successful" ".xsession-errors.old" "Music/" ".steampath" "Downloads/" ".profile" "Pictures/" ".dbus/" ".xsession-errors" "bin/" ".bash_history" ".local/" ".adobe/" ".nbi/" "../" ".emacs.d/" ".vim/" ".xscreensaver" "Public/" ".config/" ".adom.steam/" ".oracle_jre_usage/" ".bashrc" ".viminfo")
+
+ ("/home/noah/.emacs.d/config-lisp/" (23201 64728 705319 643000) "autoloads.el" "keybindings.el" "plugin-config.el" "mediawiki-mode.elc" "mediawiki-mode.el" "./" "ftdetect.el" "misc-functions.el" "misc-functions.elc" "../")
+
+ ("/home/noah/.emacs.d/" (23201 64748 973292 381000) "auto-save-list/" "custom.el" "init.el" ".git/" "places" ".smex-items" "config-lisp/" "abbrev_defs" "ido.last" "./" ".gitignore" "manual-install/" "../" "elpa/" "bookmarks.txt" "dictionary" "macros.el")
+
+ ("/home/" (23150 39456 611145 765000) "noah/" "./" "../")
 )
 
 ;; ----- ido-unc-hosts-cache -----
