@@ -14,37 +14,37 @@
 
 
 (defun user--clean-buffer () "Cleans the buffer by re-indenting, changing tabs to spaces, and removing trailing whitespace."
-  (interactive)
-  (delete-trailing-whitespace) ;; Remove whitespace from the ends of lines
-  (save-excursion (replace-regexp "^\n\\{3,\\}" "\n\n" nil (point-min) (point-max))) ;; Replace more than 2 newlines with 2 newlines
-  (untabify (point-min) (point-max))) ;; Turn tabs into spaces
+       (interactive)
+       (delete-trailing-whitespace) ;; Remove whitespace from the ends of lines
+       (save-excursion (replace-regexp "^\n\\{3,\\}" "\n\n" nil (point-min) (point-max))) ;; Replace more than 2 newlines with 2 newlines
+       (untabify (point-min) (point-max))) ;; Turn tabs into spaces
 
 (defun user--delete-in-quotes () "Deletes the text inside of quotes."
-  (interactive)
-  (search-backward-regexp "[\"\']" (line-beginning-position)) ;; Search for a match on the same line, don't delete across lines
-  (forward-char)
-  (let  ((lstart (point)))
-    (search-forward-regexp "[\"\']" (line-end-position))
-    (backward-char)
-    (kill-region lstart (point))))
+       (interactive)
+       (search-backward-regexp "[\"\']" (line-beginning-position)) ;; Search for a match on the same line, don't delete across lines
+       (forward-char)
+       (let  ((lstart (point)))
+         (search-forward-regexp "[\"\']" (line-end-position))
+         (backward-char)
+         (kill-region lstart (point))))
 
 (defun user--delete-in-parentheses () "Deletes the text within parentheses."
-  (interactive)
-  (search-backward "(" (line-beginning-position)) ;; Search for a match on the same line, don't delete across lines
-  (forward-char)
-  (let  ((lstart (point)))
-    (search-forward ")" (line-end-position))
-    (backward-char)
-    (kill-region lstart (point))))
+       (interactive)
+       (search-backward "(" (line-beginning-position)) ;; Search for a match on the same line, don't delete across lines
+       (forward-char)
+       (let  ((lstart (point)))
+         (search-forward ")" (line-end-position))
+         (backward-char)
+         (kill-region lstart (point))))
 
 (defun user--delete-in-brackets () "Deletes the text within square brackets, angle brackets, and curly brackets."
-  (interactive)
-  (search-backward-regexp "[[{<]" (line-beginning-position)) ;; Search for a match on the same line, don't delete across lines
-  (forward-char)
-  (let ((lstart (point)))
-    (search-forward-regexp "[]}>]" (line-end-position))
-    (backward-char)
-    (kill-region lstart (point))))
+       (interactive)
+       (search-backward-regexp "[[{<]" (line-beginning-position)) ;; Search for a match on the same line, don't delete across lines
+       (forward-char)
+       (let ((lstart (point)))
+         (search-forward-regexp "[]}>]" (line-end-position))
+         (backward-char)
+         (kill-region lstart (point))))
 
 (defun user--rename-this-file-and-buffer (new-name)
   "Renames both current buffer and file it's visiting to NEW-NAME."
@@ -94,8 +94,8 @@
   (write-file (concat temporary-file-directory name)))
 
 (defun user--search-all-buffers (regexp) "Search all open buffers for a regex. Open an occur-like window."
-  (interactive "sRegexp: ")
-  (multi-occur-in-matching-buffers "." regexp t))
+       (interactive "sRegexp: ")
+       (multi-occur-in-matching-buffers "." regexp t))
 
 (defun user--safe-point-to-register (register)
   "Asks for confirmation before overwriting an existing register with a point-to-register."
@@ -108,7 +108,7 @@
 (defun user--safe-copy-to-register (register)
   "Asks for confirmation before overwriting an existing register with a copy-to-register."
   (interactive "cRegister:")
-    (if (not (get-register register))
+  (if (not (get-register register))
       (copy-to-register register (region-beginning) (region-end))
     (if (y-or-n-p "Replace existing register?")
         (copy-to-register register (region-beginning) (region-end)))))
@@ -116,7 +116,7 @@
 (defun user--safe-window-config-to-register (register)
   "Asks for confirmation before overwriting an existing register with a window-configuration-to-register."
   (interactive "cRegister:")
-    (if (not (get-register register))
+  (if (not (get-register register))
       (window-configuration-to-register register)
     (if (y-or-n-p "Replace existing register?")
         (window-configuration-to-register register))))
@@ -137,3 +137,38 @@
       (forward-line movement)
       (end-of-line)
       (sit-for rate))))
+
+(defun factorio-convert-changelog ()
+  "Converts the markdown used by the factorio changelog into mediawiki markdown."
+  (interactive)
+
+  (goto-char 0)
+
+  ;; Remove divider lines
+  (flush-lines "-----------") (goto-char 0)
+
+  ;; Change version headers
+  (replace-regexp "^Version: \\([0-9]\\.[0-9]+\\.[0-9]+\\)" "== \\1 ==") (goto-char 0)
+
+  ;; Change minor headers
+  (replace-regexp "^\\s-+\\(Balancing\\|\\(Minor\\|Major\\|Small\\)? [fF]eatures\\|Changes\\|Sounds?\\|Circuit [nN]etwork\\|Modding\\|Scripting\\|Bug[fF]ixes\\):" "=== \\1 ===") (goto-char 0)
+  (replace-regexp "^\\s-+\\(Graphics\\|Optimi[zs]ations\\|Configuration\\|Locale\\|Command line interface\\):" "=== \\1 ===") (goto-char 0)
+
+  ;; Fix bullet points
+  (replace-regexp "^\\s-+-" "*") (goto-char 0)
+
+  ;; Fix indents
+  (replace-regexp "^\\n\\s-+\\([a-z]\\)" " \\1") (goto-char 0)
+  (replace-regexp "^\\s-+\\([A-Z]\\)" "** \\1") (goto-char 0)
+
+  ;; Fix forum/fff links
+  (replace-regexp "(?\\(https?://\\(www\\.\\)?forums\\.factorio\\.com/[0-9]+\\))?" "([\\1 more])") (goto-char 0)
+  (replace-regexp "(?\\(https?://\\(www\\.\\)?factorio\\.com/blog/post/fff-[0-9]+\\))?" "([\\1 more])") (goto-char 0)
+
+  ;; Surround code, scripting names, etc with backticks
+  ;; C++ code references
+  (replace-regexp "\\w+::\\(\\w+_?\\)+(?)?" "<code>\\&</code>") (goto-char 0)
+  ;; Startup options
+  (replace-regexp "--\\(\\w+-?\\)+" "<code>\\&</code>") (goto-char 0)
+  ;; Slash commands
+  (replace-regexp "\\s-/\\(\\w+-?\\)+" " <code>\\&</code>") (goto-char 0))

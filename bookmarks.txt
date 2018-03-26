@@ -2,7 +2,17 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("Keyboard Macros"
+(("profile file"
+ (filename . "~/.profile")
+ (front-context-string)
+ (rear-context-string . "b/src/rust/src\"\n")
+ (position . 770))
+("keybindings"
+ (filename . "~/.emacs.d/config-lisp/keybindings.el")
+ (front-context-string . "\n;; Tab completi")
+ (rear-context-string . "indings -------\n")
+ (position . 23))
+("Keyboard Macros"
  (filename . "~/.emacs.d/macros.el")
  (front-context-string . ";; This file hol")
  (rear-context-string)

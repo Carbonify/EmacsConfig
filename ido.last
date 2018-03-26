@@ -2,45 +2,83 @@
 
 ;; ----- ido-last-directory-list -----
 (
+ ("/home/noah/Documents/Text files/" . "Text documents/")
+ ("/home/noah/.vim/" . "scripts/")
+ ("/home/noah/Documents/" . "Text files/")
  ("/home/" . "noah/")
  ("/" . "tmp/")
  ("/tmp/example/" . "src/")
  ("/tmp/" . "example/")
- ("/home/noah/.emacs.d/" . "config-lisp/")
- ("/home/noah/" . ".emacs.d/")
+ ("/home/noah/.emacs.d/" . "manual-install/")
+ ("/home/noah/" . "Documents/")
 )
 
 ;; ----- ido-work-directory-list -----
 (
- "/tmp/"
- "/tmp/example/src/"
+ "/home/noah/Documents/Text files/Text documents/"
+ "/home/noah/.emacs.d/manual-install/"
+ "/home/noah/.vim/scripts/"
+ "/home/noah/.vim/"
  "/home/noah/"
  "/home/noah/.emacs.d/config-lisp/"
+ "/tmp/"
+ "/tmp/example/src/"
  "/home/noah/.emacs.d/"
 )
 
 ;; ----- ido-work-file-list -----
 (
+ "soldier guide.txt"
+ "factorio-changelog-convert.el"
+ "factorioChangelog.vim"
+ "autocmds.vim"
+ "keybinds.vim"
+ ".profile"
+ "misc-functions.el"
+ "keybindings.el"
  "test.txt"
  "main.rs"
- ".profile"
- "plugin-config.el"
- "abbrev_defs"
 )
 
 ;; ----- ido-dir-file-cache -----
 (
- ("/tmp/" (23202 619 855776 836000) "#!tmp!example!src!main.rs#" "!home!noah!.emacs.d!elpa!flycheck-rust-20171021.151!flycheck-rust-autoloads.el~" "systemd-private-158daa5fb9174e779a20645ee4f48d20-systemd-timesyncd.service-PpcmqZ/" "!home!noah!.emacs.d!ido.last~" "systemd-private-158daa5fb9174e779a20645ee4f48d20-rtkit-daemon.service-VkKA6y/" ".Test-unix/" "config-err-xHNeuu" "Discord Crashes/" "!home!noah!.emacs.d!elpa!company-lua-20171108.1506!company-lua-autoloads.el~" "!home!noah!.profile~" "!home!noah!.emacs.d!elpa!seq-2.20!seq-autoloads.el~" ".X0-lock" "!home!noah!.emacs.d!elpa!company-0.9.6!company-autoloads.el~" "discord.sock" ".ICE-unix/" ".X11-unix/" "!home!noah!.emacs.d!elpa!epl-20180205.1249!epl-autoloads.el~" "!home!noah!.emacs.d!elpa!pkg-info-20150517.443!pkg-info-autoloads.el~" ".font-unix/" "!home!noah!.emacs.d!elpa!f-20180106.122!f-autoloads.el~" ".XIM-unix/" "dumps/" "test.txt" "!home!noah!.emacs.d!elpa!rust-mode-20180303.854!rust-mode-autoloads.el~" "!home!noah!.emacs.d!elpa!racer-20171211.1548!racer-autoloads.el~" "!home!noah!.emacs.d!elpa!flycheck-20180308.535!flycheck-autoloads.el~" "./" "!home!noah!.emacs.d!elpa!s-20180227.51!s-autoloads.el~" "!home!noah!.emacs.d!elpa!let-alist-1.0.5!let-alist-autoloads.el~" "../" "ssh-XLV2vMwCe9MQ/" "steam_chrome_shmem_uid1000_spid4105" "!home!noah!.emacs.d!elpa!cargo-20171218.855!cargo-autoloads.el~" "example/" "emacs1000/" "!home!noah!.emacs.d!elpa!pos-tip-20150318.813!pos-tip-autoloads.el~")
+ ("/home/noah/Documents/Text files/Text documents/" (23212 64153 6546 642000) "View age-blocked vids.txt" "Org Docs/" "soldier guide.txt" "reddit_splashes.txt" "Types of roads.txt" "TF2/" "how to completely uninstall java.txt" "Steam review Score template.txt" "marcos pizza review that mentions me.txt" "Email signup verif code.txt" "overwatch_toxicity_guide.md" "rektStatus.txt" "./" "Networking cmd.txt" "Factorio/" "Minecraft/" "Rpg Class ideas.md" "JVM Arguements.txt" "Backup-codes-noahmorton98.txt" "../" "Install Java in linux.txt")
+
+ ("/home/noah/Documents/Text files/" (22989 18464 302722 206000) "School Docs/" "./" "Minecraft/" "../" "Text documents/")
+
+ ("/home/noah/" (23212 63788 344570 749000) ".rustup/" ".nano/" ".steam/" ".audacity-data/" ".Xauthority" ".thunderbird/" ".nvidia-settings-rc" ".cache/" "Desktop/" ".java/" ".factorio/" ".gconf/" "Podcasts/" ".multirust/" ".pki/" ".cargo/" "Documents/" ".purple/" ".ssh/" ".pulse-cookie" ".gnubg/" ".gitconfig" ".xinputrc" ".dmrc" ".gtkrc-2.0" "Universe Sandbox ²/" ".thumbnails/" ".netbeans/" ".mozilla/" ".nv/" ".macromedia/" ".gnome2/" ".steampid" "Templates/" ".Xdefaults" ".ICEauthority" "NetBeansProjects/" "Videos/" ".hardinfo/" ".bash_logout" ".gtkrc.bak" "./" ".gnome2_private/" ".icons/" "netbeans-8.2/" ".gnupg/" ".synaptic/" ".sudo_as_admin_successful" ".xsession-errors.old" "Music/" ".steampath" "Downloads/" ".profile" "Pictures/" ".dbus/" ".xsession-errors" "bin/" ".bash_history" ".local/" ".adobe/" ".nbi/" "../" ".emacs.d/" ".vim/" ".xscreensaver" "Public/" ".config/" ".adom.steam/" ".oracle_jre_usage/" ".bashrc" ".viminfo")
+
+ ("/tmp/" (23202 6890 555533 590000) "qtsingleapp-clemen-d211-3e8" "clementine-art-G14732.jpg" "qtsingleapp-clemen-d211-3e8-lockfile" "#!tmp!example!src!main.rs#" "!home!noah!.emacs.d!elpa!flycheck-rust-20171021.151!flycheck-rust-autoloads.el~" "systemd-private-158daa5fb9174e779a20645ee4f48d20-systemd-timesyncd.service-PpcmqZ/" "!home!noah!.emacs.d!ido.last~" "systemd-private-158daa5fb9174e779a20645ee4f48d20-rtkit-daemon.service-VkKA6y/" ".Test-unix/" "config-err-xHNeuu" "Discord Crashes/" "!home!noah!.emacs.d!elpa!company-lua-20171108.1506!company-lua-autoloads.el~" "!home!noah!.profile~" "!home!noah!.emacs.d!elpa!seq-2.20!seq-autoloads.el~" ".X0-lock" "!home!noah!.emacs.d!elpa!company-0.9.6!company-autoloads.el~" "discord.sock" ".ICE-unix/" ".X11-unix/" "!home!noah!.emacs.d!elpa!epl-20180205.1249!epl-autoloads.el~" "!home!noah!.emacs.d!elpa!pkg-info-20150517.443!pkg-info-autoloads.el~" ".font-unix/" "!home!noah!.emacs.d!elpa!f-20180106.122!f-autoloads.el~" ".XIM-unix/" "!home!noah!.emacs.d!elpa!company-20180228.1550!company-autoloads.el~" "dumps/" "test.txt" "!home!noah!.emacs.d!elpa!rust-mode-20180303.854!rust-mode-autoloads.el~" "!home!noah!.emacs.d!elpa!racer-20171211.1548!racer-autoloads.el~" "!home!noah!.emacs.d!elpa!flycheck-20180308.535!flycheck-autoloads.el~" "./" "clementine-art-u14732.jpg" "!home!noah!.emacs.d!elpa!s-20180227.51!s-autoloads.el~" "!home!noah!.emacs.d!elpa!let-alist-1.0.5!let-alist-autoloads.el~" "../" "ssh-XLV2vMwCe9MQ/" "steam_chrome_shmem_uid1000_spid4105" "!home!noah!.emacs.d!elpa!cargo-20171218.855!cargo-autoloads.el~" "example/" "emacs1000/" "!home!noah!.emacs.d!elpa!pos-tip-20150318.813!pos-tip-autoloads.el~")
+
+ ("/home/noah/.emacs.d/manual-install/" (23199 64941 819665 285000) "guru-mode.el" "guru-mode.elc" "./" "../")
+
+ ("/home/noah/.vim/scripts/" (23123 59403 621349 361000) "factorioChangelog.vim" "./" "../")
+
+ ("/home/noah/.vim/" (23176 49795 190560 867000) "ftdetect/" "backup/" "README.md" ".git/" "swap/" "colors/" "plugin/" "pack/" "./" "indent/" "keybinds.vim" "autoload/" "spell/" "vimrc" ".gitignore" "autocmds.vim" "syntax/" "../" "sessions/" "scripts/" "doc/" "ftplugin/" "abbrevs.vim")
+
+ ("/home/noah/.steam/" (23201 18011 128155 199000) "linux64/" "steam.pid" "html5app/" "ThirdPartyLegalNotices.doc" "ubuntu12_64/" "depotcache/" ".crash" "sdk64/" "ThirdPartyLegalNotices.css" "package/" "steam_install_agreement.txt" "config/" "linux32/" "bin_steamdeps.py" "sdk32/" "music/" "registry.vdf" "cached/" "tenfoot/" ".save/" "resource/" "steam_msg.sh" "ssfn2004101835933057454" "bin64/" "fontconfig/" "games/" "bin_steam.sh" "steam/" "friends/" "logs/" "ubuntu12_32/" "steamapps/" "bootstrap.tar.xz" "./" "error.log" "appcache/" "steam.sh" "servers/" "controller_base/" "bin32/" "WINDOWSTEMPDIR_FONTCONFIG_CACHE/" "bin/" "../" "ThirdPartyLegalNotices.html" "userdata/" "legacydepotdata.vdf" "public/" "steamdeps.txt" "root/" "graphics/" "skins/" "steam.pipe")
+
+ ("/home/noah/.steam/steam/" (23201 18011 128155 199000) "linux64/" "steam.pid" "html5app/" "ThirdPartyLegalNotices.doc" "ubuntu12_64/" "depotcache/" ".crash" "sdk64/" "ThirdPartyLegalNotices.css" "package/" "steam_install_agreement.txt" "config/" "linux32/" "bin_steamdeps.py" "sdk32/" "music/" "registry.vdf" "cached/" "tenfoot/" ".save/" "resource/" "steam_msg.sh" "ssfn2004101835933057454" "bin64/" "fontconfig/" "games/" "bin_steam.sh" "steam/" "friends/" "logs/" "ubuntu12_32/" "steamapps/" "bootstrap.tar.xz" "./" "error.log" "appcache/" "steam.sh" "servers/" "controller_base/" "bin32/" "WINDOWSTEMPDIR_FONTCONFIG_CACHE/" "bin/" "../" "ThirdPartyLegalNotices.html" "userdata/" "legacydepotdata.vdf" "public/" "steamdeps.txt" "root/" "graphics/" "skins/" "steam.pipe")
+
+ ("/home/noah/.steam/steam/steamapps/" (23184 29216 227767 14000) "appmanifest_200710.acf" "libraryfolders.vdf" "appmanifest_413150.acf" "downloading/" "appmanifest_237930.acf" "appmanifest_512900.acf" "workshop/" "appmanifest_404410.acf" "appmanifest_259680.acf" "appmanifest_323580.acf" "appmanifest_368340.acf" "appmanifest_107100.acf" "appmanifest_238460.acf" "common/" "appmanifest_558990.acf" "appmanifest_355980.acf" "appmanifest_615610.acf" "appmanifest_230290.acf" "appmanifest_333300.acf" "appmanifest_211820.acf" "appmanifest_440.acf" "appmanifest_427520.acf" "./" "appmanifest_105600.acf" "shadercache/" "sourcemods/" "appmanifest_49520.acf" "appmanifest_286160.acf" "appmanifest_495280.acf" "appmanifest_323220.acf" "appmanifest_221910.acf" "../" "temp/" "appmanifest_8930.acf" "appmanifest_227300.acf" "appmanifest_346010.acf")
+
+ ("/home/noah/.steam/steam/steamapps/common/" (23184 29216 231767 16000) "Disgaea 2 PC/" "Jotun/" "Terraria/" "Streets of Rogue/" "Besiege/" "Endless Sky/" "orbt xl/" "Starbound/" "Borderlands 2/" "vagante/" "Bastion/" "Dungeon Warfare/" "TalesMajEyal/" "Portal 2/" "./" "Opus Magnum/" "Factorio/" "Stardew Valley/" "Torchlight II/" "BattleBlock Theater/" "ADOM/" "The Stanley Parable/" "Transistor/" "Tabletop Simulator/" "Sid Meier's Civilization V/" "../" "CrossCode/" "Team Fortress 2/" "Universe Sandbox 2/" "Euro Truck Simulator 2/" "Voxel Turf/")
+
+ ("/home/noah/.steam/steam/steamapps/common/Factorio/" (23199 64201 536095 876000) "data/" "doc-html/" "./" "steam_shader_cache/" "bin/" "../" "config-path.cfg" "lib/")
+
+ ("/home/noah/.steam/steam/steamapps/common/Factorio/data/" (23199 64207 388103 17000) "eula.txt" "map-settings.example.json" "server-settings.example.json" "base/" "licenses.txt" "core/" "server-whitelist.example.json" "./" "map-gen-settings.example.json" "changelog.txt" "../")
+
+ ("/home/noah/Documents/School/" (23200 24369 800787 705000) "Comp1NarrativeEssay.odt" "Grades Blank.ods" "Example works cited.pdf" "EDUC Essay Rough.odt" "Comp1NarrativeEssayFinal.pdf" "EDUC Essay Final.odt" "Grades 2014-15.ods" "Grades 2016-17.ods" "Grades 2015-16.ods" "Comp1NarrativeEssayFinal.odt" "comp1narrativeessay.txt" "./" "../" "Comp1NarrativeEssay.pdf")
+
+ ("/home/noah/Documents/" (23178 6553 448730 464000) "MiniPrograms/" "Jobs/" "Text files/" "Spreadsheets/" "Backups/" "PDFs/" "Hardware_gaming_rig.html" "Identities.txt" "swapControl.sh" "dev_quotes.txt" "./" "factorioRatios.json" "Other sounds/" "findInChangelog.sh" "Archives/" "Epic quotes.txt" "Sourcecode/" "../" "School/")
+
+ ("/home/noah/.emacs.d/config-lisp/" (23202 6890 475533 650000) "autoloads.el" "keybindings.el" "plugin-config.el" "mediawiki-mode.elc" "mediawiki-mode.el" "./" "ftdetect.el" "misc-functions.el" "misc-functions.elc" "../")
+
+ ("/home/noah/.emacs.d/" (23202 1548 942647 255000) "auto-save-list/" "custom.el" "init.el" ".git/" "places" ".smex-items" "config-lisp/" "abbrev_defs" "ido.last" "./" ".gitignore" "manual-install/" "../" "elpa/" "bookmarks.txt" "dictionary" "macros.el")
 
  ("/tmp/example/" (23202 553 123855 141000) ".git/" "src/" "target/" "Cargo.lock" "./" "Cargo.toml" ".gitignore" "../")
 
  ("/tmp/example/src/" (23202 613 799783 969000) "main.rs" "./" "../")
-
- ("/home/noah/" (23201 65383 444614 848000) ".rustup/" ".nano/" ".steam/" ".audacity-data/" ".Xauthority" ".thunderbird/" ".nvidia-settings-rc" ".cache/" "Desktop/" ".java/" ".factorio/" ".gconf/" "Podcasts/" ".multirust/" ".pki/" ".cargo/" "Documents/" ".purple/" ".ssh/" ".pulse-cookie" ".gnubg/" ".gitconfig" ".xinputrc" ".dmrc" ".gtkrc-2.0" "Universe Sandbox ²/" ".thumbnails/" ".netbeans/" ".mozilla/" ".nv/" ".macromedia/" ".gnome2/" ".steampid" "Templates/" ".Xdefaults" ".ICEauthority" "NetBeansProjects/" "Videos/" ".hardinfo/" ".bash_logout" ".gtkrc.bak" "./" ".gnome2_private/" ".icons/" "netbeans-8.2/" ".gnupg/" ".synaptic/" ".sudo_as_admin_successful" ".xsession-errors.old" "Music/" ".steampath" "Downloads/" ".profile" "Pictures/" ".dbus/" ".xsession-errors" "bin/" ".bash_history" ".local/" ".adobe/" ".nbi/" "../" ".emacs.d/" ".vim/" ".xscreensaver" "Public/" ".config/" ".adom.steam/" ".oracle_jre_usage/" ".bashrc" ".viminfo")
-
- ("/home/noah/.emacs.d/config-lisp/" (23201 64728 705319 643000) "autoloads.el" "keybindings.el" "plugin-config.el" "mediawiki-mode.elc" "mediawiki-mode.el" "./" "ftdetect.el" "misc-functions.el" "misc-functions.elc" "../")
-
- ("/home/noah/.emacs.d/" (23201 64748 973292 381000) "auto-save-list/" "custom.el" "init.el" ".git/" "places" ".smex-items" "config-lisp/" "abbrev_defs" "ido.last" "./" ".gitignore" "manual-install/" "../" "elpa/" "bookmarks.txt" "dictionary" "macros.el")
 
  ("/home/" (23150 39456 611145 765000) "noah/" "./" "../")
 )
