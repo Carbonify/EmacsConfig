@@ -17,9 +17,11 @@
 
 ;; General settings ------------------
 
-;; Change backup directory to system temp directory
-(setq backup-directory-alist `((".*" . ,temporary-file-directory)))
-(setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
+;; Change backup directory to system temp directory, or in same directory if on windows
+;; Same dir on windows because windows is bad at having a temp dir accessible without admin perms
+(if (string-equal system-type "windows-nt")
+    (setq backup-directory-alist nil)
+ (setq backup-directory-alist `((".*" . ,temporary-file-directory))))
 
 (setq abbrev-file-name "~/.emacs.d/abbrev_defs") ;; Change default abbreviations file
 (setq-default abbrev-mode t) ;; Enable abbrev-mode by default
@@ -52,24 +54,25 @@
 (setq search-whitespace-regexp "[_- \\n]")
 (setq-default indent-tabs-mode nil)
 
-
-;; Scrolling
-(setq redisplay-dont-pause t
-      scroll-margin 1
-      scroll-step 1
-      scroll-conservatively 10000
-      scroll-preserve-screen-position 1)
+;; Use hunspell if running on windows
+(if (string-equal system-type "windows-nt")
+    (setq-default ispell-program-name "C:/Program Files (x86)/Hunspell/bin/hunspell.exe"))
 
 
-;; Bookmarking
+;; Bookmarks
 (require 'bookmark)
 (setq bookmark-default-file "~/.emacs.d/bookmarks.txt")
 (setq bookmark-save-flag t) ; save bookmark when emacs quits
 (bookmark-bmenu-list)
 (switch-to-buffer "*Bookmark List*")
 
-;; Theme
-(load-theme 'misterioso)
+
+;; Scrolling
+(setq scroll-margin 1
+      scroll-step 1
+      scroll-conservatively 10000
+      scroll-preserve-screen-position 1)
+
 
 ;; IDO mode
 (ido-mode t)
@@ -89,13 +92,21 @@
 (add-hook 'text-mode-hook 'flyspell-mode) ;; Turn on incorrect spell highlight
 (add-hook 'text-mode-hook '(lambda () (interactive) (setq sentence-end-double-space nil)))
 (defun user--text-hippie-expand-setting () (interactive)
-  (setq hippie-expand-try-functions-list '(try-expand-dabbrev try-expand-dabbrev-all-buffers try-expand-dabbrev-from-kill try-expand-all-abbrevs)))
+       (setq hippie-expand-try-functions-list '(try-expand-dabbrev
+                                                try-expand-dabbrev-all-buffers
+                                                try-expand-dabbrev-from-kill
+                                                try-expand-all-abbrevs)))
 (add-hook 'text-mode-hook 'user--text-hippie-expand-setting)
 
 ;; Elisp mode hooks
 (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
 (defun user--prog-lisp-hippie-expand-setting () (interactive)
-  (setq hippie-expand-try-functions-list '(try-complete-file-name-partially try-complete-file-name try-complete-lisp-symbol-partially try-complete-lisp-symbol try-expand-dabbrev try-expand-dabbrev-all-buffers)))
+       (setq hippie-expand-try-functions-list '(try-complete-file-name-partially
+                                                try-complete-file-name
+                                                try-complete-lisp-symbol-partially
+                                                try-complete-lisp-symbol
+                                                try-expand-dabbrev
+                                                try-expand-dabbrev-all-buffers)))
 (add-hook 'emacs-lisp-mode-hook 'user--prog-lisp-hippie-expand-setting)
 
 
@@ -107,7 +118,10 @@
 
 ;; Programming mode hooks
 (defun user--prog-hippie-expand-setting () (interactive)
-  (setq hippie-expand-try-functions-list '(try-complete-file-name-partially try-complete-file-name try-expand-dabbrev try-expand-dabbrev-all-buffers)))
+       (setq hippie-expand-try-functions-list '(try-complete-file-name-partially
+                                                try-complete-file-name
+                                                try-expand-dabbrev
+                                                try-expand-dabbrev-all-buffers)))
 (add-hook 'prog-mode-hook 'user--prog-hippie-expand-setting)
 (add-hook 'prog-mode-hook 'company-mode) ;; Enable company mode for programming
 (add-hook 'prog-mode-hook 'flycheck-mode) ;; Enable flycheck for programming
@@ -139,6 +153,7 @@
 
 ;; Finalization ----------------------
 
-(server-start) ;; Start the server in this instance, so emacs doesn't have to open again
+;; (server-start) ;; Start the server in this instance, so emacs doesn't have to open again
+(setq ring-bell-function 'user--visual-bell-flash-modeline)
 
 (setq gc-cons-threshold 800000) ;;Fix value back to it's default.

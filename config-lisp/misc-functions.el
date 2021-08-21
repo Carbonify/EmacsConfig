@@ -138,6 +138,29 @@
       (end-of-line)
       (sit-for rate))))
 
+
+(defun user--visual-bell-flash-modeline ()
+  "Inverts the modeline temporarily, for visual bell purposes"
+  (interactive)
+  (let ((frame (selected-frame)))
+    (run-with-timer
+     0.1 nil
+     #'(lambda (frame)
+         (let ((inhibit-quit)
+               (inhibit-redisplay t))
+           (invert-face 'header-line frame)
+           (invert-face 'header-line-highlight frame)
+           (invert-face 'mode-line frame)
+           (invert-face 'mode-line-inactive frame)))
+     frame)
+    (let ((inhibit-quit)
+          (inhibit-redisplay t))
+      (invert-face 'header-line frame)
+      (invert-face 'header-line-highlight frame)
+      (invert-face 'mode-line frame)
+      (invert-face 'mode-line-inactive frame))))
+
+
 (defun factorio-convert-changelog ()
   "Converts the markdown used by the factorio changelog into mediawiki markdown."
   (interactive)
