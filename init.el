@@ -2,6 +2,20 @@
 (setq gc-cons-threshold (* 20 1024 1024))
 
 
+;; Declare running OS
+(message "Init emacs...")
+(cond
+ ((string-equal system-type "windows-nt")
+  (progn
+    (message "Running on Microsoft Windows")))
+ ((string-equal system-type "darwin") ;  macOS
+  (progn
+    (message "Running on Mac OS X")))
+ ((string-equal system-type "gnu/linux")
+  (progn
+    (message "Running on Linux"))))
+
+
 (add-to-list 'load-path "~/.emacs.d/manual-install/") ;; Add dir for manually installed plugins
 (add-to-list 'load-path "~/.emacs.d/config-lisp/") ;; Add more config by me.
 (load-file "~/.emacs.d/config-lisp/ftdetect.el") ;; Load the file that detects filetypes
@@ -153,7 +167,15 @@
 
 ;; Finalization ----------------------
 
-;; (server-start) ;; Start the server in this instance, so emacs doesn't have to open again
+;; Emacsclient stuff
+(server-start) ;; Start the server in this instance, so emacs doesn't have to open again
+(add-hook 'server-switch-hook (lambda ()
+            (when (current-local-map)
+              (use-local-map (copy-keymap (current-local-map))))
+            (when server-buffer-clients
+              (local-set-key (kbd "C-x k") 'server-edit))))
+
+;; Last second settings ------
 (setq ring-bell-function 'user--visual-bell-flash-modeline)
 
 (setq gc-cons-threshold 800000) ;;Fix value back to it's default.

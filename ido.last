@@ -2,6 +2,8 @@
 
 ;; ----- ido-last-directory-list -----
 (
+ ("/home/noah/.local/share/" . "applications/")
+ ("/home/noah/.local/" . "share/")
  ("c:/Users/Noah Morton/AppData/Roaming/.emacs.d/" . "config-lisp/")
  ("c:/Users/Noah Morton/AppData/Roaming/" . ".emacs.d/")
  ("c:/Users/Noah Morton/AppData/" . "Roaming/")
@@ -15,44 +17,61 @@
  ("/" . "tmp/")
  ("/tmp/example/" . "src/")
  ("/tmp/" . "example/")
- ("/home/noah/.emacs.d/" . "manual-install/")
- ("/home/noah/" . "Documents/")
+ ("/home/noah/.emacs.d/" . "config-lisp/")
+ ("/home/noah/" . ".local/")
 )
 
 ;; ----- ido-work-directory-list -----
 (
+ "/home/noah/.local/share/applications/"
+ "/home/noah/.emacs.d/config-lisp/"
+ "/home/noah/"
+ "/home/noah/.emacs.d/"
  "c:/Users/Noah Morton/AppData/Roaming/.emacs.d/config-lisp/"
  "c:/Users/Noah Morton/AppData/Roaming/.emacs.d/"
  "/home/noah/Documents/Text files/Text documents/"
  "/home/noah/.emacs.d/manual-install/"
  "/home/noah/.vim/scripts/"
  "/home/noah/.vim/"
- "/home/noah/"
- "/home/noah/.emacs.d/config-lisp/"
  "/tmp/"
  "/tmp/example/src/"
- "/home/noah/.emacs.d/"
 )
 
 ;; ----- ido-work-file-list -----
 (
+ "emacsclient.desktop"
+ "plugin-config.el"
+ ".bash_profile"
+ "init.el"
+ ".profile"
+ ".profile
+
+"
+ "ftdetect.el"
  "misc-functions.el"
  "keybindings.el"
- "init.el"
- "plugin-config.el"
  "bookmarks.txt"
- "soldier guide.txt"
- "factorio-changelog-convert.el"
- "factorioChangelog.vim"
- "autocmds.vim"
- "keybinds.vim"
 )
 
 ;; ----- ido-dir-file-cache -----
 (
- ("c:/Users/Noah Morton/AppData/Roaming/.emacs.d/config-lisp/" (24865 19616 0 0) "plugin-config.el" "misc-functions.elc" "misc-functions.el" "mediawiki-mode.elc" "mediawiki-mode.el" "keybindings.elc" "keybindings.el" "ftdetect.el" "autoloads.el" "../" "./")
+ ("/tmp/" (24882 42508 383054 253000) ".X11-unix/" ".ICE-unix/" ".XIM-unix/" ".font-unix/" ".Test-unix/" "systemd-private-78ea7950033d411db6c5499632a0c7a2-systemd-oomd.service-yTp5uA/" "systemd-private-78ea7950033d411db6c5499632a0c7a2-systemd-resolved.service-Mer6ln/" "systemd-private-78ea7950033d411db6c5499632a0c7a2-bluetooth.service-cAjLA0/" "systemd-private-78ea7950033d411db6c5499632a0c7a2-low-memory-monitor.service-qsR8WX/" "systemd-private-78ea7950033d411db6c5499632a0c7a2-rtkit-daemon.service-hB8X3Z/" "systemd-private-78ea7950033d411db6c5499632a0c7a2-switcheroo-control.service-cvBAdh/" "systemd-private-78ea7950033d411db6c5499632a0c7a2-upower.service-ivS3IG/" "systemd-private-78ea7950033d411db6c5499632a0c7a2-dbus-broker.service-0qHnUS/" "systemd-private-78ea7950033d411db6c5499632a0c7a2-chronyd.service-DKVAmi/" "systemd-private-78ea7950033d411db6c5499632a0c7a2-ModemManager.service-kMaa78/" "systemd-private-78ea7950033d411db6c5499632a0c7a2-systemd-logind.service-5vPnBI/" ".X1024-lock" ".X1025-lock" "systemd-private-78ea7950033d411db6c5499632a0c7a2-geoclue.service-y7Ce3d/" "systemd-private-78ea7950033d411db6c5499632a0c7a2-colord.service-vR4k52/" ".X0-lock" ".X1-lock" "systemd-private-78ea7950033d411db6c5499632a0c7a2-fwupd.service-UPLqEg/" "!home!noah!.bash_profile~" "../" "./")
 
- ("c:/Users/Noah Morton/AppData/Roaming/.emacs.d/" (24865 19553 0 0) "server/" "places" "macros.el" "init.el" "ido.last~" "ido.last" "elpa/" "dictionary" "custom.el" "config-lisp/" "auto-save-list/" "abbrev_defs" ".smex-items" ".gitignore" ".git/" "../" "./")
+ ("/home/noah/.emacs.d/config-lisp/" (24882 42515 329099 210000) "plugin-config.elc" "plugin-config.el" "misc-functions.elc" "misc-functions.el" "mediawiki-mode.elc" "mediawiki-mode.el" "keybindings.elc" "keybindings.el" "ftdetect.el" "autoloads.el" "../" "./")
+
+ ("/home/noah/.local/share/applications/" (24881 28205 75438 593000) "../" "./")
+
+ ("/home/noah/.local/share/" (24881 37628 429247 380000) "recently-used.xbel" "backgrounds/" "Trash/" "nautilus/" "five-or-more/" "icc/" "gnome-settings-daemon/" "pki/" "flatpak/" "sounds/" "applications/" "evolution/" "gnome-shell/" "keyrings/" "gvfs-metadata/" "../" "./")
+
+ ("/home/noah/.local/" (24881 29574 162680 911000) "state/" "share/" "../" "./")
+
+ ("/home/noah/.emacs.d/" (24882 40745 34234 771000) "eshell/" "custom.el" "ido.last" ".smex-items" ".gitignore" ".git/" "server/" "places" "macros.el" "init.el" "ido.last~" "elpa/" "dictionary" "config-lisp/" "bookmarks.txt" "auto-save-list/" "abbrev_defs" "../" "./")
+
+ ("/home/noah/" (24882 42166 629476 601000) ".bash_profile" ".emacs" ".emacs.d/" ".bash_history" "Videos/" "Pictures/" "Music/" "Documents/" "Public/" "Templates/" "Downloads/" "Desktop/" ".local/" ".config/" ".cache/" ".bashrc" ".bash_logout" ".mozilla/" "../" "./")
+
+ ("c:/Users/Noah Morton/AppData/Roaming/.emacs.d/config-lisp/" (24865 22094 0 0) "plugin-config.el" "misc-functions.elc" "misc-functions.el" "mediawiki-mode.elc" "mediawiki-mode.el" "keybindings.elc" "keybindings.el" "ftdetect.el" "autoloads.el" "../" "./")
+
+ ("c:/Users/Noah Morton/AppData/Roaming/.emacs.d/" (24865 21961 0 0) "server/" "places" "macros.el" "init.el" "ido.last~" "ido.last" "elpa/" "dictionary" "custom.el" "config-lisp/" "bookmarks.txt" "auto-save-list/" "abbrev_defs" ".smex-items" ".gitignore" ".git/" "../" "./")
 
  ("c:/Users/Noah Morton/AppData/Roaming/" (24864 13650 0 0) "Zoom/" "Sun/" "Spotify/" "Sekiro/" "Path of Exile/" "Path of Building Community/" "obs-studio/" "Mozilla/" "Microsoft/" "Logitech/" "Logishrd/" "LGHUB/" "IO Interactive/" "GCCS/" "FALCOM/" "EasyAntiCheat/" "discord/" "Citra/" "Adobe/" ".mono/" ".minecraft/" ".emacs.d/" ".emacs" "../" "./")
 
@@ -73,10 +92,6 @@
  ("/home/noah/Documents/Text files/Text documents/" (23212 64153 6546 642000) "View age-blocked vids.txt" "Org Docs/" "soldier guide.txt" "reddit_splashes.txt" "Types of roads.txt" "TF2/" "how to completely uninstall java.txt" "Steam review Score template.txt" "marcos pizza review that mentions me.txt" "Email signup verif code.txt" "overwatch_toxicity_guide.md" "rektStatus.txt" "./" "Networking cmd.txt" "Factorio/" "Minecraft/" "Rpg Class ideas.md" "JVM Arguements.txt" "Backup-codes-noahmorton98.txt" "../" "Install Java in linux.txt")
 
  ("/home/noah/Documents/Text files/" (22989 18464 302722 206000) "School Docs/" "./" "Minecraft/" "../" "Text documents/")
-
- ("/home/noah/" (23212 63788 344570 749000) ".rustup/" ".nano/" ".steam/" ".audacity-data/" ".Xauthority" ".thunderbird/" ".nvidia-settings-rc" ".cache/" "Desktop/" ".java/" ".factorio/" ".gconf/" "Podcasts/" ".multirust/" ".pki/" ".cargo/" "Documents/" ".purple/" ".ssh/" ".pulse-cookie" ".gnubg/" ".gitconfig" ".xinputrc" ".dmrc" ".gtkrc-2.0" "Universe Sandbox ²/" ".thumbnails/" ".netbeans/" ".mozilla/" ".nv/" ".macromedia/" ".gnome2/" ".steampid" "Templates/" ".Xdefaults" ".ICEauthority" "NetBeansProjects/" "Videos/" ".hardinfo/" ".bash_logout" ".gtkrc.bak" "./" ".gnome2_private/" ".icons/" "netbeans-8.2/" ".gnupg/" ".synaptic/" ".sudo_as_admin_successful" ".xsession-errors.old" "Music/" ".steampath" "Downloads/" ".profile" "Pictures/" ".dbus/" ".xsession-errors" "bin/" ".bash_history" ".local/" ".adobe/" ".nbi/" "../" ".emacs.d/" ".vim/" ".xscreensaver" "Public/" ".config/" ".adom.steam/" ".oracle_jre_usage/" ".bashrc" ".viminfo")
-
- ("/tmp/" (23202 6890 555533 590000) "qtsingleapp-clemen-d211-3e8" "clementine-art-G14732.jpg" "qtsingleapp-clemen-d211-3e8-lockfile" "#!tmp!example!src!main.rs#" "!home!noah!.emacs.d!elpa!flycheck-rust-20171021.151!flycheck-rust-autoloads.el~" "systemd-private-158daa5fb9174e779a20645ee4f48d20-systemd-timesyncd.service-PpcmqZ/" "!home!noah!.emacs.d!ido.last~" "systemd-private-158daa5fb9174e779a20645ee4f48d20-rtkit-daemon.service-VkKA6y/" ".Test-unix/" "config-err-xHNeuu" "Discord Crashes/" "!home!noah!.emacs.d!elpa!company-lua-20171108.1506!company-lua-autoloads.el~" "!home!noah!.profile~" "!home!noah!.emacs.d!elpa!seq-2.20!seq-autoloads.el~" ".X0-lock" "!home!noah!.emacs.d!elpa!company-0.9.6!company-autoloads.el~" "discord.sock" ".ICE-unix/" ".X11-unix/" "!home!noah!.emacs.d!elpa!epl-20180205.1249!epl-autoloads.el~" "!home!noah!.emacs.d!elpa!pkg-info-20150517.443!pkg-info-autoloads.el~" ".font-unix/" "!home!noah!.emacs.d!elpa!f-20180106.122!f-autoloads.el~" ".XIM-unix/" "!home!noah!.emacs.d!elpa!company-20180228.1550!company-autoloads.el~" "dumps/" "test.txt" "!home!noah!.emacs.d!elpa!rust-mode-20180303.854!rust-mode-autoloads.el~" "!home!noah!.emacs.d!elpa!racer-20171211.1548!racer-autoloads.el~" "!home!noah!.emacs.d!elpa!flycheck-20180308.535!flycheck-autoloads.el~" "./" "clementine-art-u14732.jpg" "!home!noah!.emacs.d!elpa!s-20180227.51!s-autoloads.el~" "!home!noah!.emacs.d!elpa!let-alist-1.0.5!let-alist-autoloads.el~" "../" "ssh-XLV2vMwCe9MQ/" "steam_chrome_shmem_uid1000_spid4105" "!home!noah!.emacs.d!elpa!cargo-20171218.855!cargo-autoloads.el~" "example/" "emacs1000/" "!home!noah!.emacs.d!elpa!pos-tip-20150318.813!pos-tip-autoloads.el~")
 
  ("/home/noah/.emacs.d/manual-install/" (23199 64941 819665 285000) "guru-mode.el" "guru-mode.elc" "./" "../")
 
@@ -99,10 +114,6 @@
  ("/home/noah/Documents/School/" (23200 24369 800787 705000) "Comp1NarrativeEssay.odt" "Grades Blank.ods" "Example works cited.pdf" "EDUC Essay Rough.odt" "Comp1NarrativeEssayFinal.pdf" "EDUC Essay Final.odt" "Grades 2014-15.ods" "Grades 2016-17.ods" "Grades 2015-16.ods" "Comp1NarrativeEssayFinal.odt" "comp1narrativeessay.txt" "./" "../" "Comp1NarrativeEssay.pdf")
 
  ("/home/noah/Documents/" (23178 6553 448730 464000) "MiniPrograms/" "Jobs/" "Text files/" "Spreadsheets/" "Backups/" "PDFs/" "Hardware_gaming_rig.html" "Identities.txt" "swapControl.sh" "dev_quotes.txt" "./" "factorioRatios.json" "Other sounds/" "findInChangelog.sh" "Archives/" "Epic quotes.txt" "Sourcecode/" "../" "School/")
-
- ("/home/noah/.emacs.d/config-lisp/" (23202 6890 475533 650000) "autoloads.el" "keybindings.el" "plugin-config.el" "mediawiki-mode.elc" "mediawiki-mode.el" "./" "ftdetect.el" "misc-functions.el" "misc-functions.elc" "../")
-
- ("/home/noah/.emacs.d/" (23202 1548 942647 255000) "auto-save-list/" "custom.el" "init.el" ".git/" "places" ".smex-items" "config-lisp/" "abbrev_defs" "ido.last" "./" ".gitignore" "manual-install/" "../" "elpa/" "bookmarks.txt" "dictionary" "macros.el")
 
  ("/tmp/example/" (23202 553 123855 141000) ".git/" "src/" "target/" "Cargo.lock" "./" "Cargo.toml" ".gitignore" "../")
 
