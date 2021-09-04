@@ -1,9 +1,5 @@
 ;;Keybindings -------
 
-;; Tab completion
-(global-set-key (kbd "<tab>") 'hippie-expand)
-(global-set-key (kbd "C-<tab>") 'indent-for-tab-command) ;; Old function of tab
-
 ;; Reindent buffer
 (defun user--reindent-buffer ()
   "Reindents the entire buffer."

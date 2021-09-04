@@ -2,24 +2,9 @@
 
 (add-hook 'text-mode-hook 'flyspell-mode) ;; Turn on incorrect spell highlight
 (add-hook 'text-mode-hook '(lambda () (setq-local sentence-end-double-space nil)))
-(defun user--text-hippie-expand-setting () (interactive)
-       (setq hippie-expand-try-functions-list '(try-expand-dabbrev
-                                                try-expand-dabbrev-all-buffers
-                                                try-expand-dabbrev-from-kill
-                                                try-expand-all-abbrevs)))
-(add-hook 'text-mode-hook 'user--text-hippie-expand-setting)
 
 ;; Elisp mode hooks
 (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
-(defun user--prog-lisp-hippie-expand-setting () (interactive)
-       (setq hippie-expand-try-functions-list '(try-complete-file-name-partially
-                                                try-complete-file-name
-                                                try-complete-lisp-symbol-partially
-                                                try-complete-lisp-symbol
-                                                try-expand-dabbrev
-                                                try-expand-dabbrev-all-buffers)))
-(add-hook 'emacs-lisp-mode-hook 'user--prog-lisp-hippie-expand-setting)
-
 
 ;; Org mode hooks
 (add-hook 'org-mode-hook 'visual-line-mode) ;; Make org just wrap long lines
@@ -28,13 +13,6 @@
                             (setq-local fill-column 100)))
 
 ;; Programming mode hooks
-(defun user--prog-hippie-expand-setting () (interactive)
-       (setq hippie-expand-try-functions-list '(try-complete-file-name-partially
-                                                try-complete-file-name
-                                                try-expand-dabbrev
-                                                try-expand-dabbrev-all-buffers)))
-(add-hook 'prog-mode-hook 'user--prog-hippie-expand-setting)
-(add-hook 'prog-mode-hook 'company-mode) ;; Enable company mode for programming
 (add-hook 'prog-mode-hook 'flycheck-mode) ;; Enable flycheck for programming
 
 ;; On buffer save hooks

@@ -66,7 +66,7 @@
 (setq frame-title-format '(buffer-file-name "Emacs: %b (%f)" "Emacs: %b"))
 (setq-default tab-width 4) ;; Smaller default tab width
 (setq search-whitespace-regexp "[_- \\n]")
-(setq-default indent-tabs-mode nil)
+
 
 ;; Use hunspell if running on windows
 (if (string-equal system-type "windows-nt")

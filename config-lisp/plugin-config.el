@@ -5,6 +5,10 @@
 (global-set-key (kbd "C-'") 'avy-kill-region)
 (global-set-key (kbd "C-:") 'avy-kill-whole-line)
 
+;; Company mode
+(require 'company)
+(global-company-mode)
+(setq company-idle-delay 0.6)
 
 ;; Avy zap up to char
 (global-set-key (kbd "M-z") #'avy-zap-up-to-char)
