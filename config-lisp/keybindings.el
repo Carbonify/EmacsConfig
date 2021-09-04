@@ -58,6 +58,13 @@
 ;; End of line and newline
 (global-set-key (kbd "C-<return>") 'user--end-of-line-newline)
 
+;; Finish emacsclient with easier to type bind
+(add-hook 'server-switch-hook (lambda ()
+            (when (current-local-map)
+              (use-local-map (copy-keymap (current-local-map))))
+            (when server-buffer-clients
+              (local-set-key (kbd "C-x k") 'server-edit))))
+
 
 ;; External function binds, emacs binds
 (global-set-key (kbd "C-x C-b")    'ibuffer) ;; Interactive buffer switch
