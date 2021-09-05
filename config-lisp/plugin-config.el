@@ -5,23 +5,32 @@
 (global-set-key (kbd "C-'") 'avy-kill-region)
 (global-set-key (kbd "C-:") 'avy-kill-whole-line)
 
-;; Company mode
+;; Company mode ---------
 (require 'company)
 (global-company-mode)
 (setq company-idle-delay 0.6)
+(setq company-selection-wrap-around t) ;; List loops upon reaching bottom
 
-;; Avy zap up to char
+
+;; Make tab accept the selected completion
+(define-key company-active-map (kbd "<tab>") 'company-select-next-if-tooltip-visible-or-complete-selection)
+
+
+;; Avy zap up to char --------
 (global-set-key (kbd "M-z") #'avy-zap-up-to-char)
 
-;; Flyspell
+;; Flyspell  ------
 (eval-after-load 'flyspell '(define-key flyspell-mode-map (kbd "C-;") nil)) ;;disables the binding so avy can use it
 
 ;; Rainbow delimiters
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
+;; Projectile
+(eval-after-load "projectile"
+    '(define-key projectile-mode-map (kbd "C-x p") 'projectile-command-map))
 
 ;; Smart mode line
-(setq sml/theme 'dark)
+(setq sml/theme 'light)
 (sml/setup)
 
 
@@ -46,17 +55,17 @@
 (setq eshell-prompt-function
       (lambda ()
         (concat
-         (propertize "┌─[" 'face `(:foreground "green"))
+         (propertize "┌─[" 'face `(:foreground "purple"))
          (propertize (user-login-name) 'face `(:foreground "red"))
-         (propertize "@" 'face `(:foreground "green"))
+         (propertize "@" 'face `(:foreground "purple"))
          (propertize (system-name) 'face `(:foreground "blue"))
-         (propertize "]──[" 'face `(:foreground "green"))
+         (propertize "]──[" 'face `(:foreground "purple"))
          (propertize (format-time-string "%H:%M" (current-time)) 'face `(:foreground "orange"))
-         (propertize "]──[" 'face `(:foreground "green"))
+         (propertize "]──[" 'face `(:foreground "purple"))
          (propertize (concat (eshell/pwd)) 'face `(:foreground "black"))
-         (propertize "]\n" 'face `(:foreground "green"))
-         (propertize "└─>" 'face `(:foreground "green"))
-         (propertize (if (= (user-uid) 0) " # " " $ ") 'face `(:foreground "green"))
+         (propertize "]\n" 'face `(:foreground "purple"))
+         (propertize "└─>" 'face `(:foreground "purple"))
+         (propertize (if (= (user-uid) 0) " # " " $ ") 'face `(:foreground "purple"))
          )))
 
 ;; Ibuffer

@@ -2,6 +2,7 @@
 
 ;; ----- ido-last-directory-list -----
 (
+ ("/home/noah/Documents/Sourcecode/" . "COSC36HW1/")
  ("/home/noah/.local/share/" . "applications/")
  ("/home/noah/.local/" . "share/")
  ("c:/Users/Noah Morton/AppData/Roaming/.emacs.d/" . "config-lisp/")
@@ -12,22 +13,23 @@
  ("c:/" . "Users/")
  ("/home/noah/Documents/Text files/" . "Text documents/")
  ("/home/noah/.vim/" . "scripts/")
- ("/home/noah/Documents/" . "Text files/")
+ ("/home/noah/Documents/" . "Sourcecode/")
  ("/home/" . "noah/")
  ("/" . "tmp/")
  ("/tmp/example/" . "src/")
  ("/tmp/" . "example/")
  ("/home/noah/.emacs.d/" . "config-lisp/")
- ("/home/noah/" . ".ssh/")
+ ("/home/noah/" . "Documents/")
 )
 
 ;; ----- ido-work-directory-list -----
 (
+ "/home/noah/Documents/Sourcecode/COSC36HW1/"
  "/home/noah/.emacs.d/config-lisp/"
+ "/home/noah/.emacs.d/"
  "/home/noah/.ssh/"
  "/home/noah/.local/share/applications/"
  "/home/noah/"
- "/home/noah/.emacs.d/"
  "c:/Users/Noah Morton/AppData/Roaming/.emacs.d/config-lisp/"
  "c:/Users/Noah Morton/AppData/Roaming/.emacs.d/"
  "/home/noah/Documents/Text files/Text documents/"
@@ -40,33 +42,37 @@
 
 ;; ----- ido-work-file-list -----
 (
- "plugin-config.el"
- "mode-hooks.el"
+ "main.cpp"
+ "Book.cpp"
+ "LibraryBook.h"
+ "Library.cpp"
+ "Book.h"
+ "Makefile"
  "misc-functions.el"
- "keybindings.el"
- "id_ed25519.pub"
- "emacsclient.desktop"
- ".bash_profile"
+ "mode-hooks.el"
  "init.el"
- ".profile"
- ".profile
-
-"
+ "plugin-config.el"
 )
 
 ;; ----- ido-dir-file-cache -----
 (
- ("/home/noah/.emacs.d/config-lisp/" (24882 48195 219894 744000) "mode-hooks.el" "plugin-config.el" "misc-functions.el" "mediawiki-mode.el" "keybindings.el" "ftdetect.el" "autoloads.el" "../" "./")
+ ("/home/noah/Documents/Sourcecode/COSC36HW1/" (24885 16420 914404 57000) "librarylist" "Makefile" "TAGS" "main.cpp" "LibraryBook.h" "Library.h" "Library.cpp" "Book.h" "Book.cpp" ".git/" "../" "./")
 
- ("/home/noah/.emacs.d/" (24882 48018 899730 371000) "ido.last" "eshell/" "custom.el" ".smex-items" ".gitignore" ".git/" "server/" "places" "macros.el" "init.el" "ido.last~" "elpa/" "dictionary" "config-lisp/" "bookmarks.txt" "auto-save-list/" "abbrev_defs" "../" "./")
+ ("/tmp/" (24885 12702 575829 41000) ".X11-unix/" ".ICE-unix/" ".XIM-unix/" ".font-unix/" ".Test-unix/" "systemd-private-a1f3f969f7f34f1093355068e4fd0573-systemd-oomd.service-I6Eidv/" "systemd-private-a1f3f969f7f34f1093355068e4fd0573-systemd-resolved.service-wUsBEw/" "systemd-private-a1f3f969f7f34f1093355068e4fd0573-bluetooth.service-YBNtEA/" "systemd-private-a1f3f969f7f34f1093355068e4fd0573-low-memory-monitor.service-F6hxoL/" "systemd-private-a1f3f969f7f34f1093355068e4fd0573-rtkit-daemon.service-VSmLMp/" "systemd-private-a1f3f969f7f34f1093355068e4fd0573-switcheroo-control.service-TGSReU/" "systemd-private-a1f3f969f7f34f1093355068e4fd0573-upower.service-I3A1tQ/" "systemd-private-a1f3f969f7f34f1093355068e4fd0573-chronyd.service-p8jbA8/" "systemd-private-a1f3f969f7f34f1093355068e4fd0573-dbus-broker.service-UblxoP/" "systemd-private-a1f3f969f7f34f1093355068e4fd0573-ModemManager.service-WWcc75/" "systemd-private-a1f3f969f7f34f1093355068e4fd0573-systemd-logind.service-CzUue4/" ".X1024-lock" ".X1025-lock" "systemd-private-a1f3f969f7f34f1093355068e4fd0573-geoclue.service-lCJKo9/" "systemd-private-a1f3f969f7f34f1093355068e4fd0573-colord.service-5edWl1/" ".X0-lock" ".X1-lock" "Temp-c953a37f-7b74-42a7-9165-e6210ce13d34/" "!home!noah!.emacs.d!ido.last~" "!home!noah!Documents!Sourcecode!COSC36HW1!Makefile~" "../" "./")
 
- ("/tmp/" (24882 47079 831533 328000) ".X11-unix/" ".ICE-unix/" ".XIM-unix/" ".font-unix/" ".Test-unix/" "systemd-private-78ea7950033d411db6c5499632a0c7a2-systemd-oomd.service-yTp5uA/" "systemd-private-78ea7950033d411db6c5499632a0c7a2-systemd-resolved.service-Mer6ln/" "systemd-private-78ea7950033d411db6c5499632a0c7a2-bluetooth.service-cAjLA0/" "systemd-private-78ea7950033d411db6c5499632a0c7a2-low-memory-monitor.service-qsR8WX/" "systemd-private-78ea7950033d411db6c5499632a0c7a2-rtkit-daemon.service-hB8X3Z/" "systemd-private-78ea7950033d411db6c5499632a0c7a2-switcheroo-control.service-cvBAdh/" "systemd-private-78ea7950033d411db6c5499632a0c7a2-upower.service-ivS3IG/" "systemd-private-78ea7950033d411db6c5499632a0c7a2-dbus-broker.service-0qHnUS/" "systemd-private-78ea7950033d411db6c5499632a0c7a2-chronyd.service-DKVAmi/" "systemd-private-78ea7950033d411db6c5499632a0c7a2-ModemManager.service-kMaa78/" "systemd-private-78ea7950033d411db6c5499632a0c7a2-systemd-logind.service-5vPnBI/" ".X1024-lock" ".X1025-lock" "systemd-private-78ea7950033d411db6c5499632a0c7a2-geoclue.service-y7Ce3d/" "systemd-private-78ea7950033d411db6c5499632a0c7a2-colord.service-vR4k52/" ".X0-lock" ".X1-lock" "systemd-private-78ea7950033d411db6c5499632a0c7a2-fwupd.service-UPLqEg/" "!home!noah!.bash_profile~" "!home!noah!.emacs.d!ido.last~" "ssh-XXXXXXqRQpdV/" "../" "./")
+ ("/home/noah/.emacs.d/" (24885 12763 595919 355000) "ido.last" "projectile-bookmarks.eld" "custom.el" "eshell/" ".smex-items" ".gitignore" ".git/" "server/" "places" "macros.el" "init.el" "ido.last~" "elpa/" "dictionary" "config-lisp/" "bookmarks.txt" "auto-save-list/" "abbrev_defs" "../" "./")
+
+ ("/home/noah/.emacs.d/config-lisp/" (24885 12702 372828 749000) "mode-hooks.el" "plugin-config.el" "misc-functions.el" "mediawiki-mode.el" "keybindings.el" "ftdetect.el" "autoloads.el" "../" "./")
+
+ ("/home/noah/Documents/Sourcecode/" (24885 10259 869276 421000) "COSC36HW1/" "../" "./")
+
+ ("/home/noah/Documents/" (24885 10237 504235 363000) "Sourcecode/" "ctags/" "../" "./")
+
+ ("/home/noah/" (24885 9958 134770 149000) ".lesshst" ".ssh/" ".gitconfig" ".bash_profile" ".emacs" ".emacs.d/" ".bash_history" "Videos/" "Pictures/" "Music/" "Documents/" "Public/" "Templates/" "Downloads/" "Desktop/" ".local/" ".config/" ".cache/" ".bashrc" ".bash_logout" ".mozilla/" "../" "./")
 
  ("/home/noah/.local/share/applications/" (24882 43034 604969 981000) "emacsclient.desktop" "../" "./")
 
  ("/home/noah/.ssh/" (24882 45211 848189 616000) "known_hosts" "id_ed25519.pub" "id_ed25519" "../" "./")
-
- ("/home/noah/" (24882 44435 95367 137000) ".ssh/" ".gitconfig" ".bash_profile" ".emacs" ".emacs.d/" ".bash_history" "Videos/" "Pictures/" "Music/" "Documents/" "Public/" "Templates/" "Downloads/" "Desktop/" ".local/" ".config/" ".cache/" ".bashrc" ".bash_logout" ".mozilla/" "../" "./")
 
  ("/home/noah/.local/share/" (24881 37628 429247 380000) "recently-used.xbel" "backgrounds/" "Trash/" "nautilus/" "five-or-more/" "icc/" "gnome-settings-daemon/" "pki/" "flatpak/" "sounds/" "applications/" "evolution/" "gnome-shell/" "keyrings/" "gvfs-metadata/" "../" "./")
 
@@ -115,8 +121,6 @@
  ("/home/noah/.steam/steam/steamapps/common/Factorio/data/" (23199 64207 388103 17000) "eula.txt" "map-settings.example.json" "server-settings.example.json" "base/" "licenses.txt" "core/" "server-whitelist.example.json" "./" "map-gen-settings.example.json" "changelog.txt" "../")
 
  ("/home/noah/Documents/School/" (23200 24369 800787 705000) "Comp1NarrativeEssay.odt" "Grades Blank.ods" "Example works cited.pdf" "EDUC Essay Rough.odt" "Comp1NarrativeEssayFinal.pdf" "EDUC Essay Final.odt" "Grades 2014-15.ods" "Grades 2016-17.ods" "Grades 2015-16.ods" "Comp1NarrativeEssayFinal.odt" "comp1narrativeessay.txt" "./" "../" "Comp1NarrativeEssay.pdf")
-
- ("/home/noah/Documents/" (23178 6553 448730 464000) "MiniPrograms/" "Jobs/" "Text files/" "Spreadsheets/" "Backups/" "PDFs/" "Hardware_gaming_rig.html" "Identities.txt" "swapControl.sh" "dev_quotes.txt" "./" "factorioRatios.json" "Other sounds/" "findInChangelog.sh" "Archives/" "Epic quotes.txt" "Sourcecode/" "../" "School/")
 
  ("/tmp/example/" (23202 553 123855 141000) ".git/" "src/" "target/" "Cargo.lock" "./" "Cargo.toml" ".gitignore" "../")
 

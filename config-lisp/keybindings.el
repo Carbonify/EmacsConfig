@@ -1,5 +1,10 @@
 ;;Keybindings -------
 
+;; Rebind tab
+(global-set-key (kbd "<tab>") 'company-complete-common)
+(global-set-key (kbd "C-<tab>") 'indent-for-tab-command) ;; Old function of tab
+
+
 ;; Reindent buffer
 (defun user--reindent-buffer ()
   "Reindents the entire buffer."
@@ -70,9 +75,11 @@
 (global-set-key (kbd "C-c d b")    'user--delete-in-brackets) ;; Delete text within brackets, eg [],{}, <>
 (global-set-key (kbd "C-x C-d")    'user--insert-date) ;; Insert the date
 (global-set-key (kbd "<f8>")       'neotree-toggle)
+(global-set-key (kbd "<f5>")       'compile) ;; Quick compile button
+(global-set-key (kbd "<f6>")       'gdb) ;; Quick debugger button
 (global-set-key (kbd "C-c a")      'align-regexp)
 (global-set-key (kbd "C-z")        'repeat) ;;stop accidentally hitting this and minimizing
 (global-set-key (kbd "C-c f")      'follow-delete-other-windows-and-split) ;; Enter follow mode quickly
 (global-set-key (kbd "C-c n")      'user--make-temp-file) ;;Create a temporary file that's a bit more persistant than scratch
 (global-set-key (kbd "C-c s")      'user--skim-buffer) ;; Skims a buffer with x lines per x seconds.
-(global-set-key (kbd "M-.")        'user--search-all-buffers)
+(global-set-key (kbd "C-M-s")      'user--search-all-buffers)

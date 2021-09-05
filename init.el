@@ -56,7 +56,6 @@
 (put 'narrow-to-defun  'disabled nil)
 (put 'narrow-to-page   'disabled nil)
 (put 'downcase-region  'disabled nil)
-(make-variable-buffer-local 'hippie-expand-try-functions-list)
 (setq kmacro-execute-before-append nil) ;; Make macros not execute before appending with C-u F3
 (setq delete-by-moving-to-trash t) ;; Make dired not delete files permenently
 (defalias 'yes-or-no-p 'y-or-n-p) ;; Make prompt dialogue shorter.
@@ -66,7 +65,7 @@
 (setq frame-title-format '(buffer-file-name "Emacs: %b (%f)" "Emacs: %b"))
 (setq-default tab-width 4) ;; Smaller default tab width
 (setq search-whitespace-regexp "[_- \\n]")
-
+(setq-default indent-tabs-mode nil) ;; No tabs for indenting
 
 ;; Use hunspell if running on windows
 (if (string-equal system-type "windows-nt")

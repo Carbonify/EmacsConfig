@@ -1,0 +1,1 @@
+("~/Documents/Sourcecode/COSC36HW1/" "~/.emacs.d/")

@@ -16,8 +16,8 @@
 (defun user--clean-buffer () "Cleans the buffer by re-indenting, changing tabs to spaces, and removing trailing whitespace."
        (interactive)
        (delete-trailing-whitespace) ;; Remove whitespace from the ends of lines
-       (save-excursion (replace-regexp "^\n\\{3,\\}" "\n\n" nil (point-min) (point-max))) ;; Replace more than 2 newlines with 2 newlines
-       (untabify (point-min) (point-max))) ;; Turn tabs into spaces
+       (save-excursion (replace-regexp "^\n\\{3,\\}" "\n\n" nil (point-min) (point-max)))) ;; Replace more than 2 newlines with 2 newlines
+
 
 (defun user--delete-in-quotes () "Deletes the text inside of quotes."
        (interactive)
