@@ -1,9 +1,7 @@
 ;;Keybindings -------
 
 ;; Rebind tab
-(global-set-key (kbd "<tab>") 'company-complete-common)
-(global-set-key (kbd "C-<tab>") 'indent-for-tab-command) ;; Old function of tab
-
+(global-set-key (kbd "TAB") #'company-indent-or-complete-common)
 
 ;; Reindent buffer
 (defun user--reindent-buffer ()

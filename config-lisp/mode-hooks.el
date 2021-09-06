@@ -39,3 +39,4 @@
 ;; C++ mode hooks
 (add-hook 'c++-mode-hook 'linum-mode)
 (add-hook 'c++-mode-hook 'projectile-mode)
+(add-hook 'c++-mode-hook 'subword-mode)

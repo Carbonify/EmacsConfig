@@ -1,1 +1,1 @@
-("~/Documents/Sourcecode/COSC36HW1/" "~/.emacs.d/")
+("~/Documents/Sourcecode/COSC2436Work/" "~/.emacs.d/")
