@@ -66,6 +66,8 @@
 (setq-default tab-width 4) ;; Smaller default tab width
 (setq search-whitespace-regexp "[_- \\n]")
 (setq-default indent-tabs-mode nil) ;; No tabs for indenting
+(require 'uniquify) ;; //Use alternative unique buffer naming scheme
+
 
 ;; Use hunspell if running on windows
 (if (string-equal system-type "windows-nt")

@@ -13,10 +13,11 @@
  '(frame-background-mode 'light)
  '(ispell-personal-dictionary "~/.emacs.d/dictionary")
  '(package-selected-packages
-   '(projectile smex smart-mode-line rainbow-delimiters racer neotree markdown-mode flycheck-rust company-lua cargo avy-zap))
+   '(magit projectile smex smart-mode-line rainbow-delimiters racer neotree markdown-mode flycheck-rust company-lua cargo avy-zap))
  '(save-place t nil (saveplace))
  '(show-paren-mode t)
- '(tool-bar-mode nil))
+ '(tool-bar-mode nil)
+ '(uniquify-buffer-name-style 'post-forward-angle-brackets nil (uniquify)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
