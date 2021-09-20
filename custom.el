@@ -13,7 +13,7 @@
  '(frame-background-mode 'light)
  '(ispell-personal-dictionary "~/.emacs.d/dictionary")
  '(package-selected-packages
-   '(swiper counsel ivy magit projectile smex smart-mode-line rainbow-delimiters racer neotree markdown-mode flycheck-rust company-lua cargo avy-zap))
+   '(swiper counsel ivy magit projectile smart-mode-line rainbow-delimiters racer neotree markdown-mode flycheck-rust company-lua cargo avy-zap))
  '(save-place t nil (saveplace))
  '(show-paren-mode t)
  '(tool-bar-mode nil)

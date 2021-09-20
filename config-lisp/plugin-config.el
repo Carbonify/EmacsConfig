@@ -34,13 +34,6 @@
 (sml/setup)
 
 
-;; Smex
-(setq smex-save-file (expand-file-name ".smex-items" user-emacs-directory))
-(smex-initialize)
-(global-set-key (kbd "M-x") 'smex)
-(global-set-key (kbd "M-X") 'smex-major-mode-commands)
-
-
 ;; Ivy (completion framework)
 (ivy-mode)
 (setq ivy-use-virtual-buffers t)
@@ -49,6 +42,9 @@
 
 ;; Counsel (command usefulness booster)
 (counsel-mode)
+
+;; Swiper
+(global-set-key (kbd "C-s") 'swiper)
 
 
 ;; Windmove

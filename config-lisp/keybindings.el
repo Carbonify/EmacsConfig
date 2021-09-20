@@ -10,13 +10,6 @@
   (indent-region (point-min) (point-max)))
 (global-set-key (kbd "C-c i") 'user--reindent-buffer)
 
-;; Make using ISearch much easier
-(define-key isearch-mode-map [next]     'isearch-repeat-forward)
-(define-key isearch-mode-map [prior]    'isearch-repeat-backward)
-(global-set-key (kbd "C-s")             'isearch-forward-regexp)
-(global-set-key (kbd "C-r")             'isearch-backward-regexp)
-(global-set-key (kbd "C-M-s")           'multi-isearch-buffers-regexp)
-(global-unset-key (kbd "C-M-r"))
 
 ;; Unbind arrow keys, use them for specialized movement instead
 (global-set-key (kbd "<right>")    'user--mark-ring-forward)
