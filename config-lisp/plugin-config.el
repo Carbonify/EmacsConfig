@@ -1,3 +1,7 @@
+;;; This file contains various plugin config, including options,
+;;; keybindings specific to plugins, etc. It also enables certain
+;;; Global modes that make plugins operate.
+
 
 ;;Avy
 (require 'avy) ;; Always load avy
@@ -5,14 +9,12 @@
 (global-set-key (kbd "C-'") 'avy-kill-region)
 (global-set-key (kbd "C-:") 'avy-kill-whole-line)
 
-;; Company mode ---------
+;; Company mode (text completion framework) ---------
 (require 'company)
 (global-company-mode)
-(setq company-idle-delay 0.6)
+(setq company-idle-delay 0.6) ;; How long before it pops up the completion automatically
 (setq company-selection-wrap-around t) ;; List loops upon reaching bottom
-
-
-;; Make tab accept the selected completion
+;; Make tab accept the selected completion, like how IDE completion works
 (define-key company-active-map (kbd "<tab>") 'company-select-next-if-tooltip-visible-or-complete-selection)
 
 
@@ -25,20 +27,24 @@
 ;; Rainbow delimiters
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
-;; Projectile
+;; Projectile (project handler, mostly used for switching between header and code files)
 (eval-after-load "projectile"
-    '(define-key projectile-mode-map (kbd "C-x p") 'projectile-command-map))
+  '(define-key projectile-mode-map (kbd "C-x p") 'projectile-command-map))
+(setq-default projectile-completion-system 'ivy)
+
 
 ;; Smart mode line
-(setq sml/theme 'light)
+(setq-default sml/theme 'light)
 (sml/setup)
 
 
 ;; Ivy (completion framework)
 (ivy-mode)
-(setq ivy-use-virtual-buffers t)
+(setq-default ivy-use-virtual-buffers t) ;; Don't spam up buffer list with temp buffers
 (setq enable-recursive-minibuffers t)
-(global-set-key (kbd "C-c r") 'ivy-resume)
+(global-set-key (kbd "C-c r") 'ivy-resume) ;; Re-open ivy where we last left off, in case of accidental accept
+(setq-default ivy-wrap t) ;; Wrap around in matches list
+
 
 ;; Counsel (command usefulness booster)
 (counsel-mode)
@@ -52,13 +58,11 @@
 (windmove-default-keybindings)
 
 ;;lua mode
-(eval-after-load 'lua-mode
-  (progn
-    (setq lua-indent-level 4)
-    ))
+(setq-default lua-indent-level 4)
+
 
 ;; Eshell
-(setq eshell-prompt-function
+(setq-default eshell-prompt-function
       (lambda ()
         (concat
          (propertize "┌─[" 'face `(:foreground "purple"))
@@ -77,8 +81,8 @@
 ;; Ibuffer
 (eval-after-load 'ibuffer
   '(progn
-     (setq ibuffer-show-empty-filter-groups nil)
-     (setq ibuffer-saved-filter-groups
+     (setq-default ibuffer-show-empty-filter-groups nil)
+     (setq-default ibuffer-saved-filter-groups
            (quote (("Standard"
                     ("ELisp" (mode . emacs-lisp-mode))
                     ("Text" (or (mode . text-mode)
@@ -100,4 +104,4 @@
 ;; Racer (Rust prg)
 (eval-after-load 'rust-mode
   '(progn
-     (setq racer-cmd "~/.cargo/bin/racer")))
+     (setq-default racer-cmd "~/.cargo/bin/racer")))

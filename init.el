@@ -8,7 +8,7 @@
  ((string-equal system-type "windows-nt")
   (progn
     (message "Running on Microsoft Windows")))
- ((string-equal system-type "darwin") ;  macOS
+ ((string-equal system-type "darwin")
   (progn
     (message "Running on Mac OS X")))
  ((string-equal system-type "gnu/linux")
@@ -18,11 +18,10 @@
 
 (add-to-list 'load-path "~/.emacs.d/manual-install/") ;; Add dir for manually installed plugins
 (add-to-list 'load-path "~/.emacs.d/config-lisp/") ;; Add more config by me.
-(load-file "~/.emacs.d/config-lisp/ftdetect.el") ;; Load the file that detects filetypes
+(load "ftdetect") ;; Load the file that detects filetypes
 (load-file "~/.emacs.d/macros.el") ;; Load keyboard macros
-;; Then, load all autoloads for my config
-(load-file "~/.emacs.d/config-lisp/autoloads.el")
-;;(load-file "~/.emacs.d/manual-install/autoloads.el")
+(load-file "~/.emacs.d/config-lisp/autoloads.el") ;; Autoloads part of config lisp
+
 
 ;; Packages -------------------------
 (require 'package)
