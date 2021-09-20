@@ -63,10 +63,14 @@
 (setq initial-major-mode 'fundamental-mode)
 (setq initial-scratch-message "Blank scratch buffer for experiments or short volatile notes.")
 (setq frame-title-format '(buffer-file-name "Emacs: %b (%f)" "Emacs: %b"))
-(setq-default tab-width 4) ;; Smaller default tab width
 (setq search-whitespace-regexp "[_- \\n]")
-(setq-default indent-tabs-mode nil) ;; No tabs for indenting
 (require 'uniquify) ;; //Use alternative unique buffer naming scheme
+
+;; indentation
+(setq-default tab-width 2) ;; Smaller default tab width
+(setq-default indent-tabs-mode nil) ;; No tabs for indenting
+(defvaralias 'c-basic-offset 'tab-width) ;; set these vars to track tab-width
+(defvaralias 'cperl-indent-level 'tab-width)
 
 
 ;; Use hunspell if running on windows
@@ -88,13 +92,6 @@
       scroll-conservatively 10000
       scroll-preserve-screen-position 1)
 
-
-;; IDO mode
-(ido-mode t)
-(setq ido-enable-flex-matching t)
-(setq ido-everywhere t)
-(setq ido-file-extensions-order '(".txt" ".cfg" ".el" ".sh" ".json" ".md")) ;; Emphasis
-(setq ido-ignore-extensions t)
 
 ;; Plugin config -----------------
 

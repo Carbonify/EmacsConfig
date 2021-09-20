@@ -28,15 +28,27 @@
              (ibuffer-switch-to-saved-filter-groups "Standard"))) ;; See plugin config for definition
 
 ;; Rust mode
+(defun user--rust-mode-config ()
+  "Runs several things to config the mode under one hook."
+  ;; Bind reindent to instead run rustfmt, as it can do it better
+  (local-set-key (kbd "C-c i") #'rust-format-buffer))
+
 (add-hook 'rust-mode-hook #'cargo-minor-mode)
 (add-hook 'rust-mode-hook #'racer-mode)
 (add-hook 'rust-mode-hook #'eldoc-mode)
-;; Bind reindent to instead run rustfmt, as it can do it better
-(add-hook 'rust-mode-hook (lambda () (local-set-key (kbd "C-c i") #'rust-format-buffer)))
+
 (add-hook 'rust-mode-hook #'flycheck-rust-setup)
+(add-hook 'rust-mode-hook 'user--rust-mode-config)
 
 
 ;; C++ mode hooks
+(defun user--c++-mode-config ()
+  "Runs several things to config the mode under one hook."
+  ;; fix beginning of defun not working on some laptops
+  (local-unset-key (kbd "C-M-a"))
+  (local-set-key (kbd "C-M-q") 'c-beginning-of-defun))
+
 (add-hook 'c++-mode-hook 'linum-mode)
 (add-hook 'c++-mode-hook 'projectile-mode)
 (add-hook 'c++-mode-hook 'subword-mode)
+(add-hook 'c++-mode-hook 'user--c++-mode-config)

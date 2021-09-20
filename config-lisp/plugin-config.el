@@ -41,6 +41,16 @@
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 
 
+;; Ivy (completion framework)
+(ivy-mode)
+(setq ivy-use-virtual-buffers t)
+(setq enable-recursive-minibuffers t)
+(global-set-key (kbd "C-c r") 'ivy-resume)
+
+;; Counsel (command usefulness booster)
+(counsel-mode)
+
+
 ;; Windmove
 (require 'windmove)
 (windmove-default-keybindings)

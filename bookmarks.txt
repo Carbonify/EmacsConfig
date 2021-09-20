@@ -2,7 +2,12 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("misc-functions.el"
+(("mode-hooks.el"
+ (filename . "~/.emacs.d/config-lisp/mode-hooks.el")
+ (front-context-string . ";; Text mode hoo")
+ (rear-context-string)
+ (position . 1))
+("misc-functions.el"
  (filename . "~/.emacs.d/config-lisp/misc-functions.el")
  (front-context-string . ";; A simple file")
  (rear-context-string)
