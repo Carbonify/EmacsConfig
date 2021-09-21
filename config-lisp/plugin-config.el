@@ -33,9 +33,8 @@
 (setq-default projectile-completion-system 'ivy)
 
 
-;; Smart mode line
-(setq-default sml/theme 'light)
-(sml/setup)
+;; mode line (using mood-line)
+(mood-line-mode)
 
 
 ;; Ivy (completion framework)
@@ -49,8 +48,9 @@
 ;; too many things to pop up (note: you should have flx installed for better popup
 ;; ordering - better matches rise to the top)
 (setq-default ivy-re-builders-alist
-      '((counsel-grep-or-swiper . ivy--regex-plus)
-        (t . ivy--regex-fuzzy)))
+              '((counsel-grep-or-swiper . ivy--regex-plus)
+                (swiper . ivy--regex-plus)
+                (t . ivy--regex-fuzzy)))
 
 
 ;; Counsel (command usefulness booster)
@@ -70,37 +70,37 @@
 
 ;; Eshell
 (setq-default eshell-prompt-function
-      (lambda ()
-        (concat
-         (propertize "┌─[" 'face `(:foreground "purple"))
-         (propertize (user-login-name) 'face `(:foreground "red"))
-         (propertize "@" 'face `(:foreground "purple"))
-         (propertize (system-name) 'face `(:foreground "blue"))
-         (propertize "]──[" 'face `(:foreground "purple"))
-         (propertize (format-time-string "%H:%M" (current-time)) 'face `(:foreground "orange"))
-         (propertize "]──[" 'face `(:foreground "purple"))
-         (propertize (concat (eshell/pwd)) 'face `(:foreground "black"))
-         (propertize "]\n" 'face `(:foreground "purple"))
-         (propertize "└─>" 'face `(:foreground "purple"))
-         (propertize (if (= (user-uid) 0) " # " " $ ") 'face `(:foreground "purple"))
-         )))
+              (lambda ()
+                (concat
+                 (propertize "┌─[" 'face `(:foreground "purple"))
+                 (propertize (user-login-name) 'face `(:foreground "red"))
+                 (propertize "@" 'face `(:foreground "purple"))
+                 (propertize (system-name) 'face `(:foreground "blue"))
+                 (propertize "]──[" 'face `(:foreground "purple"))
+                 (propertize (format-time-string "%H:%M" (current-time)) 'face `(:foreground "orange"))
+                 (propertize "]──[" 'face `(:foreground "purple"))
+                 (propertize (concat (eshell/pwd)) 'face `(:foreground "black"))
+                 (propertize "]\n" 'face `(:foreground "purple"))
+                 (propertize "└─>" 'face `(:foreground "purple"))
+                 (propertize (if (= (user-uid) 0) " # " " $ ") 'face `(:foreground "purple"))
+                 )))
 
 ;; Ibuffer
 (eval-after-load 'ibuffer
   '(progn
      (setq-default ibuffer-show-empty-filter-groups nil)
      (setq-default ibuffer-saved-filter-groups
-           (quote (("Standard"
-                    ("ELisp" (mode . emacs-lisp-mode))
-                    ("Text" (or (mode . text-mode)
-                                (mode . markdown-mode)
-                                (mode . mediawiki-mode)))
-                    ("Dired" (mode . dired-mode))
-                    ("Org" (mode . org-mode))
-                    ("Programming" (or (mode . javascript-mode)
-                                       (mode . c++-mode)
-                                       (mode . lua-mode)))
-                    ("Special Buffer" (name . "^\\*.*\\*$"))))))))
+                   (quote (("Standard"
+                            ("ELisp" (mode . emacs-lisp-mode))
+                            ("Text" (or (mode . text-mode)
+                                        (mode . markdown-mode)
+                                        (mode . mediawiki-mode)))
+                            ("Dired" (mode . dired-mode))
+                            ("Org" (mode . org-mode))
+                            ("Programming" (or (mode . javascript-mode)
+                                               (mode . c++-mode)
+                                               (mode . lua-mode)))
+                            ("Special Buffer" (name . "^\\*.*\\*$"))))))))
 
 ;; Org
 (eval-after-load 'org

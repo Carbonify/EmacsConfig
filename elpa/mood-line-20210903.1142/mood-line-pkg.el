@@ -1,0 +1,2 @@
+;;; Generated package description from mood-line.el  -*- no-byte-compile: t -*-
+(define-package "mood-line" "20210903.1142" "A minimal mode-line inspired by doom-modeline" '((emacs "25.1")) :commit "34a1304edeb5a71ab22132bef8b4251f41cd1cda" :authors '(("Jessie Hildebrandt <jessieh.net>")) :maintainer '("Jessie Hildebrandt <jessieh.net>") :keywords '("mode-line" "faces") :url "https://gitlab.com/jessieh/mood-line")
