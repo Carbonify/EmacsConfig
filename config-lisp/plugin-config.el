@@ -45,6 +45,13 @@
 (global-set-key (kbd "C-c r") 'ivy-resume) ;; Re-open ivy where we last left off, in case of accidental accept
 (setq-default ivy-wrap t) ;; Wrap around in matches list
 
+;; Fuzzy matching for ivy, EXCEPT for searching in files as that can cause
+;; too many things to pop up (note: you should have flx installed for better popup
+;; ordering - better matches rise to the top)
+(setq-default ivy-re-builders-alist
+      '((counsel-grep-or-swiper . ivy--regex-plus)
+        (t . ivy--regex-fuzzy)))
+
 
 ;; Counsel (command usefulness booster)
 (counsel-mode)

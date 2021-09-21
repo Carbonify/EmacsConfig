@@ -16,7 +16,7 @@
 (add-hook 'prog-mode-hook 'flycheck-mode) ;; Enable flycheck for programming
 
 ;; On buffer save hooks
-(add-hook 'before-save-hook 'user--clean-buffer)
+(add-hook 'before-save-hook 'nm-clean-buffer)
 
 ;; Manual pages
 (add-hook 'man-mode-hook 'visual-line-mode)
@@ -28,7 +28,7 @@
              (ibuffer-switch-to-saved-filter-groups "Standard"))) ;; See plugin config for definition
 
 ;; Rust mode
-(defun user--rust-mode-config ()
+(defun nm-rust-mode-config ()
   "Runs several things to config the mode under one hook."
   ;; Bind reindent to instead run rustfmt, as it can do it better
   (local-set-key (kbd "C-c i") #'rust-format-buffer))
@@ -38,11 +38,11 @@
 (add-hook 'rust-mode-hook #'eldoc-mode)
 
 (add-hook 'rust-mode-hook #'flycheck-rust-setup)
-(add-hook 'rust-mode-hook 'user--rust-mode-config)
+(add-hook 'rust-mode-hook 'nm-rust-mode-config)
 
 
 ;; C++ mode hooks
-(defun user--c++-mode-config ()
+(defun nm-c++-mode-config ()
   "Runs several things to config the mode under one hook."
   ;; fix beginning of defun not working on some laptops
   (local-unset-key (kbd "C-M-a"))
@@ -51,4 +51,4 @@
 (add-hook 'c++-mode-hook 'linum-mode)
 (add-hook 'c++-mode-hook 'projectile-mode)
 (add-hook 'c++-mode-hook 'subword-mode)
-(add-hook 'c++-mode-hook 'user--c++-mode-config)
+(add-hook 'c++-mode-hook 'nm-c++-mode-config)

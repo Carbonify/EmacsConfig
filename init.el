@@ -110,7 +110,12 @@
 ;; Emacsclient stuff
 (server-start) ;; Start the server in this instance, so emacs doesn't have to open again
 
+;; Graphics, themes, etc
+(load-theme 'solarized-light t)
+(setq-default solarized-distinct-fringe-background t)
+
+
 ;; Last second settings ------
-(setq ring-bell-function 'user--visual-bell-flash-modeline)
+(setq ring-bell-function 'nm-visual-bell-flash-modeline)
 
 (setq gc-cons-threshold 800000) ;;Fix value back to it's default.
