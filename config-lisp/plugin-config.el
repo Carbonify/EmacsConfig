@@ -91,12 +91,15 @@
      (setq-default ibuffer-show-empty-filter-groups nil)
      (setq-default ibuffer-saved-filter-groups
                    (quote (("Standard"
-                            ("ELisp" (mode . emacs-lisp-mode))
+                            ("Emacs Config" (mode . emacs-lisp-mode))
                             ("Text" (or (mode . text-mode)
                                         (mode . markdown-mode)
                                         (mode . mediawiki-mode)))
                             ("Dired" (mode . dired-mode))
                             ("Org" (mode . org-mode))
+                            ("Documentation" (or (mode . info-mode)
+                                                 (mode . man-mode)
+                                                 (mode . help-mode)))
                             ("Programming" (or (mode . javascript-mode)
                                                (mode . c++-mode)
                                                (mode . lua-mode)))
@@ -105,7 +108,6 @@
 ;; Org
 (eval-after-load 'org
   '(progn
-     (define-key org-mode-map [tab] 'hippie-expand) ;; Set this, because I use tab complete much more than cycle
      (setq org-log-done t)))
 
 ;; Racer (Rust prg)

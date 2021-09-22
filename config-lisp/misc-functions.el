@@ -12,6 +12,31 @@
   (save-buffer)
   (switch-to-buffer nil))
 
+(defun nm-condescend-text (b e &optional rand-limit)
+  "Randomly capitalizes characters in the region, producing mocking/condescending text. For example,
+I went to the store.
+Becomes
+I wEnt tO tHe StOrE.
+Optional third arg RAND-LIMIT means capitalize roughly one out of
+every RAND-LIMIT chars."
+  (interactive "*r")
+  (or rand-limit (setq rand-limit 3))
+  (save-excursion
+    (goto-char b)
+    (if (bobp) nil (forward-char -1) (forward-char 1))
+    (while (< (point) e)
+      (if (zerop (random rand-limit))
+          (upcase-char 1)
+        (forward-char 1)))))
+
+(defun nm-average (nums-string)
+  "Print average of all nums provided. Example:
+2 3 4 5 6
+Prints 4."
+  (interactive "sType nums: ")
+  (let ((splitted (mapcar 'string-to-number (split-string nums-string))))
+    (message (number-to-string (/ (apply '+ (mapcar 'float splitted)) (length splitted))))))
+
 
 (defun nm-clean-buffer () "Cleans the buffer by re-indenting, changing tabs to spaces, and removing trailing whitespace."
        (interactive)

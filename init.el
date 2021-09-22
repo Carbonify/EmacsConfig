@@ -43,7 +43,6 @@
 (prefer-coding-system 'utf-8) ;; Prefer UTF-8 encoding
 (electric-indent-mode 1) ;; Always make newline keep indent
 (electric-pair-mode 1) ;; Pair parens and other brackets
-(icomplete-mode 1) ;; Incremental completion in minibuffers
 (setq-default word-wrap t) ;; Wrap at word ends instead of in the middle of a word.
 (setq save-interprogram-paste-before-kill t) ;; Save the clipboard to kill ring
 (setq lazy-highlight-initial-delay 3)
