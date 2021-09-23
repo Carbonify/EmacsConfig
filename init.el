@@ -16,7 +16,6 @@
     (message "Running on Linux"))))
 
 
-(add-to-list 'load-path "~/.emacs.d/manual-install/") ;; Add dir for manually installed plugins
 (add-to-list 'load-path "~/.emacs.d/config-lisp/") ;; Add more config by me.
 (load "ftdetect") ;; Load the file that detects filetypes
 (load-file "~/.emacs.d/macros.el") ;; Load keyboard macros
@@ -91,13 +90,17 @@
       scroll-preserve-screen-position 1)
 
 
-;; Plugin config -----------------
+;; Plugin config, manual install loads -----------------
 
 (load "plugin-config")
+(load "digraphs")
 
 ;; Hooks ------------------------
 
 (load "mode-hooks")
+
+;; Skeletons
+(load "skeletons")
 
 
 ;; Keybindings ---------------------------------

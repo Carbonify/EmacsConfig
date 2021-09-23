@@ -20,10 +20,10 @@
 (global-set-key (kbd "<down>")     'scroll-up-command)
 
 ;; Window manipulation
-(global-set-key (kbd "S-C-<right>")      'shrink-window-horizontally)
-(global-set-key (kbd "S-C-<left>")     'enlarge-window-horizontally)
-(global-set-key (kbd "S-C-<down>")      'shrink-window)
-(global-set-key (kbd "S-C-<up>")        'enlarge-window)
+(global-set-key (kbd "S-C-<right>") 'shrink-window-horizontally)
+(global-set-key (kbd "S-C-<left>")  'enlarge-window-horizontally)
+(global-set-key (kbd "S-C-<down>")  'shrink-window)
+(global-set-key (kbd "S-C-<up>")    'enlarge-window)
 
 ;; REGISTERS ----------------------
 ;; Bind home and end to use point register commands
@@ -64,9 +64,9 @@
 (global-set-key (kbd "C-c d p")    'nm-delete-in-parentheses) ;; Delete text within parentheses.
 (global-set-key (kbd "C-c d q")    'nm-delete-in-quotes) ;; Delete text within quotes.
 (global-set-key (kbd "C-c d b")    'nm-delete-in-brackets) ;; Delete text within brackets, eg [],{}, <>
-(global-set-key (kbd "C-x C-d")    'nm-insert-date) ;; Insert the date
+(global-set-key (kbd "C-x C-d")    'digraph-map) ;; Mapping to insert digraphs, if no compose key
 (global-set-key (kbd "<f8>")       'neotree-toggle)
-(global-set-key (kbd "<f5>")       'compile) ;; Quick compile button
+(global-set-key (kbd "C-c M-c")    'compile) ;; Quick compile button
 (global-set-key (kbd "<f6>")       'gdb) ;; Quick debugger button
 (global-set-key (kbd "C-c a")      'align-regexp)
 (global-set-key (kbd "C-z")        'repeat) ;;stop accidentally hitting this and minimizing

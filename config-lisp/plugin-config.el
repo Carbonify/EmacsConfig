@@ -97,11 +97,12 @@
                                         (mode . mediawiki-mode)))
                             ("Dired" (mode . dired-mode))
                             ("Org" (mode . org-mode))
-                            ("Documentation" (or (mode . info-mode)
+                            ("Documentation" (or (mode . Info-mode)
                                                  (mode . man-mode)
                                                  (mode . help-mode)))
                             ("Programming" (or (mode . javascript-mode)
                                                (mode . c++-mode)
+                                               (mode . c-mode)
                                                (mode . lua-mode)))
                             ("Special Buffer" (name . "^\\*.*\\*$"))))))))
 
