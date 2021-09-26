@@ -62,6 +62,8 @@
 (setq frame-title-format '(buffer-file-name "Emacs: %b (%f)" "Emacs: %b"))
 (setq search-whitespace-regexp "[_- \\n]")
 (require 'uniquify) ;; //Use alternative unique buffer naming scheme
+(setq help-window-select t) ;; auto-swap to newly made help windows
+
 
 ;; indentation
 (setq-default tab-width 2) ;; Smaller default tab width
@@ -93,14 +95,16 @@
 ;; Plugin config, manual install loads -----------------
 
 (load "plugin-config")
-(load "digraphs")
+
 
 ;; Hooks ------------------------
 
 (load "mode-hooks")
 
-;; Skeletons
+
+;; Skeletons, Digraphs
 (load "skeletons")
+(load "digraphs")
 
 
 ;; Keybindings ---------------------------------

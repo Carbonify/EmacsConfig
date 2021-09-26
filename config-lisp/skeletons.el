@@ -21,5 +21,5 @@ inserted into the file."
   "//" v1 "\n"
   "#ifndef " v1 "\n"
   "#define " v1 "\n\n"
-  >_
+  _
   "#endif //" v1)

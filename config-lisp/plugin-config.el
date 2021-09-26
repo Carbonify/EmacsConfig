@@ -109,7 +109,8 @@
 ;; Org
 (eval-after-load 'org
   '(progn
-     (setq org-log-done t)))
+     (setq-default org-return-follows-link t)
+     (setq-default org-log-done t)))
 
 ;; Racer (Rust prg)
 (eval-after-load 'rust-mode

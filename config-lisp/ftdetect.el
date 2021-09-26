@@ -8,4 +8,3 @@
 ;; Markdown
 (add-to-list 'auto-mode-alist '("\\.[Mm][dD]\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
-

@@ -2,7 +2,12 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("mode-hooks.el"
+(("queue_type.h"
+ (filename . "~/Documents/Sourcecode/COSC2436Work/HW2QueueSim/queue_type.h")
+ (front-context-string . "#ifndef QUEUE_TY")
+ (rear-context-string)
+ (position . 1))
+("mode-hooks.el"
  (filename . "~/.emacs.d/config-lisp/mode-hooks.el")
  (front-context-string . ";; Text mode hoo")
  (rear-context-string)
