@@ -48,7 +48,7 @@
   (local-unset-key (kbd "C-M-a"))
   (local-set-key (kbd "C-M-q") 'c-beginning-of-defun))
 
-(add-hook 'c++-mode-hook 'linum-mode)
+(add-hook 'c++-mode-hook 'display-line-numbers-mode)
 (add-hook 'c++-mode-hook 'projectile-mode)
 (add-hook 'c++-mode-hook 'subword-mode)
 (add-hook 'c++-mode-hook 'nm-c++-mode-config)

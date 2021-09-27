@@ -2,9 +2,9 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("queue_type.h"
- (filename . "~/Documents/Sourcecode/COSC2436Work/HW2QueueSim/queue_type.h")
- (front-context-string . "#ifndef QUEUE_TY")
+(("HistGeo.org"
+ (filename . "~/Documents/Notes/HistGeo.org")
+ (front-context-string . "* Chap 5 - Mount")
  (rear-context-string)
  (position . 1))
 ("mode-hooks.el"

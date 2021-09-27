@@ -91,20 +91,23 @@
      (setq-default ibuffer-show-empty-filter-groups nil)
      (setq-default ibuffer-saved-filter-groups
                    (quote (("Standard"
-                            ("Emacs Config" (mode . emacs-lisp-mode))
-                            ("Text" (or (mode . text-mode)
+                            ("Emacs Config" (mode . emacs-lisp-mode)) ;; Elisp files
+                            ("Text" (or (mode . text-mode) ;; All kinds of prose, non-org
                                         (mode . markdown-mode)
                                         (mode . mediawiki-mode)))
                             ("Dired" (mode . dired-mode))
                             ("Org" (mode . org-mode))
-                            ("Documentation" (or (mode . Info-mode)
+                            ("Documentation" (or (mode . Info-mode) ;; Built in emacs docs
                                                  (mode . man-mode)
                                                  (mode . help-mode)))
-                            ("Programming" (or (mode . javascript-mode)
+                            ("Programming" (or (mode . javascript-mode) ;; Programming files
+                                               (mode . makefile-gmake-mode)
+                                               (mode . makefile-mode)
                                                (mode . c++-mode)
+                                               (mode . rust-mode)
                                                (mode . c-mode)
                                                (mode . lua-mode)))
-                            ("Special Buffer" (name . "^\\*.*\\*$"))))))))
+                            ("Special Buffer" (name . "^\\*.*\\*$")))))))) ;; Temp or unbound buffers
 
 ;; Org
 (eval-after-load 'org
