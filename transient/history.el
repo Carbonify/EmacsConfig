@@ -1,6 +1,5 @@
 ((magit-commit
-  ("--all")
-  nil)
+  ("--all"))
  (magit-dispatch nil)
  (magit-merge nil)
  (magit-push nil)

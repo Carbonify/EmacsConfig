@@ -55,6 +55,7 @@
 
 ;; Counsel (command usefulness booster)
 (counsel-mode)
+(global-set-key (kbd "C-,")     'counsel-mark-ring) ;; Quickly pull up mark ring
 
 ;; Swiper
 (global-set-key (kbd "C-s") 'swiper)
@@ -100,6 +101,7 @@
                             ("Documentation" (or (mode . Info-mode) ;; Built in emacs docs
                                                  (mode . man-mode)
                                                  (mode . help-mode)))
+                            ("GDB" (mode . gdb-parent-mode)) ;; Debugger
                             ("Programming" (or (mode . javascript-mode) ;; Programming files
                                                (mode . makefile-gmake-mode)
                                                (mode . makefile-mode)

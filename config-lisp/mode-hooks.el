@@ -46,6 +46,11 @@
   "Runs several things to config the mode under one hook."
   ;; fix beginning of defun not working on some laptops
   (local-unset-key (kbd "C-M-a"))
+
+  ;; Quick compile and run for 1 file projects
+  (local-set-key (kbd "C-c c c") 'nm-compile-current-c-file)
+  (local-set-key (kbd "C-c c r") 'nm-run-exec-file)
+
   (local-set-key (kbd "C-M-q") 'c-beginning-of-defun))
 
 (add-hook 'c++-mode-hook 'display-line-numbers-mode)

@@ -2,7 +2,12 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("HistGeo.org"
+(("plugin-config.el"
+ (filename . "~/.emacs.d/config-lisp/plugin-config.el")
+ (front-context-string . ";;; This file co")
+ (rear-context-string)
+ (position . 1))
+("HistGeo.org"
  (filename . "~/Documents/Notes/HistGeo.org")
  (front-context-string . "* Chap 5 - Mount")
  (rear-context-string)

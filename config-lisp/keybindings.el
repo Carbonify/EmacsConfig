@@ -10,15 +10,6 @@
   (indent-region (point-min) (point-max)))
 (global-set-key (kbd "C-c i") 'nm-reindent-buffer)
 
-
-;; Unbind arrow keys, use them for specialized movement instead
-(global-set-key (kbd "<right>")    'nm-mark-ring-forward)
-(global-set-key (kbd "C-<right>")  'next-buffer)
-(global-set-key (kbd "<up>")       'scroll-down-command)
-(global-set-key (kbd "C-<left>")   'previous-buffer)
-(global-set-key (kbd "<left>")     'pop-to-mark-command)
-(global-set-key (kbd "<down>")     'scroll-up-command)
-
 ;; Window manipulation
 (global-set-key (kbd "S-C-<right>") 'shrink-window-horizontally)
 (global-set-key (kbd "S-C-<left>")  'enlarge-window-horizontally)
@@ -26,20 +17,13 @@
 (global-set-key (kbd "S-C-<up>")    'enlarge-window)
 
 ;; REGISTERS ----------------------
-;; Bind home and end to use point register commands
-(global-set-key (kbd "<home>") 'jump-to-register)
-(global-set-key (kbd "<end>")  'nm-safe-point-to-register)
+(global-set-key (kbd "C-c m")   'nm-safe-point-to-register)
+(global-set-key (kbd "C-<end>") 'nm-safe-copy-to-register)
+(global-set-key (kbd "C-c w")   'nm-safe-window-config-to-register) ;; Saves the window config to a register
 
-;; Bind C-home and C-end to use text register commands
-(global-set-key (kbd "C-<home>") 'insert-register)
-(global-set-key (kbd "C-<end>")  'nm-safe-copy-to-register)
-
-;; Bind meta home and meta end to do macro to register commands
-(global-set-key (kbd "M-<home>")   'jump-to-register) ;; Restores the window config at register
-(global-set-key (kbd "M-<end>")    'nm-safe-window-config-to-register) ;; Saves the window config to a register
 
 ;; Transposing
-(global-set-key (kbd "C-t") nil) ;; Remove the old keybinding
+(global-unset-key (kbd "C-t")) ;; Remove the old keybinding
 (global-set-key (kbd "C-t c") 'transpose-chars)
 (global-set-key (kbd "C-t w") 'transpose-words)
 (global-set-key (kbd "C-t l") 'transpose-lines)
@@ -67,7 +51,7 @@
 (global-set-key (kbd "C-x C-d")    'digraph-map) ;; Mapping to insert digraphs, if no compose key
 (global-set-key (kbd "<f8>")       'neotree-toggle)
 (global-set-key (kbd "C-c M-c")    'compile) ;; Quick compile button
-(global-set-key (kbd "<f6>")       'gdb) ;; Quick debugger button
+(global-set-key (kbd "<f6>")       'gdb-many-windows) ;; Quick debugger button
 (global-set-key (kbd "C-c a")      'align-regexp)
 (global-set-key (kbd "C-z")        'repeat) ;;stop accidentally hitting this and minimizing
 (global-set-key (kbd "C-c f")      'follow-delete-other-windows-and-split) ;; Enter follow mode quickly

@@ -1,5 +1,23 @@
 ;; A simple file to hold misc functions of my config, to stop them from consuming space in my init file.
 
+
+(defun nm-compile-current-c-file ()
+  "Compiles a C/C++ file on the fly."
+  (interactive)
+  (let* ((clang-choices '(("c" . "gcc") ("cpp" . "g++")))
+         (filename (file-name-nondirectory buffer-file-name))
+         (file-ext (file-name-extension buffer-file-name))
+         (compile-choice (cdr (assoc file-ext clang-choices))))
+    (compile (concat compile-choice " -g -Wall " filename " -o " (file-name-sans-extension filename)))))
+
+(defun nm-run-exec-file ()
+  "Runs an executable file named after the buffer if it exists."
+  (interactive)
+  (if (file-executable-p (file-name-sans-extension buffer-file-name))
+      (async-shell-command
+       (concat "./" (file-name-nondirectory (file-name-sans-extension buffer-file-name))))))
+
+
 (defun nm-save-macro (name)
   "Save a macro. Take a name as an argument and save the last defined macro under this name."
   (interactive "SName of the macro :")
