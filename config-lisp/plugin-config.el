@@ -60,6 +60,10 @@
 ;; Swiper
 (global-set-key (kbd "C-s") 'swiper)
 
+;; Mosey
+(global-set-key (kbd "C-a") 'mosey-backward-bounce)
+(global-set-key (kbd "C-e") 'mosey-forward-bounce)
+
 
 ;; Windmove
 (require 'windmove)

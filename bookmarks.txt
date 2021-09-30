@@ -2,7 +2,12 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("plugin-config.el"
+(("Architecture.org"
+ (filename . "~/Documents/Notes/Architecture.org")
+ (front-context-string . "* Chapter 4 - Th")
+ (rear-context-string)
+ (position . 1))
+("plugin-config.el"
  (filename . "~/.emacs.d/config-lisp/plugin-config.el")
  (front-context-string . ";;; This file co")
  (rear-context-string)
