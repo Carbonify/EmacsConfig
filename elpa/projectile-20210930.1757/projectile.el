@@ -4,8 +4,8 @@
 
 ;; Author: Bozhidar Batsov <bozhidar@batsov.dev>
 ;; URL: https://github.com/bbatsov/projectile
-;; Package-Version: 20210913.1840
-;; Package-Commit: 17c152b0628e1809f359492731b5af3aefc1c0d8
+;; Package-Version: 20210930.1757
+;; Package-Commit: 7f64570d3e6829d767d340c8584f3e4f3472ee81
 ;; Keywords: project, convenience
 ;; Version: 2.6.0-snapshot
 ;; Package-Requires: ((emacs "25.1"))
@@ -1549,13 +1549,16 @@ If PROJECT is not specified the command acts on the current project."
 (defun projectile-project-buffer-p (buffer project-root)
   "Check if BUFFER is under PROJECT-ROOT."
   (with-current-buffer buffer
-    (and (not (string-prefix-p " " (buffer-name buffer)))
-         (not (projectile-ignored-buffer-p buffer))
-         default-directory
-         (string-equal (file-remote-p default-directory)
-                       (file-remote-p project-root))
-         (not (string-match-p "^http\\(s\\)?://" default-directory))
-         (string-prefix-p project-root (file-truename default-directory) (eq system-type 'windows-nt)))))
+    (let ((directory (if buffer-file-name
+                         (file-name-directory buffer-file-name)
+                       default-directory)))
+      (and (not (string-prefix-p " " (buffer-name buffer)))
+           (not (projectile-ignored-buffer-p buffer))
+           directory
+           (string-equal (file-remote-p directory)
+                         (file-remote-p project-root))
+           (not (string-match-p "^http\\(s\\)?://" directory))
+           (string-prefix-p project-root (file-truename directory) (eq system-type 'windows-nt))))))
 
 (defun projectile-ignored-buffer-p (buffer)
   "Check if BUFFER should be ignored.
@@ -5346,6 +5349,12 @@ thing shown in the mode line otherwise."
   :type 'string
   :package-version '(projectile . "0.12.0"))
 
+(defcustom projectile-show-menu t
+  "Controls whether to display Projectile's menu."
+  :group 'projectile
+  :type 'boolean
+  :package-version '(projectile . "2.6.0"))
+
 (defvar-local projectile--mode-line projectile-mode-line-prefix)
 
 (defun projectile-default-mode-line ()
@@ -5441,57 +5450,64 @@ thing shown in the mode line otherwise."
       (define-key map projectile-keymap-prefix 'projectile-command-map))
     (easy-menu-define projectile-mode-menu map
       "Menu for Projectile"
-      '("Projectile"
-        ["Find file" projectile-find-file]
-        ["Find file in known projects" projectile-find-file-in-known-projects]
-        ["Find test file" projectile-find-test-file]
-        ["Find directory" projectile-find-dir]
-        ["Find file in directory" projectile-find-file-in-directory]
-        ["Find other file" projectile-find-other-file]
-        ["Switch to buffer" projectile-switch-to-buffer]
-        ["Jump between implementation file and test file" projectile-toggle-between-implementation-and-test]
-        ["Kill project buffers" projectile-kill-buffers]
-        ["Save project buffers" projectile-save-project-buffers]
-        ["Recent files" projectile-recentf]
-        ["Previous buffer" projectile-previous-project-buffer]
-        ["Next buffer" projectile-next-project-buffer]
+      '("Projectile" :visible projectile-show-menu
+        ("Find..."
+         ["Find file" projectile-find-file]
+         ["Find file in known projects" projectile-find-file-in-known-projects]
+         ["Find test file" projectile-find-test-file]
+         ["Find directory" projectile-find-dir]
+         ["Find file in directory" projectile-find-file-in-directory]
+         ["Find other file" projectile-find-other-file]
+         ["Jump between implementation file and test file" projectile-toggle-between-implementation-and-test])
+        ("Buffers"
+         ["Switch to buffer" projectile-switch-to-buffer]
+         ["Kill project buffers" projectile-kill-buffers]
+         ["Save project buffers" projectile-save-project-buffers]
+         ["Recent files" projectile-recentf]
+         ["Previous buffer" projectile-previous-project-buffer]
+         ["Next buffer" projectile-next-project-buffer])
+        ("Projects"
+         ["Switch to project" projectile-switch-project]
+         ["Switch to open project" projectile-switch-open-project]
+         "--"
+         ["Discover projects in directory" projectile-discover-projects-in-directory]
+         ["Clear known projects" projectile-clear-known-projects]
+         ["Reset known projects" projectile-reset-known-projects]
+         "--"
+         ["Open project in dired" projectile-dired]
+         "--"
+         ["Browse dirty projects" projectile-browse-dirty-projects]
+         "--"
+         ["Cache current file" projectile-cache-current-file]
+         ["Invalidate cache" projectile-invalidate-cache]
+         ["Regenerate [e|g]tags" projectile-regenerate-tags]
+         "--"
+         ["Toggle project wide read-only" projectile-toggle-project-read-only]
+         ["Edit .dir-locals.el" projectile-edit-dir-locals]
+         ["Project info" projectile-project-info])
+        ("Search"
+         ["Search with grep" projectile-grep]
+         ["Search with ag" projectile-ag]
+         ["Search with ripgrep" projectile-ripgrep]
+         ["Replace in project" projectile-replace]
+         ["Multi-occur in project" projectile-multi-occur])
+        ("Run..."
+         ["Run shell" projectile-run-shell]
+         ["Run eshell" projectile-run-eshell]
+         ["Run ielm" projectile-run-ielm]
+         ["Run term" projectile-run-term]
+         "--"
+         ["Run GDB" projectile-run-gdb])
+        ("Build"
+         ["Configure project" projectile-configure-project]
+         ["Compile project" projectile-compile-project]
+         ["Test project" projectile-test-project]
+         ["Install project" projectile-install-project]
+         ["Package project" projectile-package-project]
+         ["Run project" projectile-run-project]
+         "--"
+         ["Repeat last build command" projectile-repeat-last-command])
         "--"
-        ["Toggle project wide read-only" projectile-toggle-project-read-only]
-        ["Edit .dir-locals.el" projectile-edit-dir-locals]
-        "--"
-        ["Switch to project" projectile-switch-project]
-        ["Switch to open project" projectile-switch-open-project]
-        ["Discover projects in directory" projectile-discover-projects-in-directory]
-        ["Clear known projects" projectile-clear-known-projects]
-        ["Reset known projects" projectile-reset-known-projects]
-        ["Browse dirty projects" projectile-browse-dirty-projects]
-        ["Open project in dired" projectile-dired]
-        "--"
-        ["Search in project (grep)" projectile-grep]
-        ["Search in project (ag)" projectile-ag]
-        ["Replace in project" projectile-replace]
-        ["Multi-occur in project" projectile-multi-occur]
-        "--"
-        ["Run GDB" projectile-run-gdb]
-        "--"
-        ["Run shell" projectile-run-shell]
-        ["Run eshell" projectile-run-eshell]
-        ["Run ielm" projectile-run-ielm]
-        ["Run term" projectile-run-term]
-        "--"
-        ["Cache current file" projectile-cache-current-file]
-        ["Invalidate cache" projectile-invalidate-cache]
-        ["Regenerate [e|g]tags" projectile-regenerate-tags]
-        "--"
-        ["Configure project" projectile-configure-project]
-        ["Compile project" projectile-compile-project]
-        ["Test project" projectile-test-project]
-        ["Install project" projectile-install-project]
-        ["Package project" projectile-package-project]
-        ["Run project" projectile-run-project]
-        ["Repeat last external command" projectile-repeat-last-command]
-        "--"
-        ["Project info" projectile-project-info]
         ["About" projectile-version]))
     map)
   "Keymap for Projectile mode.")
