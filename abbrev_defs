@@ -61,6 +61,8 @@
     ("occured" "occurred" nil :count 0)
     ("oppertunity" "opportunity" nil :count 0)
     ("paralell" "parallel" nil :count 0)
+    ("protien" "protein" nil :count 2)
+    ("protiens" "proteins" nil :count 1)
     ("reccomended" "recommended" nil :count 0)
     ("recieve" "receive" nil :count 0)
     ("recieved" "received" nil :count 0)
