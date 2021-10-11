@@ -102,11 +102,13 @@
                                         (mode . mediawiki-mode)))
                             ("Dired" (mode . dired-mode))
                             ("Org" (mode . org-mode))
-                            ("Documentation" (or (mode . Info-mode) ;; Built in emacs docs
-                                                 (mode . man-mode)
-                                                 (mode . help-mode)))
+                            ("Documentation & Docs" (or (mode . Info-mode) ;; Built in emacs docs
+                                                        (mode . man-mode)  ;; Man pages
+                                                        (mode . doc-view-mode) ;; PDF files
+                                                        (mode . help-mode)))
                             ("GDB" (mode . gdb-parent-mode)) ;; Debugger
-                            ("Programming" (or (mode . javascript-mode) ;; Programming files
+                            ("Images" (mode . image-mode)) ;; Image files viewed in emacs
+                            ("Programming" (or (mode . javascript-mode)
                                                (mode . makefile-gmake-mode)
                                                (mode . makefile-mode)
                                                (mode . c++-mode)
