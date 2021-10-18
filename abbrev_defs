@@ -24,6 +24,11 @@
     ("lua" "Lua" nil :count 0)
    ))
 
+(define-abbrev-table 'org-mode-abbrev-table
+  '(
+    ("cisc" "CISC" nil :count 0)
+   ))
+
 (define-abbrev-table 'text-mode-abbrev-table
   '(
     ("america" "America" nil :count 0)
