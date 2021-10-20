@@ -31,7 +31,7 @@
 
 (define-abbrev-table 'text-mode-abbrev-table
   '(
-    ("america" "America" nil :count 0)
+    ("america" "America" nil :count 2)
     ("api" "API" nil :count 0)
     ("appriciated" "appreciated" nil :count 0)
     ("cant" "can't" nil :count 0)
@@ -57,6 +57,7 @@
     ("isostacy" "isostasy" nil :count 0)
     ("ive" "I've" nil :count 0)
     ("iwth" "with" nil :count 0)
+    ("jurassic" "Jurassic" nil :count 1)
     ("licence" "license" nil :count 0)
     ("maintenence" "maintenance" nil :count 0)
     ("might've" "might have" nil :count 2)
@@ -69,7 +70,7 @@
     ("occored" "occurred" nil :count 0)
     ("occorring" "occurring" nil :count 0)
     ("occured" "occurred" nil :count 2)
-    ("occuring" "occurring" nil :count 0)
+    ("occuring" "occurring" nil :count 1)
     ("oppertunity" "opportunity" nil :count 0)
     ("paralell" "parallel" nil :count 1)
     ("protien" "protein" nil :count 2)

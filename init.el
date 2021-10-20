@@ -64,6 +64,7 @@
 (require 'uniquify) ;; //Use alternative unique buffer naming scheme
 (setq help-window-select t) ;; auto-swap to newly made help windows
 (setq sentence-end-double-space nil) ;; Don't use outdated double space after periods
+(setq kill-ring-max (* kill-ring-max 2)) ;; Double kill ring max size
 
 
 ;; indentation
