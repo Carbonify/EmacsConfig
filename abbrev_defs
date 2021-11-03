@@ -27,10 +27,12 @@
 (define-abbrev-table 'org-mode-abbrev-table
   '(
     ("cisc" "CISC" nil :count 0)
+    ("risc" "RISC" nil :count 0)
    ))
 
 (define-abbrev-table 'text-mode-abbrev-table
   '(
+    ("acessed" "accessed" nil :count 0)
     ("america" "America" nil :count 2)
     ("api" "API" nil :count 0)
     ("appriciated" "appreciated" nil :count 0)
@@ -72,6 +74,7 @@
     ("occured" "occurred" nil :count 2)
     ("occuring" "occurring" nil :count 1)
     ("oppertunity" "opportunity" nil :count 0)
+    ("optimise" "optimize" nil :count 0)
     ("paralell" "parallel" nil :count 1)
     ("protien" "protein" nil :count 2)
     ("protiens" "proteins" nil :count 1)
