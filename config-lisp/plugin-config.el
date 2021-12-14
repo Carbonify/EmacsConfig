@@ -3,6 +3,10 @@
 ;;; Global modes that make plugins operate.
 
 
+;; Undo tree
+(global-undo-tree-mode)
+
+
 ;;Avy
 (require 'avy) ;; Always load avy
 (global-set-key (kbd "C-;") 'avy-goto-char-timer)
@@ -17,12 +21,20 @@
 ;; Make tab accept the selected completion, like how IDE completion works
 (define-key company-active-map (kbd "<tab>") 'company-select-next-if-tooltip-visible-or-complete-selection)
 
+;; Space also completes active completion
+(defun company-complete-selection-and-space ()
+  "Run `company-complete-selection' then insert a space."
+  (company-complete-selection)
+  (insert " "))
+(define-key company-active-map (kbd "SPC") 'company-complete-selection-and-space)
+
 
 ;; Avy zap up to char --------
 (global-set-key (kbd "M-z") #'avy-zap-up-to-char)
 
 ;; Flyspell  ------
 (eval-after-load 'flyspell '(define-key flyspell-mode-map (kbd "C-;") nil)) ;;disables the binding so avy can use it
+(eval-after-load 'flyspell '(define-key flyspell-mode-map (kbd "C-,") nil))
 
 ;; Rainbow delimiters
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
@@ -51,6 +63,10 @@
               '((counsel-grep-or-swiper . ivy--regex-plus)
                 (swiper . ivy--regex-plus)
                 (t . ivy--regex-fuzzy)))
+
+(when (>= emacs-major-version 27)
+  (setq xref-show-definitions-function #'ivy-xref-show-defs))
+(setq xref-show-xrefs-function #'ivy-xref-show-xrefs)
 
 
 ;; Counsel (command usefulness booster)

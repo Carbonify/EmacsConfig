@@ -15,6 +15,8 @@
 (global-set-key (kbd "S-C-<left>")  'enlarge-window-horizontally)
 (global-set-key (kbd "S-C-<down>")  'shrink-window)
 (global-set-key (kbd "S-C-<up>")    'enlarge-window)
+(global-set-key (kbd "M-o")         'other-buffer)
+
 
 ;; REGISTERS ----------------------
 (global-set-key (kbd "C-c m")   'nm-safe-point-to-register)
@@ -49,9 +51,8 @@
 (global-set-key (kbd "C-c d q")    'nm-delete-in-quotes) ;; Delete text within quotes.
 (global-set-key (kbd "C-c d b")    'nm-delete-in-brackets) ;; Delete text within brackets, eg [],{}, <>
 (global-set-key (kbd "C-x C-d")    'digraph-map) ;; Mapping to insert digraphs, if no compose key
-(global-set-key (kbd "<f8>")       'neotree-toggle)
 (global-set-key (kbd "C-c M-c")    'compile) ;; Quick compile button
-(global-set-key (kbd "<f6>")       'gdb-many-windows) ;; Quick debugger button
+(global-set-key (kbd "<f6>")       'gdb) ;; Quick debugger button
 (global-set-key (kbd "C-c a")      'align-regexp)
 (global-set-key (kbd "C-z")        'repeat) ;;stop accidentally hitting this and minimizing
 (global-set-key (kbd "C-c f")      'follow-delete-other-windows-and-split) ;; Enter follow mode quickly
