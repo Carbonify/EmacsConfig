@@ -6,12 +6,16 @@
 ;; Undo tree
 (global-undo-tree-mode)
 
+;; iedit
+(global-set-key (kbd "M-m") 'iedit-mode)
+
 
 ;;Avy
 (require 'avy) ;; Always load avy
 (global-set-key (kbd "C-;") 'avy-goto-char-timer)
 (global-set-key (kbd "C-'") 'avy-kill-region)
 (global-set-key (kbd "C-:") 'avy-kill-whole-line)
+
 
 ;; Company mode (text completion framework) ---------
 (require 'company)
@@ -26,7 +30,7 @@
   "Run `company-complete-selection' then insert a space."
   (company-complete-selection)
   (insert " "))
-(define-key company-active-map (kbd "SPC") 'company-complete-selection-and-space)
+(define-key company-active-map (kbd "<space>") 'company-complete-selection-and-space)
 
 
 ;; Avy zap up to char --------
@@ -138,8 +142,3 @@
   '(progn
      (setq-default org-return-follows-link t)
      (setq-default org-log-done t)))
-
-;; Racer (Rust prg)
-(eval-after-load 'rust-mode
-  '(progn
-     (setq-default racer-cmd "~/.cargo/bin/racer")))

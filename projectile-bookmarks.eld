@@ -1,1 +1,1 @@
-("~/Documents/Sourcecode/COSC2436Work/" "~/Documents/Sourcecode/OpenTabletDriver/" "~/.emacs.d/")
+("~/.emacs.d/" "~/Documents/Sourcecode/COSC2436Work/" "~/Documents/Sourcecode/OpenTabletDriver/")

@@ -27,19 +27,6 @@
              (ibuffer-auto-mode t)
              (ibuffer-switch-to-saved-filter-groups "Standard"))) ;; See plugin config for definition
 
-;; Rust mode
-(defun nm-rust-mode-config ()
-  "Runs several things to config the mode under one hook."
-  ;; Bind reindent to instead run rustfmt, as it can do it better
-  (local-set-key (kbd "C-c i") #'rust-format-buffer))
-
-(add-hook 'rust-mode-hook #'cargo-minor-mode)
-(add-hook 'rust-mode-hook #'racer-mode)
-(add-hook 'rust-mode-hook #'eldoc-mode)
-
-(add-hook 'rust-mode-hook #'flycheck-rust-setup)
-(add-hook 'rust-mode-hook 'nm-rust-mode-config)
-
 
 ;; C++ mode hooks
 (defun nm-c++-mode-config ()

@@ -15,7 +15,7 @@
  '(frame-background-mode 'light)
  '(ispell-personal-dictionary "~/.emacs.d/dictionary")
  '(package-selected-packages
-   '(ivy-xref undo-tree auto-highlight-symbol mosey mood-line solarized-theme flx swiper counsel ivy magit projectile rainbow-delimiters racer markdown-mode flycheck-rust company-lua cargo avy-zap))
+   '(flycheck iedit ivy-xref undo-tree auto-highlight-symbol mosey mood-line solarized-theme flx swiper counsel ivy magit projectile rainbow-delimiters markdown-mode company-lua avy-zap))
  '(save-place t nil (saveplace))
  '(show-paren-mode t)
  '(tool-bar-mode nil)
@@ -25,4 +25,4 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "DejaVu Sans Mono" :foundry "PfEd" :slant normal :weight normal :height 113 :width normal)))))
+ '(default ((((class color) (min-colors 89)) (:foreground "#657b83" :background "#fdf6e3")))))

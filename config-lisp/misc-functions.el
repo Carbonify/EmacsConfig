@@ -1,5 +1,23 @@
 ;; A simple file to hold misc functions of my config, to stop them from consuming space in my init file.
 
+;; Advices ---------------------------------
+
+(defadvice kill-ring-save (before slick-copy activate compile)
+  "When called interactively with no active region, copy a single line instead."
+  (interactive
+   (if mark-active (list (region-beginning) (region-end))
+     (message "Single line killed")
+     (list (line-beginning-position)
+           (line-beginning-position 2)))))
+
+(defadvice kill-region (before slick-cut activate compile)
+  "When called interactively with no active region, kill a single line instead."
+  (interactive
+   (if mark-active (list (region-beginning) (region-end))
+     (list (line-beginning-position)
+           (line-beginning-position 2)))))
+
+;; Functions -------------------------------
 
 (defun nm-compile-current-c-file ()
   "Compiles a C/C++ file on the fly."

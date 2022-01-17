@@ -33,7 +33,7 @@
 ;; Same dir on windows because windows is bad at having a temp dir accessible without admin perms
 (if (string-equal system-type "windows-nt")
     (setq backup-directory-alist nil)
- (setq backup-directory-alist `((".*" . ,temporary-file-directory))))
+  (setq backup-directory-alist `((".*" . ,temporary-file-directory))))
 
 (setq abbrev-file-name "~/.emacs.d/abbrev_defs") ;; Change default abbreviations file
 (setq-default abbrev-mode t) ;; Enable abbrev-mode by default
@@ -115,8 +115,8 @@
 
 ;; Finalization ----------------------
 
-;; Emacsclient stuff
-(server-start) ;; Start the server in this instance, so emacs doesn't have to open again
+;; Start the server in this instance, so emacs doesn't have to open again
+(server-start)
 
 ;; Graphics, themes, etc
 (load-theme 'solarized-light t)
