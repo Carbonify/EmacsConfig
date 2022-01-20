@@ -1,14 +1,6 @@
-# Packaging
-.cask
-
-# Folders
-elpa/*readme.txt
-elpa/archives/*
+elpa/
 auto-save-list/*
 eshell/*
-
-# Misc
-.smex*
 recentf
 places
 session*

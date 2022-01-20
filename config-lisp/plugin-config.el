@@ -3,95 +3,139 @@
 ;;; Global modes that make plugins operate.
 
 
-;; Undo tree
-(global-undo-tree-mode)
+(use-package solarized-theme
+  :ensure t)
 
-;; iedit
-(global-set-key (kbd "M-m") 'iedit-mode)
-
-
-;;Avy
-(require 'avy) ;; Always load avy
-(global-set-key (kbd "C-;") 'avy-goto-char-timer)
-(global-set-key (kbd "C-'") 'avy-kill-region)
-(global-set-key (kbd "C-:") 'avy-kill-whole-line)
+(use-package undo-tree
+  :ensure t
+  :config
+  (global-undo-tree-mode))
 
 
-;; Company mode (text completion framework) ---------
-(require 'company)
-(global-company-mode)
-(setq company-idle-delay 0.6) ;; How long before it pops up the completion automatically
-(setq company-selection-wrap-around t) ;; List loops upon reaching bottom
-;; Make tab accept the selected completion, like how IDE completion works
-(define-key company-active-map (kbd "<tab>") 'company-select-next-if-tooltip-visible-or-complete-selection)
-
-;; Space also completes active completion
-(defun company-complete-selection-and-space ()
-  "Run `company-complete-selection' then insert a space."
-  (company-complete-selection)
-  (insert " "))
-(define-key company-active-map (kbd "<space>") 'company-complete-selection-and-space)
+(use-package iedit
+  :ensure t
+  :bind ("M-m" . iedit-mode))
 
 
-;; Avy zap up to char --------
-(global-set-key (kbd "M-z") #'avy-zap-up-to-char)
+(use-package avy
+  :ensure t
+  :bind (("C-;" . avy-goto-char-timer)
+         ("C-'" . avy-kill-region)
+         ("C-:" . avy-kill-whole-line)))
 
-;; Flyspell  ------
-(eval-after-load 'flyspell '(define-key flyspell-mode-map (kbd "C-;") nil)) ;;disables the binding so avy can use it
-(eval-after-load 'flyspell '(define-key flyspell-mode-map (kbd "C-,") nil))
+(use-package company
+  :ensure t
+  :config
+  (global-company-mode)
+  (setq company-idle-delay 0.6) ;; How long before it pops up the completion automatically
+  (setq company-selection-wrap-around t) ;; List loops upon reaching bottom
+  :bind (("TAB" . company-indent-or-complete-common)
+         :map company-active-map
+         ("<tab>" . company-select-next-if-tooltip-visible-or-complete-selection)))
 
-;; Rainbow delimiters
-(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
+(use-package magit
+  :ensure t
+  :bind ("C-x g" . magit-status))
 
-;; Projectile (project handler, mostly used for switching between header and code files)
-(eval-after-load "projectile"
-  '(define-key projectile-mode-map (kbd "C-x p") 'projectile-command-map))
-(setq-default projectile-completion-system 'ivy)
+(use-package auto-highlight-symbol
+  :ensure t
+  :hook (prog-mode . auto-highlight-symbol-mode))
+
+(use-package markdown-mode
+  :ensure t)
+
+(use-package avy-zap
+  :ensure t
+  :after avy
+  :bind ("M-z" . avy-zap-up-to-char))
 
 
-;; mode line (using mood-line)
-(mood-line-mode)
+(use-package flyspell
+  :ensure t
+  :hook (text-mode . flyspell-mode)
+  ;;disables the binding so avy can use it
+  :bind (:map flyspell-mode-map
+              ("C-;" . nil)
+              ("C-," . nil)))
 
+
+(use-package rainbow-delimiters
+  :ensure t
+  :hook (prog-mode . rainbow-delimiters-mode))
+
+(use-package projectile
+  :ensure t
+  :bind ("C-x p" . projectile-command-map)
+  :after ivy
+  :config
+  (setq-default projectile-completion-system 'ivy))
+
+
+(use-package mood-line
+  :ensure t
+  :config
+  (mood-line-mode))
 
 ;; Ivy (completion framework)
-(ivy-mode)
-(setq-default ivy-use-virtual-buffers t) ;; Don't spam up buffer list with temp buffers
-(setq enable-recursive-minibuffers t)
-(global-set-key (kbd "C-c r") 'ivy-resume) ;; Re-open ivy where we last left off, in case of accidental accept
-(setq-default ivy-wrap t) ;; Wrap around in matches list
+(use-package ivy
+  :ensure t
+  :demand t
+  ;; Re-open ivy where we last left off, in case of accidental accept
+  :bind ("C-c r" . ivy-resume)
+  :config
+  (ivy-mode)
+  (setq-default ivy-use-virtual-buffers t) ;; Don't spam up buffer list with temp buffers
+  (setq enable-recursive-minibuffers t)
+  ;; Wrap around in matches list
+  (setq-default ivy-wrap t))
 
-;; Fuzzy matching for ivy, EXCEPT for searching in files as that can cause
-;; too many things to pop up (note: you should have flx installed for better popup
-;; ordering - better matches rise to the top)
-(setq-default ivy-re-builders-alist
-              '((counsel-grep-or-swiper . ivy--regex-plus)
-                (swiper . ivy--regex-plus)
-                (t . ivy--regex-fuzzy)))
+(use-package flx
+  :ensure t
+  :after ivy
+  :config
 
-(when (>= emacs-major-version 27)
-  (setq xref-show-definitions-function #'ivy-xref-show-defs))
-(setq xref-show-xrefs-function #'ivy-xref-show-xrefs)
+  ;; Fuzzy matching for ivy, EXCEPT for searching in files as that can cause
+  ;; too many things to pop up (note: you should have flx installed for better popup
+  ;; ordering - better matches rise to the top)
+  (setq-default ivy-re-builders-alist
+                '((counsel-grep-or-swiper . ivy--regex-plus)
+                  (swiper . ivy--regex-plus)
+                  (t . ivy--regex-fuzzy))))
 
+(use-package ivy-xref
+  :ensure t
+  :after ivy
+  :config
+  (when (>= emacs-major-version 27)
+    (setq-default xref-show-definitions-function #'ivy-xref-show-defs))
+  (setq-default xref-show-xrefs-function #'ivy-xref-show-xrefs))
 
-;; Counsel (command usefulness booster)
-(counsel-mode)
-(global-set-key (kbd "C-,")     'counsel-mark-ring) ;; Quickly pull up mark ring
+(use-package counsel
+  :ensure t
+  :demand t
+  :bind ("C-," . counsel-mark-ring)
+  :config
+  (counsel-mode))
 
-;; Swiper
-(global-set-key (kbd "C-s") 'swiper)
+(use-package swiper
+  :ensure t
+  :bind ("C-s" . swiper))
 
 ;; Mosey
-(global-set-key (kbd "C-a") 'mosey-backward-bounce)
-(global-set-key (kbd "C-e") 'mosey-forward-bounce)
+(use-package mosey
+  :ensure t
+  :bind (("C-a" . mosey-backward-bounce)
+         ("C-e" . mosey-forward-bounce)))
 
 
-;; Windmove
 (require 'windmove)
 (windmove-default-keybindings)
 
 ;;lua mode
-(setq-default lua-indent-level 4)
-
+(use-package lua-mode
+  :ensure t
+  :config
+  (setq-default lua-indent-level 4))
 
 ;; Eshell
 (setq-default eshell-prompt-function
@@ -137,8 +181,16 @@
                                                (mode . lua-mode)))
                             ("Special Buffer" (name . "^\\*.*\\*$")))))))) ;; Temp or unbound buffers
 
-;; Org
-(eval-after-load 'org
-  '(progn
-     (setq-default org-return-follows-link t)
-     (setq-default org-log-done t)))
+(use-package org
+  :ensure t
+  :hook ((org-mode . visual-line-mode)
+         (org-mode . auto-fill-mode))
+  :config
+  (setq-default org-return-follows-link t)
+  (setq-default org-log-done t))
+
+(use-package flycheck
+  :ensure t
+  :hook (prog-mode . flycheck-mode))
+
+;; end

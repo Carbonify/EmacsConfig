@@ -1,19 +1,9 @@
 ;; Text mode hooks
 
-(add-hook 'text-mode-hook 'flyspell-mode) ;; Turn on incorrect spell highlight
 (add-hook 'text-mode-hook '(lambda () (setq-local sentence-end-double-space nil)))
 
 ;; Elisp mode hooks
 (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
-
-;; Org mode hooks
-(add-hook 'org-mode-hook 'visual-line-mode) ;; Make org just wrap long lines
-(add-hook 'org-mode-hook 'auto-fill-mode)
-(add-hook 'org-mode-hook '(lambda ()
-                            (setq-local fill-column 100)))
-
-;; Programming mode hooks
-(add-hook 'prog-mode-hook 'flycheck-mode) ;; Enable flycheck for programming
 
 ;; On buffer save hooks
 (add-hook 'before-save-hook 'nm-clean-buffer)

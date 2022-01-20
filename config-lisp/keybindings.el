@@ -1,8 +1,5 @@
 ;;Keybindings -------
 
-;; Rebind tab
-(global-set-key (kbd "TAB") #'company-indent-or-complete-common)
-
 ;; Reindent buffer
 (defun nm-reindent-buffer ()
   "Reindents the entire buffer."

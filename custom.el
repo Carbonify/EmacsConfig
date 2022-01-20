@@ -15,7 +15,7 @@
  '(frame-background-mode 'light)
  '(ispell-personal-dictionary "~/.emacs.d/dictionary")
  '(package-selected-packages
-   '(flycheck iedit ivy-xref undo-tree auto-highlight-symbol mosey mood-line solarized-theme flx swiper counsel ivy magit projectile rainbow-delimiters markdown-mode company-lua avy-zap))
+   '(flycheck lua-mode mosey counsel ivy-xref flx ivy mood-line projectile rainbow-delimiters avy-zap company avy iedit undo-tree use-package))
  '(save-place t nil (saveplace))
  '(show-paren-mode t)
  '(tool-bar-mode nil)
