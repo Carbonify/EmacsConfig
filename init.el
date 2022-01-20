@@ -43,7 +43,6 @@
 (setq-default abbrev-mode t) ;; Enable abbrev-mode by default
 (global-hl-line-mode) ;; Highlight current cursor line
 (scroll-bar-mode -1) ;; Disable the scroll bar
-(prefer-coding-system 'utf-8) ;; Prefer UTF-8 encoding
 (electric-indent-mode 1) ;; Always make newline keep indent
 (electric-pair-mode 1) ;; Pair parens and other brackets
 (setq-default word-wrap t) ;; Wrap at word ends instead of in the middle of a word.
@@ -69,6 +68,22 @@
 (setq help-window-select t) ;; auto-swap to newly made help windows
 (setq sentence-end-double-space nil) ;; Don't use outdated double space after periods
 (setq kill-ring-max (* kill-ring-max 2)) ;; Double kill ring max size
+
+
+;; File encoding nonsense
+(if (eq system-type 'windows-nt)
+    (progn
+      (set-clipboard-coding-system 'utf-16-le)
+      (set-selection-coding-system 'utf-16-le))
+  (set-selection-coding-system 'utf-8))
+(prefer-coding-system 'utf-8-unix)
+(set-language-environment "UTF-8")
+(set-default-coding-systems 'utf-8-unix)
+(set-terminal-coding-system 'utf-8-unix)
+(set-keyboard-coding-system 'utf-8-unix)
+(setq locale-coding-system 'utf-8-unix)
+(when (display-graphic-p) ;; Treat clipboard input as UTF-8 string first; compound text next, etc.
+  (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING)))
 
 
 ;; indentation
