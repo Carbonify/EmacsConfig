@@ -2,6 +2,36 @@
 ;;; keybindings specific to plugins, etc. It also enables certain
 ;;; Global modes that make plugins operate.
 
+(use-package lsp-mode
+  :if (string-equal system-type "gnu/linux") ;;only try to set this up on linux
+  :ensure t
+  :hook ((c-mode   . lsp)
+	       (c++-mode . lsp)
+         (lsp-mode . lsp-enable-which-key-integration))
+  :commands lsp
+  :config
+  (setq lsp-keymap-prefix "C-c l")
+  (setq lsp-idle-delay 0.1)
+  (setq lsp-enable-snippet nil)
+  (define-key lsp-mode-map (kbd "C-c l") lsp-command-map)
+  (setq lsp-file-watch-threshold 15000))
+
+(use-package lsp-ui
+  :if (string-equal system-type "gnu/linux") ;;only try to set this up on linux
+  :ensure t
+  :after (lsp-mode)
+  :commands (lsp-ui-mode)
+  :config
+  (setq lsp-ui-doc-enable nil)
+  (setq lsp-ui-doc-delay 0.5)
+  (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
+  (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references))
+
+(use-package lsp-ivy
+  :if (string-equal system-type "gnu/linux") ;;only try to set this up on linux
+  :ensure t
+  :after (ivy lsp-mode)
+  :commands lsp-ivy-workspace-symbol)
 
 (use-package solarized-theme
   :ensure t)
@@ -34,12 +64,9 @@
          ("<tab>" . company-select-next-if-tooltip-visible-or-complete-selection)))
 
 (use-package magit
+  :if (string-equal system-type "gnu/linux") ;;only try to set this up on linux
   :ensure t
   :bind ("C-x g" . magit-status))
-
-(use-package auto-highlight-symbol
-  :ensure t
-  :hook (prog-mode . auto-highlight-symbol-mode))
 
 (use-package markdown-mode
   :ensure t)
