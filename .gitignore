@@ -6,3 +6,5 @@ places
 session*
 transient/*
 .lsp*
+bookmarks.txt
+projectile-bookmarks*

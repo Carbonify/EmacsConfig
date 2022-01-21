@@ -1,1 +1,0 @@
-("~/.emacs.d/" "~/Documents/Sourcecode/COSC2436Work/" "~/Documents/Sourcecode/OpenTabletDriver/")
