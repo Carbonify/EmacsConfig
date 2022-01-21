@@ -3,13 +3,15 @@
 ;;; Global modes that make plugins operate.
 
 (use-package lsp-mode
-  :if (string-equal system-type "gnu/linux") ;;only try to set this up on linux
   :ensure t
   :hook ((c-mode   . lsp)
-	       (c++-mode . lsp)
-         (lsp-mode . lsp-enable-which-key-integration))
+	       (c++-mode . lsp))
   :commands lsp
   :config
+  (unless (executable-find "clangd")
+    (message "Clangd is not installed or available, LSP will not work."))
+  (unless (executable-find "bear")
+    (message "Bear is not installed or available, LSP may not work."))
   (setq lsp-keymap-prefix "C-c l")
   (setq lsp-idle-delay 0.1)
   (setq lsp-enable-snippet nil)
@@ -17,7 +19,6 @@
   (setq lsp-file-watch-threshold 15000))
 
 (use-package lsp-ui
-  :if (string-equal system-type "gnu/linux") ;;only try to set this up on linux
   :ensure t
   :after (lsp-mode)
   :commands (lsp-ui-mode)
@@ -28,7 +29,6 @@
   (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references))
 
 (use-package lsp-ivy
-  :if (string-equal system-type "gnu/linux") ;;only try to set this up on linux
   :ensure t
   :after (ivy lsp-mode)
   :commands lsp-ivy-workspace-symbol)
@@ -64,7 +64,6 @@
          ("<tab>" . company-select-next-if-tooltip-visible-or-complete-selection)))
 
 (use-package magit
-  :if (string-equal system-type "gnu/linux") ;;only try to set this up on linux
   :ensure t
   :bind ("C-x g" . magit-status))
 
@@ -92,6 +91,7 @@
 
 (use-package projectile
   :ensure t
+  :hook (prog-mode . projectile-mode)
   :bind ("C-x p" . projectile-command-map)
   :after ivy
   :config

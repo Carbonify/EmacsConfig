@@ -30,7 +30,5 @@
   (local-set-key (kbd "C-M-q") 'c-beginning-of-defun))
 
 (add-hook 'c++-mode-hook 'display-line-numbers-mode) ;;native line numbers
-(add-hook 'c++-mode-hook 'projectile-mode)
 (add-hook 'c++-mode-hook 'subword-mode)
-(add-hook 'c++-mode-hook 'auto-highlight-symbol-mode) ;;from plugin of similar name
 (add-hook 'c++-mode-hook 'nm-c++-mode-config)
