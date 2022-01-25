@@ -2,6 +2,10 @@
 ;;; keybindings specific to plugins, etc. It also enables certain
 ;;; Global modes that make plugins operate.
 
+(use-package mediawiki-mode
+  :mode "\\.[Mm][wW]\\'")
+
+
 (use-package lsp-mode
   :ensure t
   :hook ((c-mode   . lsp)
@@ -68,7 +72,8 @@
   :bind ("C-x g" . magit-status))
 
 (use-package markdown-mode
-  :ensure t)
+  :ensure t
+  :mode "\\.[Mm][dD]\\'")
 
 (use-package avy-zap
   :ensure t

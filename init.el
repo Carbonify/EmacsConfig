@@ -17,17 +17,14 @@
 
 
 (add-to-list 'load-path "~/.emacs.d/config-lisp/") ;; Add more config by me.
-(load "ftdetect") ;; Load the file that detects filetypes
 (load-file "~/.emacs.d/macros.el") ;; Load keyboard macros
-(load-file "~/.emacs.d/config-lisp/autoloads.el") ;; Autoloads part of config lisp
-
 
 ;; Packages -------------------------
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 (package-initialize)
 
-(when (not (package-installed-p 'use-package))
+(unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
 
