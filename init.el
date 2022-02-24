@@ -91,9 +91,8 @@
 
 
 ;; Use hunspell if running on windows
-(if (string-equal system-type "windows-nt")
-    (setq-default ispell-program-name "C:/Program Files (x86)/Hunspell/bin/hunspell.exe"))
-
+(when (string-equal system-type "windows-nt")
+  (setq-default ispell-program-name "C:/Program Files (x86)/Hunspell/bin/hunspell.exe"))
 
 ;; Bookmarks
 (require 'bookmark)
@@ -102,7 +101,6 @@
 (bookmark-bmenu-list)
 (switch-to-buffer "*Bookmark List*")
 
-
 ;; Scrolling
 (setq scroll-margin 1
       scroll-step 1
@@ -110,22 +108,12 @@
       scroll-preserve-screen-position 1)
 
 
-;; Plugin config, manual install loads -----------------
+;; Other config files ------------
 
 (load "plugin-config")
-
-
-;; Hooks ------------------------
-
 (load "mode-hooks")
-
-
-;; Skeletons, Digraphs
 (load "skeletons")
 (load "digraphs")
-
-
-;; Keybindings ---------------------------------
 (load "misc-functions")
 (load "keybindings")
 
@@ -137,7 +125,6 @@
 ;; Graphics, themes, etc
 (load-theme 'solarized-light t)
 (setq-default solarized-distinct-fringe-background t)
-
 
 ;; Last second settings ------
 (setq ring-bell-function 'nm-visual-bell-flash-modeline)
