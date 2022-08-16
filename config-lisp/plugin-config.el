@@ -43,8 +43,9 @@
 (use-package undo-tree
   :ensure t
   :config
-  (global-undo-tree-mode))
-
+  (global-undo-tree-mode)
+  ;; Remove saving of undo history files
+  (setq undo-tree-auto-save-history nil))
 
 (use-package iedit
   :ensure t
