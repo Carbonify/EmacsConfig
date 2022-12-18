@@ -5,6 +5,8 @@
 (use-package mediawiki-mode
   :mode "\\.[Mm][wW]\\'")
 
+(use-package ess
+  :ensure t)
 
 (use-package lsp-mode
   :ensure t
@@ -217,7 +219,8 @@
 (use-package org
   :ensure t
   :hook ((org-mode . visual-line-mode)
-         (org-mode . auto-fill-mode))
+         (org-mode . auto-fill-mode)
+         (org-mode . electric-indent-local-mode))
   :config
   (setq-default org-return-follows-link t)
   (setq-default org-log-done t))
@@ -225,5 +228,12 @@
 (use-package flycheck
   :ensure t
   :hook (prog-mode . flycheck-mode))
+
+(use-package paredit
+  :hook (prog-mode . enable-paredit-mode)
+  :config
+  (define-key paredit-mode-map (kbd "RET") 'paredit-newline)
+  (define-key paredit-mode-map (kbd "C-j") nil))
+
 
 ;; end
