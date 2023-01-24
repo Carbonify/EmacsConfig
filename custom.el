@@ -13,7 +13,7 @@
  '(custom-safe-themes
    '("a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" "fa3d1eb84f00ff9f62f13e788063a0bdb9862b4dfcd2263066cd567c11f052db" "d8cec8251169ccfe192aa87d69b9378bc81599330f31498f85deaef633721302" "3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" default))
  '(frame-background-mode 'light)
- '(ispell-personal-dictionary "~/.emacs.d/dictionary")
+ '(ispell-personal-dictionary nil)
  '(package-selected-packages
    '(ess use-package undo-tree solarized-theme rainbow-delimiters projectile mosey mood-line magit lua-mode lsp-ui lsp-ivy ivy-xref iedit flycheck flx counsel company avy-zap))
  '(save-place t nil (saveplace))

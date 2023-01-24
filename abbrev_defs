@@ -64,6 +64,7 @@
     ("isostacy" "isostasy" nil :count 0)
     ("ive" "I've" nil :count 0)
     ("iwth" "with" nil :count 0)
+    ("judgement" "judgment" nil :count 0)
     ("jurassic" "Jurassic" nil :count 1)
     ("licence" "license" nil :count 0)
     ("maintenence" "maintenance" nil :count 0)

@@ -5,9 +5,11 @@
 (use-package mediawiki-mode
   :mode "\\.[Mm][wW]\\'")
 
+;; Installed for use with R for stats class
 (use-package ess
   :ensure t)
 
+;; For c++ coding
 (use-package lsp-mode
   :ensure t
   :hook ((c-mode   . lsp)
@@ -49,17 +51,19 @@
   ;; Remove saving of undo history files
   (setq undo-tree-auto-save-history nil))
 
+;; Convinient multi cursor editing
 (use-package iedit
   :ensure t
   :bind ("M-m" . iedit-mode))
 
-
+;; Jumping around visually
 (use-package avy
   :ensure t
   :bind (("C-;" . avy-goto-char-timer)
          ("C-'" . avy-kill-region)
          ("C-:" . avy-kill-whole-line)))
 
+;; Autocomplete framework
 (use-package company
   :ensure t
   :config
@@ -70,6 +74,7 @@
          :map company-active-map
          ("<tab>" . company-select-next-if-tooltip-visible-or-complete-selection)))
 
+;; Git
 (use-package magit
   :ensure t
   :bind ("C-x g" . magit-status))
@@ -83,14 +88,17 @@
   :after avy
   :bind ("M-z" . avy-zap-up-to-char))
 
-
+;; Spell checking
 (use-package flyspell
   :ensure t
   :hook (text-mode . flyspell-mode)
   ;;disables the binding so avy can use it
   :bind (:map flyspell-mode-map
               ("C-;" . nil)
-              ("C-," . nil)))
+              ("C-," . nil))
+  :config
+  (setq ispell-dictionary "en_US")
+  (setq ispell-personal-dictionary "~/.emacs.d/dictionary"))
 
 
 (use-package rainbow-delimiters
@@ -169,6 +177,7 @@
 ;;lua mode
 (use-package lua-mode
   :ensure t
+  :defer t
   :config
   (setq-default lua-indent-level 4))
 
