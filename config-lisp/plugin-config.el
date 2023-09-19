@@ -2,12 +2,27 @@
 ;;; keybindings specific to plugins, etc. It also enables certain
 ;;; Global modes that make plugins operate.
 
+
+(use-package python-mode
+  :ensure t
+  :after (company)
+  :bind (:map python-mode-map
+              ("M-/" . jedi:show-doc)
+              ("M-." . jedi:goto-definition)
+              ("M-." . jedi:goto-definition-pop-marker)
+              ("TAB" . company-indent-or-complete-common))
+  :config
+  (setq tab-width 4)
+  (add-hook 'python-mode-hook #'pyvenv-mode)
+  (setq-default python-indent-offset 4))
+
+(use-package pyvenv
+  :ensure t
+  :after (python-mode)
+  :commands (pyvenv-mode))
+
 (use-package mediawiki-mode
   :mode "\\.[Mm][wW]\\'")
-
-;; Installed for use with R for stats class
-(use-package ess
-  :ensure t)
 
 ;; For c++ coding
 (use-package lsp-mode
@@ -70,6 +85,9 @@
   (global-company-mode)
   (setq company-idle-delay 0.6) ;; How long before it pops up the completion automatically
   (setq company-selection-wrap-around t) ;; List loops upon reaching bottom
+  ;; Add python jedi backend
+  (add-to-list 'company-backends 'company-jedi)
+
   :bind (("TAB" . company-indent-or-complete-common)
          :map company-active-map
          ("<tab>" . company-select-next-if-tooltip-visible-or-complete-selection)))
@@ -170,7 +188,6 @@
   :bind (("C-a" . mosey-backward-bounce)
          ("C-e" . mosey-forward-bounce)))
 
-
 (require 'windmove)
 (windmove-default-keybindings)
 
@@ -217,6 +234,7 @@
                             ("GDB" (mode . gdb-parent-mode)) ;; Debugger
                             ("Images" (mode . image-mode)) ;; Image files viewed in emacs
                             ("Programming" (or (mode . javascript-mode)
+                                               (mode . python-mode)
                                                (mode . makefile-gmake-mode)
                                                (mode . makefile-mode)
                                                (mode . c++-mode)
@@ -234,15 +252,24 @@
   (setq-default org-return-follows-link t)
   (setq-default org-log-done t))
 
-(use-package flycheck
-  :ensure t
-  :hook (prog-mode . flycheck-mode))
-
 (use-package paredit
-  :hook (prog-mode . enable-paredit-mode)
+  :hook (emacs-lisp-mode . enable-paredit-mode)
   :config
   (define-key paredit-mode-map (kbd "RET") 'paredit-newline)
   (define-key paredit-mode-map (kbd "C-j") nil))
 
+(use-package pyvenv
+  :ensure t
+  :after (python-mode)
+  :hook ((python-mode . pyvenv-mode))
+  :config
+
+  ;; Set correct Python interpreter
+  (setq pyvenv-post-activate-hooks
+        (list (lambda ()
+                (setq python-shell-interpreter (concat pyvenv-virtual-env "bin/python3")))))
+  (setq pyvenv-post-deactivate-hooks
+        (list (lambda ()
+                (setq python-shell-interpreter "python3")))))
 
 ;; end

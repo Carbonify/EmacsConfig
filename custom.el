@@ -6,7 +6,7 @@
  '(ansi-color-faces-vector
    [default default default italic underline success warning error])
  '(ansi-color-names-vector
-   ["#2e3436" "#a40000" "#4e9a06" "#c4a000" "#204a87" "#5c3566" "#729fcf" "#eeeeec"])
+   ["#eee8d5" "#dc322f" "#859900" "#b58900" "#268bd2" "#d33682" "#2aa198" "#839496"])
  '(avy-timeout-seconds 0.5)
  '(confirm-kill-emacs 'yes-or-no-p)
  '(custom-enabled-themes nil)
@@ -15,11 +15,12 @@
  '(frame-background-mode 'light)
  '(ispell-personal-dictionary nil)
  '(package-selected-packages
-   '(ess use-package undo-tree solarized-theme rainbow-delimiters projectile mosey mood-line magit lua-mode lsp-ui lsp-ivy ivy-xref iedit flycheck flx counsel company avy-zap))
+   '(pyvenv company-jedi python-mode use-package undo-tree solarized-theme rainbow-delimiters projectile mosey mood-line magit lua-mode lsp-ui lsp-ivy ivy-xref iedit flycheck flx counsel company avy-zap))
  '(save-place t nil (saveplace))
  '(show-paren-mode t)
  '(tool-bar-mode nil)
- '(uniquify-buffer-name-style 'post-forward-angle-brackets nil (uniquify)))
+ '(uniquify-buffer-name-style 'post-forward-angle-brackets nil (uniquify))
+ '(warning-suppress-types '((comp) (comp))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
